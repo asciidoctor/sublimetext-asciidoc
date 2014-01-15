@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>asciidoc</string>
+	</array>
+	<key>name</key>
+	<string>AsciiDoc</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>match</key>
+			<string>^&lt;\d+?&gt;\s.*?$</string>
+			<key>name</key>
+			<string>markup.list.numbered.callout.asciidoc</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?&lt;!\*|\w)\*(?!\*|\s).*?(?&lt;!\*|\s)\*(?!\*|\w)</string>
+			<key>name</key>
+			<string>markup.bold.asciidoc</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?&lt;!_|\w)_(?!_|\s).*?(?&lt;!_|\s)_(?!_|\w)</string>
+			<key>name</key>
+			<string>markup.italic.asciidoc</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>text.asciidoc</string>
+	<key>uuid</key>
+	<string>961C6043-B725-4E2D-83E8-114BF3A7389D</string>
+</dict>
+</plist>
