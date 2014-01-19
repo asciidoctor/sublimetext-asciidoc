@@ -17,18 +17,31 @@
 			<string>markup.list.numbered.callout.asciidoc</string>
 		</dict>
 		<dict>
+			<key>include</key>
+			<string>#single_italic</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#single_bold</string>
+		</dict>
+	</array>
+	<key>repository</key>
+	<dict>
+		<key>single_bold</key>
+		<dict>
 			<key>match</key>
 			<string>(?&lt;!\*|\w)\*(?!\*|\s).*?(?&lt;!\*|\s)\*(?!\*|\w)</string>
 			<key>name</key>
 			<string>markup.bold.asciidoc</string>
 		</dict>
+		<key>single_italic</key>
 		<dict>
 			<key>match</key>
 			<string>(?&lt;!_|\w)_(?!_|\s).*?(?&lt;!_|\s)_(?!_|\w)</string>
 			<key>name</key>
 			<string>markup.italic.asciidoc</string>
 		</dict>
-	</array>
+	</dict>
 	<key>scopeName</key>
 	<string>text.asciidoc</string>
 	<key>uuid</key>
