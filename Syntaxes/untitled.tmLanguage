@@ -18,6 +18,18 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#double_italic</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#double_bold</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#double_literal</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#single_bold</string>
 		</dict>
 		<dict>
@@ -28,9 +40,202 @@
 			<key>include</key>
 			<string>#single_literal</string>
 		</dict>
+		<dict>
+			<key>include</key>
+			<string>#double_quote</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#single_literal_nopassthru</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#escape</string>
+		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>double_bold</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>inner</key>
+				<dict>
+					<key>name</key>
+					<string>markup.boldinner.asciidoc</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#double_italic</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#double_literal</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#single_italic</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#single_literal</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#double_quote</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#escape</string>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;delim&gt;\*\*)(?&lt;inner&gt;.*?)\g&lt;delim&gt;</string>
+			<key>name</key>
+			<string>markup.bold.asciidoc</string>
+		</dict>
+		<key>double_italic</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>inner</key>
+				<dict>
+					<key>name</key>
+					<string>markup.italicinner.asciidoc</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#double_bold</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#double_literal</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#single_bold</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#single_literal</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#double_quote</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#escape</string>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;delim&gt;__)(?&lt;inner&gt;.*?)\g&lt;delim&gt;</string>
+			<key>name</key>
+			<string>markup.italic.asciidoc</string>
+		</dict>
+		<key>double_literal</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>inner</key>
+				<dict>
+					<key>name</key>
+					<string>markup.literalinner.asciidoc</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#double_bold</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#double_italic</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#single_italic</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#single_bold</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#double_quote</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#escape</string>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;delim&gt;\+\+)(?&lt;inner&gt;.*?)\g&lt;delim&gt;</string>
+			<key>name</key>
+			<string>string.literal.asciidoc</string>
+		</dict>
+		<key>double_quote</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>inner</key>
+				<dict>
+					<key>name</key>
+					<string>markup.doublequotedinner.asciidoc</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#double_bold</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#double_italic</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#double_literal</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#single_bold</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#single_italic</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#single_literal</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#escape</string>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;!\w)``(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))''(?!\w)</string>
+			<key>name</key>
+			<string>string.quoted.double.asciidoc</string>
+		</dict>
+		<key>escape</key>
+		<dict>
+			<key>comment</key>
+			<string>I do not really know if this is a good list, adopted wholesale from original bundle</string>
+			<key>match</key>
+			<string>\\(?=[-`*_#+.!(){}\[\]\\&gt;:])</string>
+			<key>name</key>
+			<string>constant.character.escape.asciidoc</string>
+		</dict>
 		<key>single_bold</key>
 		<dict>
 			<key>captures</key>
@@ -49,11 +254,19 @@
 							<key>include</key>
 							<string>#single_literal</string>
 						</dict>
+						<dict>
+							<key>include</key>
+							<string>#double_quote</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#escape</string>
+						</dict>
 					</array>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?&lt;!\*|\g&lt;delim&gt;|\w)(?&lt;delim&gt;\*)(?&lt;inner&gt;(?!\g&lt;delim&gt;|\s).*?(?&lt;!\g&lt;delim&gt;|\s))\g&lt;delim&gt;(?!\g&lt;delim&gt;|\w)</string>
+			<string>(?&lt;!\g&lt;delim&gt;|\w|\\)(?&lt;delim&gt;\*)(?&lt;inner&gt;(?!\g&lt;delim&gt;|\s).*?(?&lt;!\g&lt;delim&gt;|\s))\g&lt;delim&gt;(?!\g&lt;delim&gt;|\w)</string>
 			<key>name</key>
 			<string>markup.bold.asciidoc</string>
 		</dict>
@@ -75,11 +288,19 @@
 							<key>include</key>
 							<string>#single_literal</string>
 						</dict>
+						<dict>
+							<key>include</key>
+							<string>#double_quote</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#escape</string>
+						</dict>
 					</array>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?&lt;!\*|\g&lt;delim&gt;|\w)(?&lt;delim&gt;_)(?&lt;inner&gt;(?!\g&lt;delim&gt;|\s).*?(?&lt;!\g&lt;delim&gt;|\s))\g&lt;delim&gt;(?!\g&lt;delim&gt;|\w)</string>
+			<string>(?&lt;!\g&lt;delim&gt;|\w|\\)(?&lt;delim&gt;_)(?&lt;inner&gt;(?!\g&lt;delim&gt;|\s).*?(?&lt;!\g&lt;delim&gt;|\s))\g&lt;delim&gt;(?!\g&lt;delim&gt;|\w)</string>
 			<key>name</key>
 			<string>markup.italic.asciidoc</string>
 		</dict>
@@ -101,13 +322,36 @@
 							<key>include</key>
 							<string>#single_italic</string>
 						</dict>
+						<dict>
+							<key>include</key>
+							<string>#double_quote</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#escape</string>
+						</dict>
 					</array>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?&lt;!\*|\g&lt;delim&gt;|\w)(?&lt;delim&gt;\+)(?&lt;inner&gt;(?!\g&lt;delim&gt;|\s).*?(?&lt;!\g&lt;delim&gt;|\s))\g&lt;delim&gt;(?!\g&lt;delim&gt;|\w)</string>
+			<string>(?&lt;!\g&lt;delim&gt;|\w|\\)(?&lt;delim&gt;\+)(?&lt;inner&gt;(?!\g&lt;delim&gt;|\s).*?(?&lt;!\g&lt;delim&gt;|\s))\g&lt;delim&gt;(?!\g&lt;delim&gt;|\w)</string>
 			<key>name</key>
-			<string>markup.literal.asciidoc</string>
+			<string>string.literal.asciidoc</string>
+		</dict>
+		<key>single_literal_nopassthru</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>inner</key>
+				<dict>
+					<key>name</key>
+					<string>markup.literalnopassthruinner.asciidoc</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;!\g&lt;delim&gt;|\w|\\)(?&lt;delim&gt;`)(?&lt;inner&gt;(?!\g&lt;delim&gt;|\s).*?(?&lt;!\g&lt;delim&gt;|\s))\g&lt;delim&gt;(?!\g&lt;delim&gt;|\w)</string>
+			<key>name</key>
+			<string>string.literal.nopassthru.asciidoc</string>
 		</dict>
 	</dict>
 	<key>scopeName</key>
