@@ -11,71 +11,101 @@
 	<key>patterns</key>
 	<array>
 		<dict>
-			<key>begin</key>
-			<string>^</string>
-			<key>comment</key>
-			<string>to prevent single-italic etc from crossing paragraph boundaries,
-				we define paragraph boundaries and include single-italic etc within them</string>
-			<key>end</key>
-			<string>$</string>
-			<key>name</key>
-			<string>punctuation.test</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>includenot</key>
-					<string>#single_italic</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#single_bold</string>
-				</dict>
-				<dict>
-					<key>includenot</key>
-					<string>#single_literal</string>
-				</dict>
-			</array>
-		</dict>
-		<dict>
 			<key>match</key>
 			<string>^&lt;\d+?&gt;\s.*?$</string>
 			<key>name</key>
 			<string>markup.list.numbered.callout.asciidoc</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#single_bold</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#single_italic</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#single_literal</string>
 		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
 		<key>single_bold</key>
 		<dict>
-			<key>begin</key>
-			<string>\*</string>
-			<key>beginnot</key>
-			<string>(?&lt;!\*|\g&lt;delim&gt;)(?&lt;delim&gt;\*)(?!\g&lt;delim&gt;|\s)</string>
-			<key>end</key>
-			<string>\*</string>
-			<key>endnot</key>
-			<string>(?&lt;!\g&lt;delim&gt;|\s)(?&lt;delim&gt;\*)(?!\g&lt;delim&gt;|\w)</string>
+			<key>captures</key>
+			<dict>
+				<key>inner</key>
+				<dict>
+					<key>name</key>
+					<string>markup.boldinner.asciidoc</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#single_italic</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#single_literal</string>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;!\*|\g&lt;delim&gt;|\w)(?&lt;delim&gt;\*)(?&lt;inner&gt;(?!\g&lt;delim&gt;|\s).*?(?&lt;!\g&lt;delim&gt;|\s))\g&lt;delim&gt;(?!\g&lt;delim&gt;|\w)</string>
 			<key>name</key>
 			<string>markup.bold.asciidoc</string>
-			<key>patternsnot</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#single_italic</string>
-				</dict>
-			</array>
 		</dict>
-		<key>single_italicnot</key>
+		<key>single_italic</key>
 		<dict>
+			<key>captures</key>
+			<dict>
+				<key>inner</key>
+				<dict>
+					<key>name</key>
+					<string>markup.italicinner.asciidoc</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#single_bold</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#single_literal</string>
+						</dict>
+					</array>
+				</dict>
+			</dict>
 			<key>match</key>
-			<string>(?&lt;!\*|\g&lt;delim&gt;)(?&lt;delim&gt;_)(?!\g&lt;delim&gt;|\s).*?(?&lt;!\g&lt;delim&gt;|\s)\g&lt;delim&gt;(?!\g&lt;delim&gt;|\w)</string>
+			<string>(?&lt;!\*|\g&lt;delim&gt;|\w)(?&lt;delim&gt;_)(?&lt;inner&gt;(?!\g&lt;delim&gt;|\s).*?(?&lt;!\g&lt;delim&gt;|\s))\g&lt;delim&gt;(?!\g&lt;delim&gt;|\w)</string>
 			<key>name</key>
 			<string>markup.italic.asciidoc</string>
 		</dict>
-		<key>single_literalnot</key>
+		<key>single_literal</key>
 		<dict>
+			<key>captures</key>
+			<dict>
+				<key>inner</key>
+				<dict>
+					<key>name</key>
+					<string>markup.literalinner.asciidoc</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#single_bold</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#single_italic</string>
+						</dict>
+					</array>
+				</dict>
+			</dict>
 			<key>match</key>
-			<string>(?&lt;!\*|\g&lt;delim&gt;)(?&lt;delim&gt;\+)(?!\g&lt;delim&gt;|\s).*?(?&lt;!\g&lt;delim&gt;|\s)\g&lt;delim&gt;(?!\g&lt;delim&gt;|\w)</string>
+			<string>(?&lt;!\*|\g&lt;delim&gt;|\w)(?&lt;delim&gt;\+)(?&lt;inner&gt;(?!\g&lt;delim&gt;|\s).*?(?&lt;!\g&lt;delim&gt;|\s))\g&lt;delim&gt;(?!\g&lt;delim&gt;|\w)</string>
 			<key>name</key>
 			<string>markup.literal.asciidoc</string>
 		</dict>
