@@ -46,6 +46,17 @@
 		</dict>
 		<dict>
 			<key>name</key>
+			<string>Literal</string>
+			<key>scope</key>
+			<string>markup.literal</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#45b53e</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
 			<string>Comment</string>
 			<key>scope</key>
 			<string>comment</string>
