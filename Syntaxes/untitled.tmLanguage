@@ -12,9 +12,112 @@
 	<array>
 		<dict>
 			<key>match</key>
+			<string>(?&lt;=\s)\+$</string>
+			<key>name</key>
+			<string>constant.linebreak.asciidoc</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>^&lt;{3,}$</string>
+			<key>name</key>
+			<string>constant.pagebreak.asciidoc</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>^'{3,}$</string>
+			<key>name</key>
+			<string>constant.ruler.asciidoc</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>^={5,}\s*$</string>
+			<key>name</key>
+			<string>constant.heading.setext.0.asciidoc</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>^-{5,}\s*$</string>
+			<key>name</key>
+			<string>constant.heading.setext.1.asciidoc</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>^~{5,}\s*$</string>
+			<key>name</key>
+			<string>constant.heading.setext.2.asciidoc</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>^\^{5,}\s*$</string>
+			<key>name</key>
+			<string>constant.heading.setext.3.asciidoc</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>^\+{5,}\s*$</string>
+			<key>name</key>
+			<string>constant.heading.setext.4.asciidoc</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>markup.headingtitle.level.n.asciidoc</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>^={1,5} (\w.*)$</string>
+			<key>name</key>
+			<string>markup.heading.level.n.asciidoc</string>
+		</dict>
+		<dict>
+			<key>match</key>
 			<string>^&lt;\d+?&gt;\s.*?$</string>
 			<key>name</key>
 			<string>markup.list.numbered.callout.asciidoc</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>^\.\w.*$</string>
+			<key>name</key>
+			<string>markup.heading.block.asciidoc</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>^\[\[.*\]\]\s*$</string>
+			<key>name</key>
+			<string>meta.tag.blockid.asciidoc</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>meta.tag.sectiontemplate.asciidoc</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?x)^
+							\[
+							(template\s*=\s*)?(")?
+							(
+							sect\d|abstract|preface|colophon|dedication|glossary|bibliography|synopsis|appendix|index
+							)
+							(".*\]|\])
+							\s*$</string>
+			<key>name</key>
+			<string>variable.parameter.sectiontemplate.asciidoc</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#superscript</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#subscript</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -51,6 +154,10 @@
 		<dict>
 			<key>include</key>
 			<string>#escape</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#entity</string>
 		</dict>
 	</array>
 	<key>repository</key>
@@ -89,11 +196,23 @@
 							<key>include</key>
 							<string>#escape</string>
 						</dict>
+						<dict>
+							<key>include</key>
+							<string>#superscript</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#subscript</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#replacement</string>
+						</dict>
 					</array>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?&lt;delim&gt;\*\*)(?&lt;inner&gt;.*?)\g&lt;delim&gt;</string>
+			<string>(?&lt;!\\)(?&lt;delim&gt;\*\*)(?&lt;inner&gt;.*?)\g&lt;delim&gt;</string>
 			<key>name</key>
 			<string>markup.bold.asciidoc</string>
 		</dict>
@@ -131,11 +250,23 @@
 							<key>include</key>
 							<string>#escape</string>
 						</dict>
+						<dict>
+							<key>include</key>
+							<string>#superscript</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#subscript</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#replacement</string>
+						</dict>
 					</array>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?&lt;delim&gt;__)(?&lt;inner&gt;.*?)\g&lt;delim&gt;</string>
+			<string>(?&lt;!\\)(?&lt;delim&gt;__)(?&lt;inner&gt;.*?)\g&lt;delim&gt;</string>
 			<key>name</key>
 			<string>markup.italic.asciidoc</string>
 		</dict>
@@ -173,11 +304,23 @@
 							<key>include</key>
 							<string>#escape</string>
 						</dict>
+						<dict>
+							<key>include</key>
+							<string>#superscript</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#subscript</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#replacement</string>
+						</dict>
 					</array>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?&lt;delim&gt;\+\+)(?&lt;inner&gt;.*?)\g&lt;delim&gt;</string>
+			<string>(?&lt;!\\)(?&lt;delim&gt;\+\+)(?&lt;inner&gt;.*?)\g&lt;delim&gt;</string>
 			<key>name</key>
 			<string>string.literal.asciidoc</string>
 		</dict>
@@ -219,6 +362,18 @@
 							<key>include</key>
 							<string>#escape</string>
 						</dict>
+						<dict>
+							<key>include</key>
+							<string>#superscript</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#subscript</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#replacement</string>
+						</dict>
 					</array>
 				</dict>
 			</dict>
@@ -226,6 +381,15 @@
 			<string>(?&lt;!\w)``(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))''(?!\w)</string>
 			<key>name</key>
 			<string>string.quoted.double.asciidoc</string>
+		</dict>
+		<key>entity</key>
+		<dict>
+			<key>comment</key>
+			<string>&amp;#x278a; &amp;#182;</string>
+			<key>match</key>
+			<string>(?&lt;!\\)&amp;#(x[0-9a-fA-f]{4}|[0-9]{3});</string>
+			<key>name</key>
+			<string>constant.entity.asciidoc</string>
 		</dict>
 		<key>escape</key>
 		<dict>
@@ -235,6 +399,33 @@
 			<string>\\(?=[-`*_#+.!(){}\[\]\\&gt;:])</string>
 			<key>name</key>
 			<string>constant.character.escape.asciidoc</string>
+		</dict>
+		<key>replacement</key>
+		<dict>
+			<key>match</key>
+			<string>(?x)
+				(?&lt;!\\)
+				(
+					\(C\)
+					|
+					\(TM\)
+					|
+					\(R\)
+					|
+					\-\-
+					|
+					\.\.\.
+					|
+					\-&gt;
+					|
+					&lt;\-
+					|
+					=&gt;
+					|
+					&lt;=
+				)</string>
+			<key>name</key>
+			<string>constant.character.asciidoc</string>
 		</dict>
 		<key>single_bold</key>
 		<dict>
@@ -261,6 +452,18 @@
 						<dict>
 							<key>include</key>
 							<string>#escape</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#superscript</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#subscript</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#replacement</string>
 						</dict>
 					</array>
 				</dict>
@@ -296,6 +499,18 @@
 							<key>include</key>
 							<string>#escape</string>
 						</dict>
+						<dict>
+							<key>include</key>
+							<string>#superscript</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#subscript</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#replacement</string>
+						</dict>
 					</array>
 				</dict>
 			</dict>
@@ -330,6 +545,18 @@
 							<key>include</key>
 							<string>#escape</string>
 						</dict>
+						<dict>
+							<key>include</key>
+							<string>#superscript</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#subscript</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#replacement</string>
+						</dict>
 					</array>
 				</dict>
 			</dict>
@@ -352,6 +579,20 @@
 			<string>(?&lt;!\g&lt;delim&gt;|\w|\\)(?&lt;delim&gt;`)(?&lt;inner&gt;(?!\g&lt;delim&gt;|\s).*?(?&lt;!\g&lt;delim&gt;|\s))\g&lt;delim&gt;(?!\g&lt;delim&gt;|\w)</string>
 			<key>name</key>
 			<string>string.literal.nopassthru.asciidoc</string>
+		</dict>
+		<key>subscript</key>
+		<dict>
+			<key>match</key>
+			<string>(?&lt;!\\)~.*?~</string>
+			<key>name</key>
+			<string>string.subscript.asciidoc</string>
+		</dict>
+		<key>superscript</key>
+		<dict>
+			<key>match</key>
+			<string>(?&lt;!\\)\^.*?\^</string>
+			<key>name</key>
+			<string>string.superscript.asciidoc</string>
 		</dict>
 	</dict>
 	<key>scopeName</key>
