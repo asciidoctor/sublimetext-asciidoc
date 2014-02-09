@@ -515,7 +515,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?&lt;!\g&lt;delim&gt;|\w|\\)(?&lt;delim&gt;_)(?&lt;inner&gt;(?!\g&lt;delim&gt;|\s).*?(?&lt;!\g&lt;delim&gt;|\s))\g&lt;delim&gt;(?!\g&lt;delim&gt;|\w)</string>
+			<string>(?&lt;=\W)(?&lt;delim&gt;_)(?&lt;inner&gt;(?!\s).*?(?&lt;!\g&lt;delim&gt;|\s))\g&lt;delim&gt;(?!\g&lt;delim&gt;|\w)</string>
 			<key>name</key>
 			<string>markup.italic.asciidoc</string>
 		</dict>
