@@ -30,31 +30,31 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>^={5,}\s*$</string>
+			<string>^={6,}\s*$</string>
 			<key>name</key>
 			<string>constant.heading.setext.0.asciidoc</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>^-{5,}\s*$</string>
+			<string>^-{6,}\s*$</string>
 			<key>name</key>
 			<string>constant.heading.setext.1.asciidoc</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>^~{5,}\s*$</string>
+			<string>^~{6,}\s*$</string>
 			<key>name</key>
 			<string>constant.heading.setext.2.asciidoc</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>^\^{5,}\s*$</string>
+			<string>^\^{6,}\s*$</string>
 			<key>name</key>
 			<string>constant.heading.setext.3.asciidoc</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>^\+{5,}\s*$</string>
+			<string>^\+{6,}\s*$</string>
 			<key>name</key>
 			<string>constant.heading.setext.4.asciidoc</string>
 		</dict>
@@ -110,6 +110,78 @@
 							\s*$</string>
 			<key>name</key>
 			<string>variable.parameter.sectiontemplate.asciidoc</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>^(\["?literal\"?,?.*])\s*$</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.variable.attributelist.asciidoc</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>follows section template as being more general</string>
+			<key>end</key>
+			<string>^\s*$</string>
+			<key>name</key>
+			<string>string.literal.block.asciidoc</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>No need for special treatment of escape; follows literal block, section template as being a more general regex</string>
+			<key>match</key>
+			<string>^\[.*\]\s*$</string>
+			<key>name</key>
+			<string>support.variable.attributelist.asciidoc</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>NOTE:, TIP:, IMPORTANT:, WARNING: or CAUTION:</string>
+			<key>match</key>
+			<string>^(NOTE|TIP|IMPORTANT|WARNING|CAUTION):(?=\s+)</string>
+			<key>name</key>
+			<string>support.constant.admonitionword.asciidoc</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>^(/{4,})\s*$</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.delimiter.block.comment.asciidoc</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>comment block</string>
+			<key>end</key>
+			<string>^(/{4,})\s*$</string>
+			<key>name</key>
+			<string>string.unquoted.block.comment.asciidoc</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>^(\-{4,5})\s*$</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.delimiter.block.listing.asciidoc</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>declare content as source in order to get any extra yummy source goodness</string>
+			<key>contentName</key>
+			<string>source</string>
+			<key>end</key>
+			<string>^(\-{4,5})\s*$</string>
+			<key>name</key>
+			<string>string.literal.block.listing.asciidoc</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -173,7 +245,7 @@
 							|
 							\(R\)
 							|
-							\-\-
+							((?&lt;!\-)\-\-(?!\-)) # exactly two, and even this may not rule out all that I want to
 							|
 							\.\.\.
 							|
@@ -186,7 +258,7 @@
 							&lt;=
 						)</string>
 					<key>name</key>
-					<string>constant.character.asciidoc</string>
+					<string>constant.character.replacement.asciidoc</string>
 				</dict>
 			</dict>
 		</dict>
