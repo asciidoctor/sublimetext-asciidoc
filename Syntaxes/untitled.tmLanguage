@@ -16,6 +16,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#titles</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#lines</string>
 		</dict>
 		<dict>
@@ -56,6 +60,10 @@
 				<dict>
 					<key>include</key>
 					<string>#listing_block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#sidebar_block</string>
 				</dict>
 			</array>
 			<key>repository</key>
@@ -203,6 +211,48 @@
 						<dict>
 							<key>include</key>
 							<string>#callout</string>
+						</dict>
+					</array>
+				</dict>
+				<key>sidebar_block</key>
+				<dict>
+					<key>begin</key>
+					<string>^(\*{4,})\s*$</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>constant.delimiter.block.sidebar.asciidoc</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>might need to add more includes but these are the ones that arise in practice for me</string>
+					<key>end</key>
+					<string>^(\*{4,})\s*$</string>
+					<key>name</key>
+					<string>string.quoted.block.sidebar.asciidoc</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#comment_block</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#listing_block</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#lines</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#inline</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#characters</string>
 						</dict>
 					</array>
 				</dict>
@@ -1195,14 +1245,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#setext</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#level</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#block_heading</string>
 				</dict>
 				<dict>
@@ -1246,21 +1288,6 @@
 					<string>^\[\[.*\]\]\s*$</string>
 					<key>name</key>
 					<string>meta.tag.blockid.asciidoc</string>
-				</dict>
-				<key>level</key>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>markup.headingtitle.level.n.asciidoc</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>^={1,5} (\w.*)$</string>
-					<key>name</key>
-					<string>markup.heading.level.n.asciidoc</string>
 				</dict>
 				<key>linebreak</key>
 				<dict>
@@ -1307,7 +1334,39 @@
 					<key>name</key>
 					<string>variable.parameter.sectiontemplate.asciidoc</string>
 				</dict>
-				<key>setext</key>
+			</dict>
+		</dict>
+		<key>titles</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#setext_title</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#level_title</string>
+				</dict>
+			</array>
+			<key>repository</key>
+			<dict>
+				<key>level_title</key>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>markup.headingtitle.level.n.asciidoc</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>^={1,5} (\w.*)$</string>
+					<key>name</key>
+					<string>markup.heading.level.n.asciidoc</string>
+				</dict>
+				<key>setext_title</key>
 				<dict>
 					<key>comment</key>
 					<string>Alas, all we can do is mark the second line; TextMate cannot do double-line patterns</string>

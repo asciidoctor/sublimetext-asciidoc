@@ -13,9 +13,9 @@
 		<key>foldingIndentedBlockStart</key>
 		<string>^=+\s+\w</string>
 		<key>foldingStartMarker</key>
-		<string>^/////</string>
+		<string>^(/|\*){5}</string>
 		<key>foldingStopMarker</key>
-		<string>^//// </string>
+		<string>^(/|\*){4} </string>
 	</dict>
 	<key>uuid</key>
 	<string>FB4E6BC6-BF3D-4D0E-9B6C-8DC461F9C524</string>
