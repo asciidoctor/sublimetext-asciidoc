@@ -73,8 +73,32 @@
 			<string>markup.heading.level.n.asciidoc</string>
 		</dict>
 		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.callout.listnumber.asciidoc</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>meta.list.callout.content.asciidoc</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#inline</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#characters</string>
+						</dict>
+					</array>
+				</dict>
+			</dict>
 			<key>match</key>
-			<string>^&lt;\d+?&gt;\s.*?$</string>
+			<string>^(&lt;\d+?&gt;)(\s.*?)$</string>
 			<key>name</key>
 			<string>markup.list.numbered.callout.asciidoc</string>
 		</dict>
@@ -128,6 +152,38 @@
 			<string>^\s*$</string>
 			<key>name</key>
 			<string>string.literal.block.asciidoc</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#callout</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>^(\.{4,})\s*$</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.delimiter.block.literal.asciidoc</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>alternate way to get literal block, delimit with 4 or more periods</string>
+			<key>end</key>
+			<string>^(\.{4,})\s*$</string>
+			<key>name</key>
+			<string>string.literal.block.delimited.asciidoc</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#callout</string>
+				</dict>
+			</array>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -157,11 +213,18 @@
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>comment block</string>
+			<string>comment block; note the big surprise that macros are enabled here</string>
 			<key>end</key>
 			<string>^(/{4,})\s*$</string>
 			<key>name</key>
 			<string>string.unquoted.block.comment.asciidoc</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#macro</string>
+				</dict>
+			</array>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -181,7 +244,14 @@
 			<key>end</key>
 			<string>^(\-{4,5})\s*$</string>
 			<key>name</key>
-			<string>string.literal.block.listing.asciidoc</string>
+			<string>meta.block.listing.asciidoc</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#callout</string>
+				</dict>
+			</array>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -194,6 +264,13 @@
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>callout</key>
+		<dict>
+			<key>match</key>
+			<string>(?&lt;!\\)&lt;\d+&gt;</string>
+			<key>name</key>
+			<string>constant.callout.asciidoc</string>
+		</dict>
 		<key>characters</key>
 		<dict>
 			<key>patterns</key>
@@ -209,6 +286,10 @@
 				<dict>
 					<key>include</key>
 					<string>#replacement</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#macro</string>
 				</dict>
 			</array>
 			<key>repository</key>
@@ -231,6 +312,20 @@
 					<key>name</key>
 					<string>constant.character.escape.asciidoc</string>
 				</dict>
+				<key>macro</key>
+				<dict>
+					<key>comment</key>
+					<string>there are other macro notations but I match only those that end in square brackets</string>
+					<key>match</key>
+					<string>(?x)
+					([a-zA-Z0-9][a-zA-Z0-9_]*)
+					:{1,2}
+					\S+
+					\[.*\]
+					</string>
+					<key>name</key>
+					<string>constant.character.macro.asciidoc</string>
+				</dict>
 				<key>replacement</key>
 				<dict>
 					<key>comment</key>
@@ -247,7 +342,7 @@
 							|
 							((?&lt;!\-)\-\-(?!\-)) # exactly two, and even this may not rule out all that I want to
 							|
-							\.\.\.
+							((?&lt;!\.)\.\.\.(?!\.)) # exactly three
 							|
 							\-&gt;
 							|
@@ -672,7 +767,7 @@
 					<string>(?x)
 								(?&lt;attlist&gt;\[[^\]]*?\])? # might start with an attribute list (indeed, that is its purpose)
 								(?&lt;!\\) # must not be preceded by escape
-								(?&lt;delim&gt;##)(?&lt;inner&gt;.*?)\k&lt;delim&gt; # anything surrounded by double hashes
+								(?&lt;delim&gt;\#\#)(?&lt;inner&gt;.*?)\k&lt;delim&gt; # anything surrounded by double hashes
 							</string>
 					<key>name</key>
 					<string>string.unquoted.asciidoc</string>
@@ -978,7 +1073,7 @@
 					<string>(?x)
 								(?&lt;attlist&gt;\[[^\]]*?\])? # might start with attribute list (darned well better or why are we here)
 								(?&lt;=\W)(?&lt;!\\) # must be preceded by nonword character, and not by escape
-								(?&lt;delim&gt;#)(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))\k&lt;delim&gt; # delimiter hash, nonspace, anything, nonspace, delimiter
+								(?&lt;delim&gt;\#)(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))\k&lt;delim&gt; # delimiter hash, nonspace, anything, nonspace, delimiter
 								(?!\w) # and must be followed by nonword character
 							</string>
 					<key>name</key>
