@@ -11,68 +11,6 @@
 	<key>patterns</key>
 	<array>
 		<dict>
-			<key>match</key>
-			<string>(?&lt;=\s)\+$</string>
-			<key>name</key>
-			<string>constant.linebreak.asciidoc</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>^&lt;{3,}$</string>
-			<key>name</key>
-			<string>constant.pagebreak.asciidoc</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>^'{3,}$</string>
-			<key>name</key>
-			<string>constant.ruler.asciidoc</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>^={6,}\s*$</string>
-			<key>name</key>
-			<string>constant.heading.setext.0.asciidoc</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>^-{6,}\s*$</string>
-			<key>name</key>
-			<string>constant.heading.setext.1.asciidoc</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>^~{6,}\s*$</string>
-			<key>name</key>
-			<string>constant.heading.setext.2.asciidoc</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>^\^{6,}\s*$</string>
-			<key>name</key>
-			<string>constant.heading.setext.3.asciidoc</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>^\+{6,}\s*$</string>
-			<key>name</key>
-			<string>constant.heading.setext.4.asciidoc</string>
-		</dict>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>markup.headingtitle.level.n.asciidoc</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>^={1,5} (\w.*)$</string>
-			<key>name</key>
-			<string>markup.heading.level.n.asciidoc</string>
-		</dict>
-		<dict>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -103,39 +41,6 @@
 			<string>markup.list.numbered.callout.asciidoc</string>
 		</dict>
 		<dict>
-			<key>match</key>
-			<string>^\.\w.*$</string>
-			<key>name</key>
-			<string>markup.heading.block.asciidoc</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>^\[\[.*\]\]\s*$</string>
-			<key>name</key>
-			<string>meta.tag.blockid.asciidoc</string>
-		</dict>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>meta.tag.sectiontemplate.asciidoc</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>(?x)^
-							\[
-							(template\s*=\s*)?(")?
-							(
-							sect\d|abstract|preface|colophon|dedication|glossary|bibliography|synopsis|appendix|index
-							)
-							(".*\]|\])
-							\s*$</string>
-			<key>name</key>
-			<string>variable.parameter.sectiontemplate.asciidoc</string>
-		</dict>
-		<dict>
 			<key>begin</key>
 			<string>^(\["?literal\"?,?.*])\s*$</string>
 			<key>beginCaptures</key>
@@ -147,7 +52,7 @@
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>follows section template as being more general</string>
+			<string>section template announced as literal, starts literal block</string>
 			<key>end</key>
 			<string>^\s*$</string>
 			<key>name</key>
@@ -184,14 +89,6 @@
 					<string>#callout</string>
 				</dict>
 			</array>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>No need for special treatment of escape; follows literal block, section template as being a more general regex</string>
-			<key>match</key>
-			<string>^\[.*\]\s*$</string>
-			<key>name</key>
-			<string>support.variable.attributelist.asciidoc</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -252,6 +149,10 @@
 					<string>#callout</string>
 				</dict>
 			</array>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#lines</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -1228,6 +1129,147 @@
 							</string>
 					<key>name</key>
 					<string>string.superscript.asciidoc</string>
+				</dict>
+			</dict>
+		</dict>
+		<key>lines</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#linebreak</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#pagebreak</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#ruler</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#setext</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#level</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#block_heading</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#block_id</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#section_template</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#attribute_list_line</string>
+				</dict>
+			</array>
+			<key>repository</key>
+			<dict>
+				<key>attribute_list_line</key>
+				<dict>
+					<key>comment</key>
+					<string>Attribute list as paragraph: single brackets. No need for special treatment of escape; follows literal block, section template as being a more general regex</string>
+					<key>match</key>
+					<string>^\[[^\[\]]*\]\s*$</string>
+					<key>name</key>
+					<string>support.variable.attributelist.asciidoc</string>
+				</dict>
+				<key>block_heading</key>
+				<dict>
+					<key>comment</key>
+					<string>A line beginning with a period and no space</string>
+					<key>match</key>
+					<string>^\.\w.*$</string>
+					<key>name</key>
+					<string>markup.heading.block.asciidoc</string>
+				</dict>
+				<key>block_id</key>
+				<dict>
+					<key>comment</key>
+					<string>A line surrounded by double square brackets</string>
+					<key>match</key>
+					<string>^\[\[.*\]\]\s*$</string>
+					<key>name</key>
+					<string>meta.tag.blockid.asciidoc</string>
+				</dict>
+				<key>level</key>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>markup.headingtitle.level.n.asciidoc</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>^={1,5} (\w.*)$</string>
+					<key>name</key>
+					<string>markup.heading.level.n.asciidoc</string>
+				</dict>
+				<key>linebreak</key>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;=\s)\+$</string>
+					<key>name</key>
+					<string>constant.linebreak.asciidoc</string>
+				</dict>
+				<key>pagebreak</key>
+				<dict>
+					<key>match</key>
+					<string>^&lt;{3,}$</string>
+					<key>name</key>
+					<string>constant.pagebreak.asciidoc</string>
+				</dict>
+				<key>ruler</key>
+				<dict>
+					<key>match</key>
+					<string>^'{3,}$</string>
+					<key>name</key>
+					<string>constant.ruler.asciidoc</string>
+				</dict>
+				<key>section_template</key>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>meta.tag.sectiontemplate.asciidoc</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>fixed list of known template names</string>
+					<key>match</key>
+					<string>(?x)^
+									\[ # in square brackets
+									(template\s*=\s*)?(")? # might start with template-equals and might have template name in quotes
+									(
+									sect\d|abstract|preface|colophon|dedication|glossary|bibliography|synopsis|appendix|index # fixed list of known templates
+									)
+									(".*\]|\]) # either close the quote (and perhaps go on) and close the bracket, or close the bracket immediately
+									\s*$</string>
+					<key>name</key>
+					<string>variable.parameter.sectiontemplate.asciidoc</string>
+				</dict>
+				<key>setext</key>
+				<dict>
+					<key>comment</key>
+					<string>Alas, all we can do is mark the second line; TextMate cannot do double-line patterns</string>
+					<key>match</key>
+					<string>^(=|-|~|\^|\+){6,}\s*$</string>
+					<key>name</key>
+					<string>constant.heading.setext.n.asciidoc</string>
 				</dict>
 			</dict>
 		</dict>
