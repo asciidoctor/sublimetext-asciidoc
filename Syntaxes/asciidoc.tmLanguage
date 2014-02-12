@@ -403,11 +403,19 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#xmlentity</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#escape</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#replacement</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#passmacro</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -521,6 +529,33 @@
 					<key>name</key>
 					<string>constant.character.macro.asciidoc</string>
 				</dict>
+				<key>passmacro</key>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>text.xml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>text.xml</string>
+								</dict>
+							</array>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?x)
+					pass
+					:{1,2}
+					\S*
+					\[([^\]]*)\]
+					</string>
+					<key>name</key>
+					<string>constant.character.macro.pass.asciidoc</string>
+				</dict>
 				<key>replacement</key>
 				<dict>
 					<key>comment</key>
@@ -549,6 +584,15 @@
 						)</string>
 					<key>name</key>
 					<string>constant.character.replacement.asciidoc</string>
+				</dict>
+				<key>xmlentity</key>
+				<dict>
+					<key>comment</key>
+					<string>amp, lt, gt</string>
+					<key>match</key>
+					<string>(?&lt;!\\)&amp;(amp|lt|gt);</string>
+					<key>name</key>
+					<string>constant.entity.xml.asciidoc</string>
 				</dict>
 				<key>xref</key>
 				<dict>
@@ -980,10 +1024,25 @@
 				</dict>
 				<key>passthru</key>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>text.xml</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>text.xml</string>
+								</dict>
+							</array>
+						</dict>
+					</dict>
 					<key>comment</key>
 					<string>must be dead first among the inlines, so as to take priority</string>
 					<key>match</key>
-					<string>(\+\+\+|\$\$).*?(\1)</string>
+					<string>(\+\+\+|\$\$)(.*?)(\1)</string>
 					<key>name</key>
 					<string>support.constant.passthru.asciidoc</string>
 				</dict>
