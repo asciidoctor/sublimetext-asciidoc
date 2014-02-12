@@ -55,6 +55,30 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#bulleted_list</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#numbered_list_dotted</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#numbered_list_numeric</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#numbered_list_roman</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#labeled_list</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#labeled_list_semicolons</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#comment_block</string>
 				</dict>
 				<dict>
@@ -73,6 +97,10 @@
 					<key>include</key>
 					<string>#quote_block</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#example_block</string>
+				</dict>
 			</array>
 			<key>repository</key>
 			<dict>
@@ -84,6 +112,26 @@
 					<string>^(NOTE|TIP|IMPORTANT|WARNING|CAUTION):(?=\s+)</string>
 					<key>name</key>
 					<string>support.constant.admonitionword.asciidoc</string>
+				</dict>
+				<key>bulleted_list</key>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>string.unquoted.list.bullet.asciidoc</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>constant.numeric.list.bullet.asciidoc</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>^(\s*(\-|\*{1,5}))\s+(?=\w)</string>
+					<key>name</key>
+					<string>markup.list.bulleted.asciidoc</string>
 				</dict>
 				<key>callout_list</key>
 				<dict>
@@ -141,6 +189,96 @@
 							<string>#macro</string>
 						</dict>
 					</array>
+				</dict>
+				<key>example_block</key>
+				<dict>
+					<key>begin</key>
+					<string>^(={4,5})\s*$</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>constant.delimiter.block.example.asciidoc</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>might need to add more includes but these are the ones that arise in practice for me; note restriction to 4 or 5 to distinguish from level 0 setext</string>
+					<key>end</key>
+					<string>^(={4,5})\s*$</string>
+					<key>name</key>
+					<string>string.quoted.block.example.asciidoc</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#listing_block</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#lines</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#inline</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#characters</string>
+						</dict>
+					</array>
+				</dict>
+				<key>labeled_list</key>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>meta.list.label.asciidoc</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#inline</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#characters</string>
+								</dict>
+							</array>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>^\s*(.*)(?&lt;!:)(:{2,4})(\s|$)</string>
+					<key>name</key>
+					<string>markup.list.labeled.asciidoc</string>
+				</dict>
+				<key>labeled_list_semicolons</key>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>meta.list.label.asciidoc</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#inline</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#characters</string>
+								</dict>
+							</array>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>^\s*(.*)(?&lt;!;)(;{2})(\s|$)</string>
+					<key>name</key>
+					<string>markup.list.labeled.semicolons.asciidoc</string>
 				</dict>
 				<key>listing_block</key>
 				<dict>
@@ -221,6 +359,68 @@
 							<string>#callout</string>
 						</dict>
 					</array>
+				</dict>
+				<key>numbered_list_dotted</key>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>string.unquoted.list.dotted.asciidoc</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>constant.numeric.list.dot.asciidoc</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>The space distinguishes it from a block title</string>
+					<key>match</key>
+					<string>^(\s*(\.{1,5}))\s+(?=\w)</string>
+					<key>name</key>
+					<string>markup.list.numbered.dotted.asciidoc</string>
+				</dict>
+				<key>numbered_list_numeric</key>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>string.unquoted.list.numeric.asciidoc</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>constant.numeric.list.number.asciidoc</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>^(\s*([1-9a-zA-Z][0-9]*\.))\s+(?=\w)</string>
+					<key>name</key>
+					<string>markup.list.numbered.numeric.asciidoc</string>
+				</dict>
+				<key>numbered_list_roman</key>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>string.unquoted.list.roman.asciidoc</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>constant.numeric.list.romannumeral.asciidoc</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>^(\s*([ivxIVX]+\)))\s+(?=\w)</string>
+					<key>name</key>
+					<string>markup.list.numbered.roman.asciidoc</string>
 				</dict>
 				<key>passthrough_block</key>
 				<dict>
