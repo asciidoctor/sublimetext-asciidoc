@@ -7,7 +7,7 @@
 	<key>contactName</key>
 	<string>Matt Neuburg</string>
 	<key>description</key>
-	<string>New shiny bundle for X.</string>
+	<string>&lt;strong&gt;&lt;/strong&gt;New shiny bundle for X.</string>
 	<key>name</key>
 	<string>MattBundle</string>
 	<key>uuid</key>

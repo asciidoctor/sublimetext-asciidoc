@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>+${1:$TM_SELECTED_TEXT}+</string>
+	<key>disableAutoIndent</key>
+	<true/>
+	<key>keyEquivalent</key>
+	<string>^~@=</string>
+	<key>name</key>
+	<string>Literal</string>
+	<key>scope</key>
+	<string>text.asciidoc</string>
+	<key>uuid</key>
+	<string>24F2B564-B995-45F4-892C-64D228492DAA</string>
+</dict>
+</plist>

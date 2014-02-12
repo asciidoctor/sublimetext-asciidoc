@@ -48,7 +48,7 @@ TextMate::Executor.run(*a, :use_hashbang =&gt; false, :verb =&gt; "Converting")
 	<key>keyEquivalent</key>
 	<string>^H</string>
 	<key>name</key>
-	<string>Convert Document Book</string>
+	<string>Preview Document Book</string>
 	<key>outputCaret</key>
 	<string>afterOutput</string>
 	<key>outputFormat</key>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>ifdef::basebackend-docbook[]
+pass:none[&lt;indexterm id="$1" class='startofrange'&gt;&lt;primary&gt;$2&lt;/primary&gt;&lt;/indexterm&gt;]
+endif::basebackend-docbook[]
+ifdef::basebackend-docbook[]
+pass:none[&lt;indexterm startref="$1" class="endofrange" /&gt;]
+endif::basebackend-docbook[]
+</string>
+	<key>disableAutoIndent</key>
+	<true/>
+	<key>name</key>
+	<string>Start</string>
+	<key>scope</key>
+	<string>text.asciidoc</string>
+	<key>tabTrigger</key>
+	<string>start</string>
+	<key>uuid</key>
+	<string>8B948AA5-1C9F-4083-B874-1B89A069F3DC</string>
+</dict>
+</plist>
