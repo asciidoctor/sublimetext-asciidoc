@@ -387,7 +387,7 @@
 		<key>callout</key>
 		<dict>
 			<key>comment</key>
-			<string>has to be in repository, as it operates in only a couple of highly specific places</string>
+			<string>has to be alone in repository (not in a group), as it operates in only a couple of highly specific places</string>
 			<key>match</key>
 			<string>(?&lt;!\\)&lt;\d+&gt;</string>
 			<key>name</key>
