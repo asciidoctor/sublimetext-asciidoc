@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>Typing Pairs</string>
+	<string>Typing Pairs Literal</string>
 	<key>scope</key>
-	<string>text.asciidoc</string>
+	<string>text.asciidoc source, text.asciidoc string.literal</string>
 	<key>settings</key>
 	<dict>
 		<key>smartTypingPairs</key>
@@ -27,10 +27,6 @@
 				<string>]</string>
 			</array>
 			<array>
-				<string>`</string>
-				<string>`</string>
-			</array>
-			<array>
 				<string>“</string>
 				<string>”</string>
 			</array>
@@ -41,6 +37,6 @@
 		</array>
 	</dict>
 	<key>uuid</key>
-	<string>F44673A3-2AF3-4047-9E23-1288BDF060F3</string>
+	<string>0C447C02-762E-412A-981C-C2F356F0C5AD</string>
 </dict>
 </plist>

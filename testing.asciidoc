@@ -1,0 +1,339 @@
+
+Level 0 Section Title 
+=====================  
+
+blah di blah: the number of underlines must _exactly_ match the length of the title (except for trailing spaces), but there is no way TextMate can know about that, so we just look for five or more and pray
+
+Level 1 Section Title
+---------------------
+
+blah di blah
+
+Level 2 Subsection Title
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+blah di blah
+
+Level 3 Subsection Title
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+blah di blah
+
+Level 4 Subsection Title
+++++++++++++++++++++++++
+
+blah di blah
+
+= Level 0 section title
+
+blah di blah
+
+== Level 1 section title
+
+blah di blah
+
+=== Level 2 section title
+
+blah di blah 
+
+==== Level 3 section title
+
+blah di blah 
+
+===== Level 4 section title
+
+blah di blah
+
+This _is italic_ and this is_n't_. But this (_is_). This is __too_ because the second is inside.
+
+This *is bold* and this is*n't*. But this (,*is*). This is **too* because the second is inside.
+
+This is _italic containing *bold* text_, while this is *bold text containing _italic_ text*.
+
+This +is literal+ and this is+n't+.
+
+This is +literal #containing# *bold* text+ and this is +literal containing _italic_ text+.
+
+This is *bold containing +literal+ text*, and this is _italic containing +literal+ text_.
+
+This is *not bold
+
+because we do not cross* paragraph boundaries.
+
+This is *also bold** despite the second asterisk at the end.
+
+This is *bold in Asciidoc
+but not in TextMate*, because we have no good way to distinguish
+single from double linefeed (as far as I know).
+
+This is \*not bold* and this is \_not italic_ and this is \+not literal+ because of the backslash.
+
+This is a `literal` without internal passthru. Thus it does not `contain *bold* or _italic_ or ``quotes'' inside itself, and if it includes replacements like (C) or -- or &#x278a; that would be a bug`. It does not take an attribute list either, as we see [here]`like this`. Other styles of passthru are +++<somexml>this</somexml>+++ and $$<morexml>this</morexml>$$. Also there is a pass macro which I treat as a special case pass:none[<like>this</like>]
+
+This is a ``double quoted string'' of the normal type and this is``n't''. What happens in the second case is that AsciiDoc sees a single quoted string with an extra backtick on one side and an extra apostrophe on the other side. But that feels like a bug to me. I don't code for it. Do not taunt happy fun ball.
+
+This is a [list]`single quoted string, isn't it?' of the normal type. But I have not coded for this; I don't use them (I use explicit curly quotes instead).
+
+You can get a messy situation: ```Like this.''' AsciiDoc deals badly with that. That is another reason why I tend to use literal curly single quotes.
+
+There is also [list]#unquoted# text (which can occur in mid[list]##wo##rd). As you can see they are useful with attribute lists.
+
+This is +literal with a ``quoted'' string+. This is *bold with a ``quoted'' string*. This is _italic with a ``quoted'' string_. This is a ``quoted string containing +literal+ and *bold* and _italic_ inside it.''
+
+This is what you get when there is an & by itself: nothing! No need to mark it as invalid; AsciiDoc will fix it for you.
+
+This is b__ unconstrained**emphasized**text __b. 
+This is b** unconstrained__strong__text **b. 
+This is b++ obviously**unconstrained__monospaced__text**obviously ++b.
+Can ++double literal contain `single literal no passthru` or what++? Looks okay so we will allow it to stand.
+
+Here we have some ^_superscripted_^ text and some ~subscripted~ text. Can +lit^er^al+ contain it? Can ++double lit^er^al++ contain it? Yes it can, and so can all the other quotes. Here we have a linebreak +
+before we proceed. _Even in italics, we can have copyright (C) or trademark (TM) or register (R) as well as dash -- as well as ellipse ... And there is -> arrow this way and <- arrow that way, plus => snazzier arrow this way and <= snazzier arrow that way._
+
+Absolutely _any_ of the quoted types, except for the no-passthru literal, may be immediately preceded by square brackets, even if they do not normally activate after a non-word character: for example [like]_this_ or [like]^this^. Those square brackets are an attribute list and we must call them to the user's attention, as they will be removed during processing: they are processing instructions, not text. [like]+this+ for example or [like]*this* even.
+
+[bogus]
+Notice that the previous line is removed. It is treated as an attributes list applied to the following block (and raises a warning because there is no ``bogus'' attribute). Thus we mark it for the user's attention. Here is an example where that is actually useful:
+
+[literal]
+This is *not bold* because we have marked it with the literal attribute.
+I don't support the indentation way of doing literal paragraphs;
+use the attribute or literal block instead.
+Callouts work here. <1>
+
+<1> Nice callout, dude. I need _italics_ and things to work here, you know.
+
+This is a normal paragraph.
+
+....
+There is also a literal block.
+It is delimited by four or more periods.
+Thus this is *not bold*.
+But callouts work here. <1>
+....
+
+<1> Another extremely nice callout.
+
+The following works, but I don't mark it in any special way except to inform the user that there is an attributes list:
+
+[quote, Bertrand Russell, The World of Mathematics (1956)]
+A good notation has subtlety and suggestiveness which at times makes
+it almost seem like a live teacher.
+
+TIP: Nothing _special_ happens here.
+
+[TIP]
+Nothing _special_ happens here either.
+
+In this paragraph we have some xml entities such as &#x278a; and &#182;. And obviously they should work inside inlines, such as *bold with &#x278a; and &#182;* and _italic with &#x278a; and &#182; as well_.
+
+<<<
+
+That was a pagebreak. Here comes a ruler.
+
+'''
+
+/////
+This is a comment block. I'd like to fold here but TextMate has an annoying rule that we can't fold if the start and end are identical. Therefore I've devised a special rule: if you want the folding, you have to have 5 (or more) slashes at the start, and four plus a space at the end. This differentiates them and allows the folding to operate.
+//// 
+
+----
+This is a listing block
+{
+    Testing
+    Testing more
+}
+Supposed to be used for code (and we get some yummy source goodness)
+Unlike AsciiDoc, TextMate can't differentiate
+the hyphens here from the hyphens used
+in setext
+Therefore I have an arbitrary rule that the setext is 6 or more...
+and the listing block delimiters must be exactly four or five.
+Please observe that callouts are active here. <1>
+I would not lie to you. <2>
+----
+
+<1> Insofar as callouts are ever active.
+<2> I might, actually.
+
+.Notes
+- Note 1.
+- Note 2.
+
+
+[[terms1]]
+[glossary]
+List of Terms
+-------------
+
+Term:: Definition
+
+This is a xref:terms1[cross reference] and is marked as a macro. There is another <<terms1, cross reference>> style that I don't usually use.
+
+["glossary",id="terms2"]
+List of Terms
+-------------
+
+Term:: Definition
+
+[template="glossary",id="terms3"]
+List of Terms
+-------------
+
+Term:: Definition
+
+.This Is a Sidebar
+*****
+We can put anything we like here, almost. Anything a full-fledged section title or another sidebar!
+
+----
+For example
+it can contain code
+----
+
+Once again I would like this to be foldable. The key _here_ is like the key for comments; to make this work, given TextMate's limitations, the first delimiter must be 5 or more, and the second must be exactly 4 plus a space.
+
+There can be a comment inside a sidebar, clearly.
+
+/////
+This is a comment inside the sidebar. The nested folding works, but of course it is up to you to get the numbers of delimiters right.
+//// 
+
+**** 
+
+And here we are outside the sidebar. And in the words of Tom Lehrer:
+
+____
+Life _is_ like a sewer. What you get out of it depends on what you put into it.
+____
+
+This is an example block:
+
+.A great example
+====
+----
+Consisting typically
+of code (in my usage, anyway)
+----
+====
+
+But an example block can also be used for a note:
+
+[TIP]
+====
+Don't drink the water, and don't breathe the air.
+====
+
+Now comes a passthrough block. We get yummy XML goodness inside it.
+
+++++
+<test>
+    Testing
+</test>
+<name attr="value">
+</name>
+++++
+
+Bulleted list with various levels of indentation. The whitespace at the start of the line is not significant to the AsciiDoc engine, which is looking solely at the symbols:
+
+- Lorem _ipsum_ dolor sit amet, consectetuer adipiscing elit.
+  * Fusce euismod commodo velit.
+  ** Qui in magna commodo, est labitur dolorum an. Est ne magna primis
+     adolescens. Sit munere ponderum dignissim et. Minim luptatum et
+     vel.
+  ** Vivamus fringilla mi eu lacus.
+  * Donec eget arcu bibendum nunc consequat lobortis.
+- Nulla porttitor vulputate libero.
+
+Numbered list using dots. Again, the whitespace is insignificant, and to prove it, I've varied it slightly:
+
+  . Fusce euismod commodo velit.
+  . Vivamus fringilla mi eu lacus.
+    .. Fusce euismod commodo velit.
+      .. Vivamus fringilla mi eu lacus.
+. Donec eget arcu bibendum nunc consequat lobortis.
+
+Numbered list using numbers. Again, the whitespace is insignificant:
+
+  1. Fusce euismod commodo velit.
+    a. Fusce euismod commodo velit.
+    b. Vivamus fringilla mi eu lacus.
+    c. Donec eget arcu bibendum nunc consequat lobortis.
+  2. Vivamus fringilla mi eu lacus.
+    i)  Fusce euismod commodo velit.
+    ii) Vivamus fringilla mi eu lacus.
+  3. Donec eget arcu bibendum nunc consequat lobortis.
+  4. Nam fermentum mattis ante.
+
+Labeled list (my favorite), and notice how the label includes inline and characters as expected:
+
+In +hoopla+::
+Lorem::
+  Fusce euismod commodo velit.
+Ipsum:: Vivamus fringilla mi eu lacus.
+  * Vivamus fringilla mi eu lacus.
+  * Donec eget arcu bibendum nunc consequat lobortis.
+Dolor::
+  Donec eget arcu bibendum nunc consequat lobortis.
+  Suspendisse (C) &#x278a; yippee;;
+    A massa id sem aliquam auctor.
+  Morbi;;
+    Pretium nulla vel lorem.
+  In;;
+    Dictum mauris in urna.
+    Vivamus::: Fringilla mi eu lacus.
+    Donec:::   Eget arcu bibendum nunc consequat lobortis.
+
+A list with a list continuation:
+
+1. List item one.
++
+List item one continued with a second paragraph followed by an
+Indented block.
++
+.................
+$ ls *.sh
+$ mv *.sh ~/tmp
+.................
++
+List item continued with a third paragraph.
+
+2. List item two continued with an open block.
++
+--
+This paragraph is part of the preceding list item.
+
+a. This list is nested and does not require explicit item continuation.
++
+This paragraph is part of the preceding list item.
+
+b. List item b.
+
+This paragraph belongs to item two of the outer list.
+--
+
+[bibliography]
+.Optional list title
+- [[[taoup]]] Eric Steven Raymond. 'The Art of UNIX
+  Programming'. Addison-Wesley. ISBN 0-13-142901-9.
+- [[[walsh-muellner]]] Norman Walsh & Leonard Muellner.
+  'DocBook - The Definitive Guide'. O'Reilly & Associates.
+  1999. ISBN 1-56592-580-7.
+
+Three square brackets make a bibliography anchor. (I'm getting a false positive on the ``1999'' in the previous paragraph, as if it were a numbered list. But I don't care!)
+
+A footnote footnote:[An example footnote.]. It is just a form of macro. I don't use them.
+// Note to self: use them. (By the way, this is a comment.)
+
+I do use ((indexes)), though.(((index term)))
+
+I do not use tables and have not coded for them.
+
+
+
+
+
+
+
+
+
