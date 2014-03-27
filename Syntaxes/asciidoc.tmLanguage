@@ -6,6 +6,8 @@
 	<array>
 		<string>asciidoc</string>
 	</array>
+	<key>keyEquivalent</key>
+	<string>^~A</string>
 	<key>name</key>
 	<string>AsciiDoc</string>
 	<key>patterns</key>
