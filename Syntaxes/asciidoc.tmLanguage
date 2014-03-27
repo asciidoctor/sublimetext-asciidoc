@@ -1624,7 +1624,7 @@
 					<key>match</key>
 					<string>^(//)\s+(.*)$</string>
 					<key>name</key>
-					<string>comment.line.double_slash.asciidoc</string>
+					<string>comment.line.double-slash.asciidoc</string>
 				</dict>
 				<key>linebreak</key>
 				<dict>
@@ -1768,7 +1768,7 @@
 					<key>match</key>
 					<string>^(\s*(&lt;\d+?&gt;))\s+(?=\w)</string>
 					<key>name</key>
-					<string>markup.list.num_bered.callout.asciidoc</string>
+					<string>markup.list.numbered.callout.asciidoc</string>
 				</dict>
 				<key>labeled_list</key>
 				<dict>
@@ -1842,7 +1842,7 @@
 					<key>match</key>
 					<string>^(\s*(\.{1,5}))\s+(?=\w)</string>
 					<key>name</key>
-					<string>markup.list.num_bered.dotted.asciidoc</string>
+					<string>markup.list.numbered.dotted.asciidoc</string>
 				</dict>
 				<key>numbered_list_numeric</key>
 				<dict>
@@ -1862,7 +1862,7 @@
 					<key>match</key>
 					<string>^(\s*([1-9a-zA-Z][0-9]*\.))\s+(?=\w)</string>
 					<key>name</key>
-					<string>markup.list.num_bered.numeric.asciidoc</string>
+					<string>markup.list.numbered.numeric.asciidoc</string>
 				</dict>
 				<key>numbered_list_roman</key>
 				<dict>
@@ -1882,7 +1882,7 @@
 					<key>match</key>
 					<string>^(\s*([ivxIVX]+\)))\s+(?=\w)</string>
 					<key>name</key>
-					<string>markup.list.num_bered.roman.asciidoc</string>
+					<string>markup.list.numbered.roman.asciidoc</string>
 				</dict>
 			</dict>
 		</dict>
