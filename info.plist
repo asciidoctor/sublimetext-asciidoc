@@ -7,9 +7,9 @@
 	<key>contactName</key>
 	<string>Matt Neuburg</string>
 	<key>description</key>
-	<string>&lt;strong&gt;&lt;/strong&gt;New shiny bundle for X.</string>
+	<string>Editor for AsciiDoc files (http://asciidoc.org). Rendering will vary according to need and installation and is left mostly up to the user.</string>
 	<key>name</key>
-	<string>AsciiDocTM2</string>
+	<string>AsciiDoc</string>
 	<key>uuid</key>
 	<string>A82A9BCD-043E-4711-9CC2-DC88A72E12BE</string>
 </dict>
