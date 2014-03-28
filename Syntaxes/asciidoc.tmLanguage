@@ -1558,12 +1558,12 @@
 				<dict>
 					<key>captures</key>
 					<dict>
-						<key>1</key>
+						<key>attrname</key>
 						<dict>
 							<key>name</key>
-							<string>support.variable.attribute</string>
+							<string>support.variable.attribute.asciidoc</string>
 						</dict>
-						<key>2</key>
+						<key>attrvalue</key>
 						<dict>
 							<key>name</key>
 							<string>meta.attributeentry.value.asciidoc</string>
@@ -1577,7 +1577,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>^(:\S+:)(\s+.*)?$</string>
+					<string>^(?&lt;attrname&gt;:(\w[^.]*?)(\.(.*?))?:)(\s+(?&lt;attrvalue&gt;.*))?$</string>
 					<key>name</key>
 					<string>meta.attributeentry.asciidoc</string>
 				</dict>
