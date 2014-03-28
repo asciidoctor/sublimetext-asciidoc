@@ -1113,7 +1113,7 @@
 					<key>match</key>
 					<string>(?x)
 								(?&lt;attlist&gt;\[[^\]]*?\])? # might start with an attributes list
-								(?&lt;=\W)(?&lt;!\\) # must be preceded by a nonword character, and not by an escape
+								(?&lt;=^|\W)(?&lt;!\\) # must be preceded by a nonword character, and not by an escape
 								(?&lt;delim&gt;\*)(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))\k&lt;delim&gt; # delimiter *, no space, anything, no space, delimiter...
 								(?!\w) # ... and must be followed by nonword character
 							</string>
@@ -1185,7 +1185,7 @@
 					<key>match</key>
 					<string>(?x)
 								(?&lt;attlist&gt;\[[^\]]*?\])? # might be preceded by an attributes list
-								(?&lt;=\W)(?&lt;!\\) # must be preceded by a nonword character, and not by an escape
+								(?&lt;=^|\W)(?&lt;!\\) # must be preceded by a nonword character, and not by an escape
 								(?&lt;delim&gt;_)(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))\k&lt;delim&gt; # delimiter underscore, nonspace, anything, nonspace, delimiter
 								(?!\w) # and must by followed by nonword character
 							</string>
@@ -1257,7 +1257,7 @@
 					<key>match</key>
 					<string>(?x)
 								(?&lt;attlist&gt;\[[^\]]*?\])? # might start with attributes list
-								(?&lt;=\W)(?&lt;!\\) # must be preceded by a nonword character, and not by escape
+								(?&lt;=^|\W)(?&lt;!\\) # must be preceded by a nonword character, and not by escape
 								(?&lt;delim&gt;\+)(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))\k&lt;delim&gt; # delimiter plus, nonspace, anything, nonspace, delimiter
 								(?!\w) # and must be followed by nonword character
 							</string>
@@ -1348,7 +1348,7 @@
 					<key>match</key>
 					<string>(?x)
 								(?&lt;attlist&gt;\[[^\]]*?\])? # might start with attribute list (darned well better or why are we here)
-								(?&lt;=\W)(?&lt;!\\) # must be preceded by nonword character, and not by escape
+								(?&lt;=^|\W)(?&lt;!\\) # must be preceded by nonword character, and not by escape
 								(?&lt;delim&gt;\#)(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))\k&lt;delim&gt; # delimiter hash, nonspace, anything, nonspace, delimiter
 								(?!\w) # and must be followed by nonword character
 							</string>
