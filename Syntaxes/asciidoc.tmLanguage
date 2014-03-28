@@ -1615,16 +1615,16 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.comment.double-slash.asciidoc</string>
+							<string>string.unquoted.comment.asciidoc</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>string.unquoted.comment.asciidoc</string>
+							<string>constant.comment.double-slash.asciidoc</string>
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>^(//)\s+(.*)$</string>
+					<string>^((//)([^/\n].*|))$</string>
 					<key>name</key>
 					<string>comment.line.double-slash.asciidoc</string>
 				</dict>
