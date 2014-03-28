@@ -1,3 +1,6 @@
+:rq: &#x2019;
+:Right Quote: &#x2019;
+:Right.Quote: &#x2019;
 
 Level 0 Section Title 
 =====================  
@@ -46,9 +49,15 @@ blah di blah
 
 This _is italic_ and this is_n't_. But this (_is_). This is __too_ because the second is inside.
 
+_An italic line._
+
 This *is bold* and this is*n't*. But this (,*is*). This is **too* because the second is inside.
 
+*A bold line.*
+
 This is _italic containing *bold* text_, while this is *bold text containing _italic_ text*.
+
++A literal line.+
 
 This +is literal+ and this is+n't+.
 
@@ -58,7 +67,7 @@ This is *bold containing +literal+ text*, and this is _italic containing +litera
 
 This is *not bold
 
-because we do not cross* paragraph boundaries.
+because we do not cross* paragraph boundaries in our implementation.
 
 This is *also bold** despite the second asterisk at the end.
 
@@ -70,13 +79,19 @@ This is \*not bold* and this is \_not italic_ and this is \+not literal+ because
 
 This is a `literal` without internal passthru. Thus it does not `contain *bold* or _italic_ or ``quotes'' inside itself, and if it includes replacements like (C) or -- or &#x278a; that would be a bug`. It does not take an attribute list either, as we see [here]`like this`. Other styles of passthru are +++<somexml>this</somexml>+++ and $$<morexml>this</morexml>$$. Also there is a pass macro which I treat as a special case pass:none[<like>this</like>]
 
+`A literal line.`
+
 This is a ``double quoted string'' of the normal type and this is``n't''. What happens in the second case is that AsciiDoc sees a single quoted string with an extra backtick on one side and an extra apostrophe on the other side. But that feels like a bug to me. I don't code for it. Do not taunt happy fun ball.
+
+``A double quoted string line.''
 
 This is a [list]`single quoted string, isn't it?' of the normal type. But I have not coded for this; I don't use them (I use explicit curly quotes instead).
 
 You can get a messy situation: ```Like this.''' AsciiDoc deals badly with that. That is another reason why I tend to use literal curly single quotes.
 
 There is also [list]#unquoted# text (which can occur in mid[list]##wo##rd). As you can see they are useful with attribute lists.
+
+#An unquoted line.#
 
 This is +literal with a ``quoted'' string+. This is *bold with a ``quoted'' string*. This is _italic with a ``quoted'' string_. This is a ``quoted string containing +literal+ and *bold* and _italic_ inside it.''
 
@@ -320,15 +335,18 @@ This paragraph belongs to item two of the outer list.
   'DocBook - The Definitive Guide'. O'Reilly & Associates.
   1999. ISBN 1-56592-580-7.
 
-Three square brackets make a bibliography anchor. (I'm getting a false positive on the ``1999'' in the previous paragraph, as if it were a numbered list. But I don't care!)
+Three square brackets make a bibliography anchor. (I'm getting a false positive on the ``1999'' in the previous paragraph, as if it were a numbered list. But I don't care! And in fact AsciiDoc itself, when rendering, is giving exactly the same false positive.)
 
 A footnote footnote:[An example footnote.]. It is just a form of macro. I don't use them.
 // Note to self: use them. (By the way, this is a comment.)
+// This is another comment. Next line is an empty comment.
+//
+testing
+// Comment.
 
 I do use ((indexes)), though.(((index term)))
 
 I do not use tables and have not coded for them.
-
 
 
 
