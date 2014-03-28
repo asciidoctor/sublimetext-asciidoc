@@ -295,7 +295,7 @@
 					<key>end</key>
 					<string>^(\+{4,5})\s*$</string>
 					<key>name</key>
-					<string>string.quoted.block.passthrough.asciidoc</string>
+					<string>meta.embedded.asciidoc</string>
 					<key>patterns</key>
 					<array>
 						<dict>
