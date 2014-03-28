@@ -1604,7 +1604,7 @@
 					<key>comment</key>
 					<string>A line surrounded by double square brackets</string>
 					<key>match</key>
-					<string>^\[\[.*\]\]\s*$</string>
+					<string>^\[\[[^\[].*\]\]\s*$</string>
 					<key>name</key>
 					<string>meta.tag.blockid.asciidoc</string>
 				</dict>
