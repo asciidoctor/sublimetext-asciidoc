@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>TOC: SectionTemplate</string>
 	<key>scope</key>
-	<string>meta.tag.sectiontemplate</string>
+	<string>meta.tag.sectiontemplate.asciidoc</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>
