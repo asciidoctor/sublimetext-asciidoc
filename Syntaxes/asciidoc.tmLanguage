@@ -85,21 +85,29 @@
 				<key>comment_block</key>
 				<dict>
 					<key>begin</key>
-					<string>^(/{4,})\s*$</string>
-					<key>captures</key>
+					<string>^(/{4,})\s*$\n?</string>
+					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>constant.delimiter.block.comment.asciidoc</string>
+							<string>punctuation.definition.comment.begin.asciidoc</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>comment block; note the big surprise that macros are enabled here</string>
 					<key>end</key>
-					<string>^(/{4,})\s*$</string>
+					<string>^(/{4,})\s*$\n?</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.comment.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>name</key>
-					<string>string.unquoted.block.comment.asciidoc</string>
+					<string>comment.block.asciidoc</string>
 					<key>patterns</key>
 					<array>
 						<dict>
