@@ -169,13 +169,13 @@
 				<key>listing_block</key>
 				<dict>
 					<key>begin</key>
-					<string>^(\-{4,5})\s*$</string>
-					<key>captures</key>
+					<string>^(\-{4,5})\s*$\n?</string>
+					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>constant.delimiter.block.listing.asciidoc</string>
+							<string>constant.delimiter.listing.begin.asciidoc</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -183,9 +183,17 @@
 					<key>contentName</key>
 					<string>source</string>
 					<key>end</key>
-					<string>^(\-{4,5})\s*$</string>
+					<string>^(\-{4,5})\s*$\n?</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>constant.delimiter.listing.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>name</key>
-					<string>meta.block.listing.asciidoc</string>
+					<string>meta.embedded.block.listing.asciidoc</string>
 					<key>patterns</key>
 					<array>
 						<dict>
