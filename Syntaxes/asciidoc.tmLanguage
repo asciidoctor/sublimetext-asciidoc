@@ -209,7 +209,7 @@
 				<key>literal_block_announced</key>
 				<dict>
 					<key>begin</key>
-					<string>^(\["?literal\"?,?.*])\s*$</string>
+					<string>^(\["?literal\"?,?.*\])\s*$\n?</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -220,10 +220,12 @@
 					</dict>
 					<key>comment</key>
 					<string>section template announced as literal, starts literal block</string>
+					<key>contentName</key>
+					<string>markup.block.literal.asciidoc</string>
 					<key>end</key>
-					<string>^\s*$</string>
+					<string>(?=^\s*$)</string>
 					<key>name</key>
-					<string>string.literal.block.asciidoc</string>
+					<string>string.literal.block.announced.asciidoc</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -235,19 +237,29 @@
 				<key>literal_block_delimited</key>
 				<dict>
 					<key>begin</key>
-					<string>^(\.{4,})\s*$</string>
-					<key>captures</key>
+					<string>^(\.{4,})\s*$\n?</string>
+					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>constant.delimiter.block.literal.asciidoc</string>
+							<string>constant.delimiter.block.literal.begin.asciidoc</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>alternate way to get literal block, delimit with 4 or more periods</string>
+					<key>contentName</key>
+					<string>markup.block.literal.asciidoc</string>
 					<key>end</key>
-					<string>^(\.{4,})\s*$</string>
+					<string>^(\.{4,})\s*$\n?</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>constant.delimiter.block.literal.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>name</key>
 					<string>string.literal.block.delimited.asciidoc</string>
 					<key>patterns</key>
