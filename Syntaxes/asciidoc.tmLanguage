@@ -273,19 +273,29 @@
 				<key>open_block</key>
 				<dict>
 					<key>begin</key>
-					<string>^(\-\-)\s*$</string>
-					<key>captures</key>
+					<string>^(\-\-)\s*$\n?</string>
+					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>constant.delimiter.block.open.asciidoc</string>
+							<string>constant.delimiter.block.open.begin.asciidoc</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>might need to check on these includes</string>
+					<key>contentName</key>
+					<string>meta.block.open.content.asciidoc</string>
 					<key>end</key>
-					<string>^(\-\-)\s*$</string>
+					<string>^(\-\-)\s*$\n?</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>constant.delimiter.block.open.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>name</key>
 					<string>meta.block.open.asciidoc</string>
 					<key>patterns</key>
