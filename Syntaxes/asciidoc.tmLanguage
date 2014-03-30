@@ -97,7 +97,7 @@
 					<key>comment</key>
 					<string>comment block; note the big surprise that macros are enabled here</string>
 					<key>contentName</key>
-					<string>markup.block.comment.asciidoc</string>
+					<string>meta.block.comment.content.asciidoc</string>
 					<key>end</key>
 					<string>^(/{4,})\s*$\n?</string>
 					<key>endCaptures</key>
@@ -133,7 +133,7 @@
 					<key>comment</key>
 					<string>might need to add more includes but these are the ones that arise in practice for me; note restriction to 4 or 5 to distinguish from level 0 setext</string>
 					<key>contentName</key>
-					<string>markup.block.example.asciidoc</string>
+					<string>meta.block.example.content.asciidoc</string>
 					<key>end</key>
 					<string>^(={4,5})\s*$\n?</string>
 					<key>endCaptures</key>
@@ -221,7 +221,7 @@
 					<key>comment</key>
 					<string>section template announced as literal, starts literal block</string>
 					<key>contentName</key>
-					<string>markup.block.literal.asciidoc</string>
+					<string>meta.block.literal.content.asciidoc</string>
 					<key>end</key>
 					<string>(?=^\s*$)</string>
 					<key>name</key>
@@ -249,7 +249,7 @@
 					<key>comment</key>
 					<string>alternate way to get literal block, delimit with 4 or more periods</string>
 					<key>contentName</key>
-					<string>markup.block.literal.asciidoc</string>
+					<string>meta.block.literal.content.asciidoc</string>
 					<key>end</key>
 					<string>^(\.{4,})\s*$\n?</string>
 					<key>endCaptures</key>
