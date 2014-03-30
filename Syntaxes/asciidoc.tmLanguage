@@ -329,23 +329,31 @@
 				<key>passthrough_block</key>
 				<dict>
 					<key>begin</key>
-					<string>^(\+{4,5})\s*$</string>
-					<key>captures</key>
+					<string>^(\+{4,5})\s*$\n?</string>
+					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>constant.delimiter.block.passthrough.asciidoc</string>
+							<string>constant.delimiter.block.passthrough.begin.asciidoc</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>must be four or five to distinguish from level 4 setext</string>
 					<key>contentName</key>
-					<string>text.xml</string>
+					<string>text.xml.block.passthrough.content.asciidoc</string>
 					<key>end</key>
-					<string>^(\+{4,5})\s*$</string>
+					<string>^(\+{4,5})\s*$\n?</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>constant.delimiter.block.passthrough.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>name</key>
-					<string>meta.embedded.asciidoc</string>
+					<string>meta.embedded.block.passthrough.asciidoc</string>
 					<key>patterns</key>
 					<array>
 						<dict>
