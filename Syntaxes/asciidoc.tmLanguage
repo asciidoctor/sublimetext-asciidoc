@@ -185,7 +185,7 @@
 					<key>comment</key>
 					<string>declare content as source in order to get any extra yummy source goodness</string>
 					<key>contentName</key>
-					<string>source</string>
+					<string>source.block.listing.content.asciidoc</string>
 					<key>end</key>
 					<string>^(\-{4,5})\s*$\n?</string>
 					<key>endCaptures</key>
