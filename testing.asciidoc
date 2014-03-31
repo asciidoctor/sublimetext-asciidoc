@@ -158,7 +158,12 @@ This is a listing block
     Testing
     Testing more
 }
+{
+    Testing
+    testing more
+}
 Supposed to be used for code (and we get some yummy source goodness)
+Like this: "\n" (typed with control-n)
 Unlike AsciiDoc, TextMate can't differentiate
 the hyphens here from the hyphens used
 in setext
@@ -216,10 +221,10 @@ This is a comment inside the sidebar. The nested folding works, but of course it
 
 **** 
 
-And here we are outside the sidebar. And in the words of Tom Lehrer:
+And here we are outside the sidebar. And (here comes a quote block), in the words of Tom Lehrer:
 
 ____
-Life _is_ like a sewer. What you get out of it depends on what you put into it.
+Life _is_ like a *sewer*. What you get out of it depends on what you put into it.
 ____
 
 This is an example block:
