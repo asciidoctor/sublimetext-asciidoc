@@ -85,21 +85,31 @@
 				<key>comment_block</key>
 				<dict>
 					<key>begin</key>
-					<string>^(/{4,})\s*$</string>
-					<key>captures</key>
+					<string>^(/{4,})\s*$\n?</string>
+					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>constant.delimiter.block.comment.asciidoc</string>
+							<string>punctuation.definition.comment.begin.asciidoc</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>comment block; note the big surprise that macros are enabled here</string>
+					<key>contentName</key>
+					<string>meta.block.comment.content.asciidoc</string>
 					<key>end</key>
-					<string>^(/{4,})\s*$</string>
+					<string>^(/{4,})\s*$\n?</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.comment.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>name</key>
-					<string>string.unquoted.block.comment.asciidoc</string>
+					<string>comment.block.asciidoc</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -111,21 +121,31 @@
 				<key>example_block</key>
 				<dict>
 					<key>begin</key>
-					<string>^(={4,5})\s*$</string>
-					<key>captures</key>
+					<string>^(={4,5})\s*$\n?</string>
+					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>constant.delimiter.block.example.asciidoc</string>
+							<string>constant.delimiter.example.begin.asciidoc</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>might need to add more includes but these are the ones that arise in practice for me; note restriction to 4 or 5 to distinguish from level 0 setext</string>
+					<key>contentName</key>
+					<string>meta.block.example.content.asciidoc</string>
 					<key>end</key>
-					<string>^(={4,5})\s*$</string>
+					<string>^(={4,5})\s*$\n?</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>constant.delimiter.example.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>name</key>
-					<string>string.quoted.block.example.asciidoc</string>
+					<string>string.unquoted.block.example.asciidoc</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -153,23 +173,31 @@
 				<key>listing_block</key>
 				<dict>
 					<key>begin</key>
-					<string>^(\-{4,5})\s*$</string>
-					<key>captures</key>
+					<string>^(\-{4,5})\s*$\n?</string>
+					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>constant.delimiter.block.listing.asciidoc</string>
+							<string>constant.delimiter.listing.begin.asciidoc</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>declare content as source in order to get any extra yummy source goodness</string>
 					<key>contentName</key>
-					<string>source</string>
+					<string>source.block.listing.content.asciidoc</string>
 					<key>end</key>
-					<string>^(\-{4,5})\s*$</string>
+					<string>^(\-{4,5})\s*$\n?</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>constant.delimiter.listing.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>name</key>
-					<string>meta.block.listing.asciidoc</string>
+					<string>meta.embedded.block.listing.asciidoc</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -181,7 +209,7 @@
 				<key>literal_block_announced</key>
 				<dict>
 					<key>begin</key>
-					<string>^(\["?literal\"?,?.*])\s*$</string>
+					<string>^(\["?literal\"?,?.*\])\s*$\n?</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -192,10 +220,12 @@
 					</dict>
 					<key>comment</key>
 					<string>section template announced as literal, starts literal block</string>
+					<key>contentName</key>
+					<string>meta.block.literal.content.asciidoc</string>
 					<key>end</key>
-					<string>^\s*$</string>
+					<string>(?=^\s*$)</string>
 					<key>name</key>
-					<string>string.literal.block.asciidoc</string>
+					<string>string.literal.block.announced.asciidoc</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -207,19 +237,29 @@
 				<key>literal_block_delimited</key>
 				<dict>
 					<key>begin</key>
-					<string>^(\.{4,})\s*$</string>
-					<key>captures</key>
+					<string>^(\.{4,})\s*$\n?</string>
+					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>constant.delimiter.block.literal.asciidoc</string>
+							<string>constant.delimiter.block.literal.begin.asciidoc</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>alternate way to get literal block, delimit with 4 or more periods</string>
+					<key>contentName</key>
+					<string>meta.block.literal.content.asciidoc</string>
 					<key>end</key>
-					<string>^(\.{4,})\s*$</string>
+					<string>^(\.{4,})\s*$\n?</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>constant.delimiter.block.literal.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>name</key>
 					<string>string.literal.block.delimited.asciidoc</string>
 					<key>patterns</key>
@@ -233,19 +273,29 @@
 				<key>open_block</key>
 				<dict>
 					<key>begin</key>
-					<string>^(\-\-)\s*$</string>
-					<key>captures</key>
+					<string>^(\-\-)\s*$\n?</string>
+					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>constant.delimiter.block.open.asciidoc</string>
+							<string>constant.delimiter.block.open.begin.asciidoc</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>might need to check on these includes</string>
+					<key>contentName</key>
+					<string>meta.block.open.content.asciidoc</string>
 					<key>end</key>
-					<string>^(\-\-)\s*$</string>
+					<string>^(\-\-)\s*$\n?</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>constant.delimiter.block.open.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>name</key>
 					<string>meta.block.open.asciidoc</string>
 					<key>patterns</key>
@@ -279,23 +329,31 @@
 				<key>passthrough_block</key>
 				<dict>
 					<key>begin</key>
-					<string>^(\+{4,5})\s*$</string>
-					<key>captures</key>
+					<string>^(\+{4,5})\s*$\n?</string>
+					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>constant.delimiter.block.passthrough.asciidoc</string>
+							<string>constant.delimiter.block.passthrough.begin.asciidoc</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>must be four or five to distinguish from level 4 setext</string>
 					<key>contentName</key>
-					<string>text.xml</string>
+					<string>text.xml.block.passthrough.content.asciidoc</string>
 					<key>end</key>
-					<string>^(\+{4,5})\s*$</string>
+					<string>^(\+{4,5})\s*$\n?</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>constant.delimiter.block.passthrough.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>name</key>
-					<string>meta.embedded.asciidoc</string>
+					<string>meta.embedded.block.passthrough.asciidoc</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -307,21 +365,31 @@
 				<key>quote_block</key>
 				<dict>
 					<key>begin</key>
-					<string>^(_{4,})\s*$</string>
-					<key>captures</key>
+					<string>^(_{4,})\s*$\n?</string>
+					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>constant.delimiter.block.quote.asciidoc</string>
+							<string>constant.delimiter.block.quote.begin.asciidoc</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>might need to add more includes, but these are the ones that arise for me in practice</string>
+					<key>contentName</key>
+					<string>meta.block.quote.content.asciidoc</string>
 					<key>end</key>
-					<string>^(_{4,})\s*$</string>
+					<string>^(_{4,})\s*$\n?</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>constant.delimiter.block.quote.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>name</key>
-					<string>string.quoted.block.quote.asciidoc</string>
+					<string>markup.quote.block.asciidoc</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -341,19 +409,29 @@
 				<key>sidebar_block</key>
 				<dict>
 					<key>begin</key>
-					<string>^(\*{4,})\s*$</string>
-					<key>captures</key>
+					<string>^(\*{4,})\s*$\n?</string>
+					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>constant.delimiter.block.sidebar.asciidoc</string>
+							<string>constant.delimiter.block.sidebar.begin.asciidoc</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>might need to add more includes but these are the ones that arise in practice for me</string>
+					<key>contentName</key>
+					<string>meta.block.sidebar.content.asciidoc</string>
 					<key>end</key>
-					<string>^(\*{4,})\s*$</string>
+					<string>^(\*{4,})\s*$\n?</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>constant.delimiter.block.sidebar.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>name</key>
 					<string>string.quoted.block.sidebar.asciidoc</string>
 					<key>patterns</key>
