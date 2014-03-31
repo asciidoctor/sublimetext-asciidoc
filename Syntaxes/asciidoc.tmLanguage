@@ -365,21 +365,31 @@
 				<key>quote_block</key>
 				<dict>
 					<key>begin</key>
-					<string>^(_{4,})\s*$</string>
-					<key>captures</key>
+					<string>^(_{4,})\s*$\n?</string>
+					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>constant.delimiter.block.quote.asciidoc</string>
+							<string>constant.delimiter.block.quote.begin.asciidoc</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>might need to add more includes, but these are the ones that arise for me in practice</string>
+					<key>contentName</key>
+					<string>meta.block.quote.content.asciidoc</string>
 					<key>end</key>
-					<string>^(_{4,})\s*$</string>
+					<string>^(_{4,})\s*$\n?</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>constant.delimiter.block.quote.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>name</key>
-					<string>string.quoted.block.quote.asciidoc</string>
+					<string>markup.quote.block.asciidoc</string>
 					<key>patterns</key>
 					<array>
 						<dict>
