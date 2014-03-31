@@ -409,19 +409,29 @@
 				<key>sidebar_block</key>
 				<dict>
 					<key>begin</key>
-					<string>^(\*{4,})\s*$</string>
-					<key>captures</key>
+					<string>^(\*{4,})\s*$\n?</string>
+					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>constant.delimiter.block.sidebar.asciidoc</string>
+							<string>constant.delimiter.block.sidebar.begin.asciidoc</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>might need to add more includes but these are the ones that arise in practice for me</string>
+					<key>contentName</key>
+					<string>meta.block.sidebar.content.asciidoc</string>
 					<key>end</key>
-					<string>^(\*{4,})\s*$</string>
+					<string>^(\*{4,})\s*$\n?</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>constant.delimiter.block.sidebar.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>name</key>
 					<string>string.quoted.block.sidebar.asciidoc</string>
 					<key>patterns</key>
