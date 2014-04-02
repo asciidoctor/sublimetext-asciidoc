@@ -560,7 +560,7 @@
 					<key>match</key>
 					<string>(?&lt;!\\)&amp;#(x[0-9a-fA-f]{4}|[0-9]{3});</string>
 					<key>name</key>
-					<string>constant.entity.asciidoc</string>
+					<string>constant.character.entity.asciidoc</string>
 				</dict>
 				<key>escape</key>
 				<dict>
