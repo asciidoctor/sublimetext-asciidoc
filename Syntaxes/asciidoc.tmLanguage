@@ -578,23 +578,18 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.character.index2.left.asciidoc</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>string.unquoted.indexterm.asciidoc</string>
+							<string>constant.character.indexterm.double.begin.asciidoc</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>constant.character.index2.right.asciidoc</string>
+							<string>constant.character.indexterm.double.end.asciidoc</string>
 						</dict>
 					</dict>
 					<key>match</key>
 					<string>(?&lt;!\()(\({2})([^\(\s].*?)(\){2})(?!\))</string>
 					<key>name</key>
-					<string>meta.indexterm.double.asciidoc</string>
+					<string>variable.other.indexterm.double.asciidoc</string>
 				</dict>
 				<key>index3</key>
 				<dict>
@@ -603,23 +598,18 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.character.index3.left.asciidoc</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>string.unquoted.indexterm.asciidoc</string>
+							<string>constant.character.indexterm.triple.begin.asciidoc</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>constant.character.index3.right.asciidoc</string>
+							<string>constant.character.indexterm.triple.end.asciidoc</string>
 						</dict>
 					</dict>
 					<key>match</key>
 					<string>(?&lt;!\()(\({3})([^\(].*?)(\){3})(?!\))</string>
 					<key>name</key>
-					<string>meta.indexterm.triple.asciidoc</string>
+					<string>variable.other.indexterm.triple.asciidoc</string>
 				</dict>
 				<key>macro</key>
 				<dict>
