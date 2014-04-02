@@ -535,10 +535,23 @@
 			<dict>
 				<key>biblio_anchor</key>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.biblioanchor.begin.asciidoc</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.biblioanchor.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>match</key>
-					<string>(?&lt;!\[)\[\[\[.*?\]\]\](?!\])</string>
+					<string>(?&lt;!\[)(\[\[\[).*?(\]\]\])(?!\])</string>
 					<key>name</key>
-					<string>constant.character.biblioanchor.asciidoc</string>
+					<string>storage.type.reference.biblioanchor.asciidoc</string>
 				</dict>
 				<key>entity</key>
 				<dict>
