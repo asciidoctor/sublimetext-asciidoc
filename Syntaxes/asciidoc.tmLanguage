@@ -466,12 +466,25 @@
 		</dict>
 		<key>callout</key>
 		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.callout.begin.asciidoc</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.callout.end.asciidoc</string>
+				</dict>
+			</dict>
 			<key>comment</key>
 			<string>has to be alone in repository (not in a group), as it operates in only a couple of highly specific places</string>
 			<key>match</key>
-			<string>(?&lt;!\\)&lt;\d+&gt;</string>
+			<string>(?&lt;!\\)(&lt;)\d+(&gt;)</string>
 			<key>name</key>
-			<string>constant.callout.asciidoc</string>
+			<string>constant.other.callout.asciidoc</string>
 		</dict>
 		<key>characters</key>
 		<dict>
