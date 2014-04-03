@@ -1102,6 +1102,16 @@
 							<key>name</key>
 							<string>support.variable.attributelist.asciidoc</string>
 						</dict>
+						<key>closer</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.quoted.double.end.asciidoc</string>
+						</dict>
+						<key>delim</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.quoted.double.begin.asciidoc</string>
+						</dict>
 						<key>inner</key>
 						<dict>
 							<key>name</key>
@@ -1163,7 +1173,7 @@
 					<string>(?x)
 								(?&lt;attlist&gt;\[[^\]]*?\])? # might start with attribute list
 								(?&lt;!\w|\\) # cannot be preceded by word character or escape
-								``(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))'' # double backtick followed by non-space, anything, double-apostrophe preceded by non-space
+								(?&lt;delim&gt;``)(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))(?&lt;closer&gt;'') # double backtick followed by non-space, anything, double-apostrophe preceded by non-space
 								(?!\w) # cannot be followed by word character either
 							</string>
 					<key>name</key>
@@ -1178,10 +1188,20 @@
 							<key>name</key>
 							<string>support.variable.attributelist.asciidoc</string>
 						</dict>
+						<key>closer</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.unquoted.double.end.asciidoc</string>
+						</dict>
+						<key>delim</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.unquoted.double.begin.asciidoc</string>
+						</dict>
 						<key>inner</key>
 						<dict>
 							<key>name</key>
-							<string>meta.unquotedinner.asciidoc</string>
+							<string>string.unquoted.unquotedinner.double.asciidoc</string>
 							<key>patterns</key>
 							<array>
 								<dict>
@@ -1235,10 +1255,10 @@
 					<string>(?x)
 								(?&lt;attlist&gt;\[[^\]]*?\])? # might start with an attribute list (indeed, that is its purpose)
 								(?&lt;!\\) # must not be preceded by escape
-								(?&lt;delim&gt;\#\#)(?&lt;inner&gt;.*?)\k&lt;delim&gt; # anything surrounded by double hashes
+								(?&lt;delim&gt;\#\#)(?&lt;inner&gt;.*?)(?&lt;closer&gt;\k&lt;delim&gt;) # anything surrounded by double hashes
 							</string>
 					<key>name</key>
-					<string>string.unquoted.asciidoc</string>
+					<string>string.other.unquoted.double.asciidoc</string>
 				</dict>
 				<key>passthru</key>
 				<dict>
