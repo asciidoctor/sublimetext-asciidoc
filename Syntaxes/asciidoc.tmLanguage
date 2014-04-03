@@ -209,13 +209,23 @@
 				<key>literal_block_announced</key>
 				<dict>
 					<key>begin</key>
-					<string>^(\["?literal\"?,?.*\])\s*$\n?</string>
+					<string>^((\[)"?literal\"?,?.*(\]))\s*$\n?</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
 							<string>support.variable.attributelist.asciidoc</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.attributelistline.begin.asciidoc</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.attributelistline.end.asciidoc</string>
 						</dict>
 					</dict>
 					<key>comment</key>
