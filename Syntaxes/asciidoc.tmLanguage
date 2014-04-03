@@ -1578,10 +1578,20 @@
 							<key>name</key>
 							<string>support.variable.attributelist.asciidoc</string>
 						</dict>
+						<key>closer</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.unquoted.single.end.asciidoc</string>
+						</dict>
+						<key>delim</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.unquoted.single.begin.asciidoc</string>
+						</dict>
 						<key>inner</key>
 						<dict>
 							<key>name</key>
-							<string>meta.unquotedinner.asciidoc</string>
+							<string>string.unquoted.unquotedinner.single.asciidoc</string>
 							<key>patterns</key>
 							<array>
 								<dict>
@@ -1635,11 +1645,11 @@
 					<string>(?x)
 								(?&lt;attlist&gt;\[[^\]]*?\])? # might start with attribute list (darned well better or why are we here)
 								(?&lt;=^|\W)(?&lt;!\\) # must be preceded by nonword character, and not by escape
-								(?&lt;delim&gt;\#)(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))\k&lt;delim&gt; # delimiter hash, nonspace, anything, nonspace, delimiter
+								(?&lt;delim&gt;\#)(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))(?&lt;closer&gt;\k&lt;delim&gt;) # delimiter hash, nonspace, anything, nonspace, delimiter
 								(?!\w) # and must be followed by nonword character
 							</string>
 					<key>name</key>
-					<string>string.unquoted.asciidoc</string>
+					<string>string.other.unquoted.single.asciidoc</string>
 				</dict>
 				<key>subscript</key>
 				<dict>
