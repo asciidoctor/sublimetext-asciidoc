@@ -761,10 +761,33 @@
 				</dict>
 				<key>xref</key>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>constant.character.xref.begin.asciidoc</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>markup.underline.term.xref.asciidoc</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter.xref.asciidoc</string>
+						</dict>
+						<key>6</key>
+						<dict>
+							<key>name</key>
+							<string>constant.character.xref.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>match</key>
-					<string>(?&lt;!&lt;)&lt;&lt;.*?&gt;&gt;(?!&lt;)</string>
+					<string>(?&lt;!&lt;)(&lt;&lt;)([^,]*?)((,\s*)(.*?))?(&gt;&gt;)(?!&lt;)</string>
 					<key>name</key>
-					<string>constant.character.xref.asciidoc</string>
+					<string>meta.xref.asciidoc</string>
 				</dict>
 			</dict>
 		</dict>
