@@ -859,6 +859,16 @@
 							<key>name</key>
 							<string>support.variable.attributelist.asciidoc</string>
 						</dict>
+						<key>closer</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.bold.double.end.asciidoc</string>
+						</dict>
+						<key>delim</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.bold.double.begin.asciidoc</string>
+						</dict>
 						<key>inner</key>
 						<dict>
 							<key>name</key>
@@ -916,7 +926,7 @@
 					<string>(?x)
 								(?&lt;attlist&gt;\[[^\]]*?\])? # might start with an attribute list
 								(?&lt;!\\) # must not be preceded by escape
-								(?&lt;delim&gt;\*\*)(?&lt;inner&gt;.*?)\k&lt;delim&gt; # anything surrounded by double star
+								(?&lt;delim&gt;\*\*)(?&lt;inner&gt;.*?)(?&lt;closer&gt;\k&lt;delim&gt;) # anything surrounded by double star
 							</string>
 					<key>name</key>
 					<string>markup.bold.asciidoc</string>
@@ -929,6 +939,16 @@
 						<dict>
 							<key>name</key>
 							<string>support.variable.attributelist.asciidoc</string>
+						</dict>
+						<key>closer</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.italic.double.end.asciidoc</string>
+						</dict>
+						<key>delim</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.italic.double.begin.asciidoc</string>
 						</dict>
 						<key>inner</key>
 						<dict>
@@ -987,7 +1007,7 @@
 					<string>(?x)
 								(?&lt;attlist&gt;\[[^\]]*?\])? # might start with attribute list
 								(?&lt;!\\) # must not be preceded by escape
-								(?&lt;delim&gt;__)(?&lt;inner&gt;.*?)\k&lt;delim&gt; # anything surrounded by double underline
+								(?&lt;delim&gt;__)(?&lt;inner&gt;.*?)(?&lt;closer&gt;\k&lt;delim&gt;) # anything surrounded by double underline
 							</string>
 					<key>name</key>
 					<string>markup.italic.asciidoc</string>
@@ -1000,6 +1020,16 @@
 						<dict>
 							<key>name</key>
 							<string>support.variable.attributelist.asciidoc</string>
+						</dict>
+						<key>closer</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.literal.double.end.asciidoc</string>
+						</dict>
+						<key>delim</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.literal.double.begin.asciidoc</string>
 						</dict>
 						<key>inner</key>
 						<dict>
@@ -1058,10 +1088,10 @@
 					<string>(?x)
 								(?&lt;attlist&gt;\[[^\]]*?\])? # might start with attribute list
 								(?&lt;!\\) # must not be preceded by escape
-								(?&lt;delim&gt;\+\+)(?&lt;inner&gt;.*?)\k&lt;delim&gt; # anything surrounded by double plus
+								(?&lt;delim&gt;\+\+)(?&lt;inner&gt;.*?)(?&lt;closer&gt;\k&lt;delim&gt;) # anything surrounded by double plus
 							</string>
 					<key>name</key>
-					<string>string.literal.asciidoc</string>
+					<string>string.other.literal.asciidoc</string>
 				</dict>
 				<key>double_quote</key>
 				<dict>
