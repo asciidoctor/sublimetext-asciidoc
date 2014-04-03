@@ -613,17 +613,61 @@
 				</dict>
 				<key>macro</key>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>markup.underline.link.macro.asciidoc</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.name.macro.asciidoc</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>constant.character.separator.macro.asciidoc</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>markup.underline.target.macro.asciidoc</string>
+						</dict>
+						<key>6</key>
+						<dict>
+							<key>name</key>
+							<string>constant.character.attributes.macro.begin.asciidoc</string>
+						</dict>
+						<key>7</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter.attributes.macro.asciidoc</string>
+						</dict>
+						<key>8</key>
+						<dict>
+							<key>name</key>
+							<string>constant.character.attributes.macro.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>comment</key>
 					<string>there are other macro notations but I match only those that end in square brackets</string>
 					<key>match</key>
 					<string>(?x)
-					([a-zA-Z0-9][a-zA-Z0-9_]*)
-					:{1,2}
-					\S*
-					\[[^\]]*\]
+					(?:
+						((?:https?|mailto|ftp|file)	# specify separately so we can mark them as links that TextMate opens
+						?:{1}	# inline only
+						\S*)	# (others such as image are partial URLs and/or TextMate cannot handle them)
+					|
+						(([a-zA-Z0-9][a-zA-Z0-9_]*)
+						(:{1,2})
+						(\S*))
+					)
+					(?:(\[)([^\]]*)(\]))
 					</string>
 					<key>name</key>
-					<string>constant.character.macro.asciidoc</string>
+					<string>meta.macro.asciidoc</string>
 				</dict>
 				<key>passmacro</key>
 				<dict>
