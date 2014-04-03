@@ -1264,10 +1264,15 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>constant.character.passthru.begin.asciidoc</string>
+						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>text.xml</string>
+							<string>variable.parameter.passthruinner.asciidoc</string>
 							<key>patterns</key>
 							<array>
 								<dict>
@@ -1276,13 +1281,18 @@
 								</dict>
 							</array>
 						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>constant.character.passthru.end.asciidoc</string>
+						</dict>
 					</dict>
 					<key>comment</key>
 					<string>must be dead first among the inlines, so as to take priority</string>
 					<key>match</key>
 					<string>(\+\+\+|\$\$)(.*?)(\1)</string>
 					<key>name</key>
-					<string>support.constant.passthru.asciidoc</string>
+					<string>meta.passthru.inline.asciidoc</string>
 				</dict>
 				<key>single_bold</key>
 				<dict>
