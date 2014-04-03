@@ -1901,36 +1901,85 @@
 								</dict>
 							</array>
 						</dict>
+						<key>closer</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.attributeentry.attrname.end.asciidoc</string>
+						</dict>
+						<key>delim</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.attributeentry.attrname.begin.asciidoc</string>
+						</dict>
 					</dict>
 					<key>match</key>
-					<string>^(?&lt;attrname&gt;:(\w[^.]*?)(\.(.*?))?:)(\s+(?&lt;attrvalue&gt;.*))?$</string>
+					<string>^(?&lt;attrname&gt;(?&lt;delim&gt;:)(\w[^.]*?)(\.(.*?))?(?&lt;closer&gt;:))(\s+(?&lt;attrvalue&gt;.*))?$\n?</string>
 					<key>name</key>
 					<string>meta.attributeentry.asciidoc</string>
 				</dict>
 				<key>attribute_list_line</key>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.attributelistline.begin.asciidoc</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.attributelistline.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>comment</key>
 					<string>Attribute list as paragraph: single brackets. No need for special treatment of escape; follows literal block, section template as being a more general regex</string>
 					<key>match</key>
-					<string>^\[[^\[\]]*\]\s*$</string>
+					<string>^(\[)[^\[\]]*(\])\s*$\n?</string>
 					<key>name</key>
 					<string>support.variable.attributelist.asciidoc</string>
 				</dict>
 				<key>block_heading</key>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.blockheading.asciidoc</string>
+						</dict>
+					</dict>
 					<key>comment</key>
 					<string>A line beginning with a period and no space</string>
 					<key>match</key>
-					<string>^\.\w.*$</string>
+					<string>^(\.)\w.*$\n?</string>
 					<key>name</key>
 					<string>markup.heading.block.asciidoc</string>
 				</dict>
 				<key>block_id</key>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.blockid.begin.asciidoc</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>markup.underline.blockid.id.asciidoc</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.blockid.end.asciidoc</string>
+						</dict>
+					</dict>
 					<key>comment</key>
 					<string>A line surrounded by double square brackets</string>
 					<key>match</key>
-					<string>^\[\[[^\[].*\]\]\s*$</string>
+					<string>^(\[\[)([^\[].*)(\]\])\s*$\n?</string>
 					<key>name</key>
 					<string>meta.tag.blockid.asciidoc</string>
 				</dict>
@@ -1950,59 +1999,74 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>^(//)([^/\n].*|)$</string>
+					<string>^(//)([^/\n].*|)$\n?</string>
 					<key>name</key>
 					<string>comment.line.double-slash.asciidoc</string>
 				</dict>
 				<key>linebreak</key>
 				<dict>
 					<key>match</key>
-					<string>(?&lt;=\s)\+$</string>
+					<string>(?&lt;=\s)\+$\n?</string>
 					<key>name</key>
 					<string>constant.linebreak.asciidoc</string>
 				</dict>
 				<key>list_continuation</key>
 				<dict>
 					<key>match</key>
-					<string>^\+\s*$</string>
+					<string>^\+\s*$\n?</string>
 					<key>name</key>
 					<string>constant.listcontinuation.asciidoc</string>
 				</dict>
 				<key>pagebreak</key>
 				<dict>
 					<key>match</key>
-					<string>^&lt;{3,}$</string>
+					<string>^&lt;{3,}$\n?</string>
 					<key>name</key>
-					<string>constant.pagebreak.asciidoc</string>
+					<string>meta.separator.pagebreak.asciidoc</string>
 				</dict>
 				<key>ruler</key>
 				<dict>
 					<key>match</key>
-					<string>^'{3,}$</string>
+					<string>^'{3,}$\n?</string>
 					<key>name</key>
-					<string>constant.ruler.asciidoc</string>
+					<string>meta.separator.ruler.asciidoc</string>
 				</dict>
 				<key>section_template</key>
 				<dict>
 					<key>captures</key>
 					<dict>
-						<key>3</key>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.sectiontemplate.begin.asciidoc</string>
+						</dict>
+						<key>4</key>
 						<dict>
 							<key>name</key>
 							<string>meta.tag.sectiontemplate.asciidoc</string>
+						</dict>
+						<key>6</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.sectiontemplate.end.asciidoc</string>
+						</dict>
+						<key>7</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.sectiontemplate.end.asciidoc</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>fixed list of known template names</string>
 					<key>match</key>
 					<string>(?x)^
-									\[ # in square brackets
+									(\[) # in square brackets
 									(template\s*=\s*)?(")? # might start with template-equals and might have template name in quotes
 									(
 									sect\d|abstract|preface|colophon|dedication|glossary|bibliography|synopsis|appendix|index # fixed list of known templates
 									)
-									(".*\]|\]) # either close the quote (and perhaps go on) and close the bracket, or close the bracket immediately
-									\s*$</string>
+									(".*(\])|(\])) # either close the quote (and perhaps go on) and close the bracket, or close the bracket immediately
+									\s*$\n?</string>
 					<key>name</key>
 					<string>variable.parameter.sectiontemplate.asciidoc</string>
 				</dict>
