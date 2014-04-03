@@ -676,7 +676,27 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>text.xml</string>
+							<string>keyword.control.name.macro.pass.asciidoc</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>constant.character.separator.macro.asciidoc</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>markup.underline.target.macro.asciidoc</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>constant.character.attributes.macro.begin.asciidoc</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter.attributes.macro.pass.asciidoc</string>
 							<key>patterns</key>
 							<array>
 								<dict>
@@ -685,16 +705,21 @@
 								</dict>
 							</array>
 						</dict>
+						<key>6</key>
+						<dict>
+							<key>name</key>
+							<string>constant.character.attributes.macro.end.asciidoc</string>
+						</dict>
 					</dict>
 					<key>match</key>
 					<string>(?x)
-					pass
-					:{1,2}
-					\S*
-					\[([^\]]*)\]
+						(pass)
+						(:{1,2})
+						(\S*)
+						(\[)([^\]]*)(\])
 					</string>
 					<key>name</key>
-					<string>constant.character.macro.pass.asciidoc</string>
+					<string>meta.macro.pass.asciidoc</string>
 				</dict>
 				<key>replacement</key>
 				<dict>
