@@ -1660,6 +1660,16 @@
 							<key>name</key>
 							<string>support.variable.attributelist.asciidoc</string>
 						</dict>
+						<key>closer</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.subscript.end.asciidoc</string>
+						</dict>
+						<key>delim</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.subscript.begin.asciidoc</string>
+						</dict>
 						<key>inner</key>
 						<dict>
 							<key>name</key>
@@ -1721,10 +1731,10 @@
 					<string>(?x)
 								(?&lt;attlist&gt;\[[^\]]*?\])? # might start with attribute list
 								(?&lt;!\\) # must not be preceded by escape
-								(?&lt;inner&gt;~.*?~) # twiddle anything twiddle
+								(?&lt;delim&gt;~)(?&lt;inner&gt;.*?)(?&lt;closer&gt;\k&lt;delim&gt;) # twiddle anything twiddle
 							</string>
 					<key>name</key>
-					<string>string.subscript.asciidoc</string>
+					<string>string.other.subscript.asciidoc</string>
 				</dict>
 				<key>superscript</key>
 				<dict>
@@ -1735,10 +1745,20 @@
 							<key>name</key>
 							<string>support.variable.attributelist.asciidoc</string>
 						</dict>
+						<key>closer</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.superscript.end.asciidoc</string>
+						</dict>
+						<key>delim</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.superscript.begin.asciidoc</string>
+						</dict>
 						<key>inner</key>
 						<dict>
 							<key>name</key>
-							<string>meta.subscriptinner.asciidoc</string>
+							<string>meta.superscriptinner.asciidoc</string>
 							<key>patterns</key>
 							<array>
 								<dict>
@@ -1796,10 +1816,10 @@
 					<string>(?x)
 								(?&lt;attlist&gt;\[[^\]]*?\])? # might start with attribute list
 								(?&lt;!\\) # no preceding escape
-								(?&lt;inner&gt;\^.*?\^) # caret anything caret
+								(?&lt;delim&gt;\^)(?&lt;inner&gt;.*?)(?&lt;closer&gt;\k&lt;delim&gt;) # caret anything caret
 							</string>
 					<key>name</key>
-					<string>string.superscript.asciidoc</string>
+					<string>string.other.superscript.asciidoc</string>
 				</dict>
 			</dict>
 		</dict>
