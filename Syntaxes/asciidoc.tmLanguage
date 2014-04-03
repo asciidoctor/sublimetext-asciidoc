@@ -1303,10 +1303,20 @@
 							<key>name</key>
 							<string>support.variable.attributelist.asciidoc</string>
 						</dict>
+						<key>closer</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.bold.single.end.asciidoc</string>
+						</dict>
+						<key>delim</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.bold.single.begin.asciidoc</string>
+						</dict>
 						<key>inner</key>
 						<dict>
 							<key>name</key>
-							<string>meta.boldinner.asciidoc</string>
+							<string>meta.boldinner.single.asciidoc</string>
 							<key>patterns</key>
 							<array>
 								<dict>
@@ -1360,11 +1370,11 @@
 					<string>(?x)
 								(?&lt;attlist&gt;\[[^\]]*?\])? # might start with an attributes list
 								(?&lt;=^|\W)(?&lt;!\\) # must be preceded by a nonword character, and not by an escape
-								(?&lt;delim&gt;\*)(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))\k&lt;delim&gt; # delimiter *, no space, anything, no space, delimiter...
+								(?&lt;delim&gt;\*)(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))(?&lt;closer&gt;\k&lt;delim&gt;) # delimiter *, no space, anything, no space, delimiter...
 								(?!\w) # ... and must be followed by nonword character
 							</string>
 					<key>name</key>
-					<string>markup.bold.asciidoc</string>
+					<string>markup.bold.single.asciidoc</string>
 				</dict>
 				<key>single_italic</key>
 				<dict>
@@ -1375,10 +1385,20 @@
 							<key>name</key>
 							<string>support.variable.attributelist.asciidoc</string>
 						</dict>
+						<key>closer</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.italic.single.end.asciidoc</string>
+						</dict>
+						<key>delim</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.italic.single.begin.asciidoc</string>
+						</dict>
 						<key>inner</key>
 						<dict>
 							<key>name</key>
-							<string>meta.italicinner.asciidoc</string>
+							<string>meta.italicinner.single.asciidoc</string>
 							<key>patterns</key>
 							<array>
 								<dict>
@@ -1432,11 +1452,11 @@
 					<string>(?x)
 								(?&lt;attlist&gt;\[[^\]]*?\])? # might be preceded by an attributes list
 								(?&lt;=^|\W)(?&lt;!\\) # must be preceded by a nonword character, and not by an escape
-								(?&lt;delim&gt;_)(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))\k&lt;delim&gt; # delimiter underscore, nonspace, anything, nonspace, delimiter
+								(?&lt;delim&gt;_)(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))(?&lt;closer&gt;\k&lt;delim&gt;) # delimiter underscore, nonspace, anything, nonspace, delimiter
 								(?!\w) # and must by followed by nonword character
 							</string>
 					<key>name</key>
-					<string>markup.italic.asciidoc</string>
+					<string>markup.italic.single.asciidoc</string>
 				</dict>
 				<key>single_literal</key>
 				<dict>
@@ -1447,10 +1467,20 @@
 							<key>name</key>
 							<string>support.variable.attributelist.asciidoc</string>
 						</dict>
+						<key>closer</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.literal.single.end.asciidoc</string>
+						</dict>
+						<key>delim</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.literal.single.begin.asciidoc</string>
+						</dict>
 						<key>inner</key>
 						<dict>
 							<key>name</key>
-							<string>meta.literalinner.asciidoc</string>
+							<string>meta.literalinner.single.asciidoc</string>
 							<key>patterns</key>
 							<array>
 								<dict>
@@ -1504,30 +1534,40 @@
 					<string>(?x)
 								(?&lt;attlist&gt;\[[^\]]*?\])? # might start with attributes list
 								(?&lt;=^|\W)(?&lt;!\\) # must be preceded by a nonword character, and not by escape
-								(?&lt;delim&gt;\+)(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))\k&lt;delim&gt; # delimiter plus, nonspace, anything, nonspace, delimiter
+								(?&lt;delim&gt;\+)(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))(?&lt;closer&gt;\k&lt;delim&gt;) # delimiter plus, nonspace, anything, nonspace, delimiter
 								(?!\w) # and must be followed by nonword character
 							</string>
 					<key>name</key>
-					<string>string.literal.asciidoc</string>
+					<string>string.other.literal.single.asciidoc</string>
 				</dict>
 				<key>single_literal_nopassthru</key>
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>closer</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.literal.single.nopassthru.end.asciidoc</string>
+						</dict>
+						<key>delim</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.literal.single.nopassthru.begin.asciidoc</string>
+						</dict>
 						<key>inner</key>
 						<dict>
 							<key>name</key>
-							<string>markup.literalnopassthruinner.asciidoc</string>
+							<string>meta.literalinner.single.nopassthru.asciidoc</string>
 						</dict>
 					</dict>
 					<key>match</key>
 					<string>(?x)
 								(?&lt;!\w|\\) # must not be preceded by word character or escape
-								(?&lt;delim&gt;`)(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))\k&lt;delim&gt; # delimiter backtick, nonspace, anything, nonspace, delimiter
+								(?&lt;delim&gt;`)(?&lt;inner&gt;(?!\s).*?(?&lt;!\s))(?&lt;closer&gt;\k&lt;delim&gt;) # delimiter backtick, nonspace, anything, nonspace, delimiter
 								(?!\w) # and must be followed by nonword character
 							</string>
 					<key>name</key>
-					<string>string.literal.nopassthru.asciidoc</string>
+					<string>string.other.literal.nopassthru.asciidoc</string>
 				</dict>
 				<key>single_unquoted</key>
 				<dict>
