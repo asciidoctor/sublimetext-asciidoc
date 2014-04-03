@@ -757,7 +757,7 @@
 					<key>match</key>
 					<string>(?&lt;!\\)&amp;(amp|lt|gt);</string>
 					<key>name</key>
-					<string>constant.entity.xml.asciidoc</string>
+					<string>constant.character.entity.xml.asciidoc</string>
 				</dict>
 				<key>xref</key>
 				<dict>
