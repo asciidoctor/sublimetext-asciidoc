@@ -872,7 +872,7 @@
 						<key>inner</key>
 						<dict>
 							<key>name</key>
-							<string>meta.boldinner.asciidoc</string>
+							<string>meta.boldinner.double.asciidoc</string>
 							<key>patterns</key>
 							<array>
 								<dict>
@@ -929,7 +929,7 @@
 								(?&lt;delim&gt;\*\*)(?&lt;inner&gt;.*?)(?&lt;closer&gt;\k&lt;delim&gt;) # anything surrounded by double star
 							</string>
 					<key>name</key>
-					<string>markup.bold.asciidoc</string>
+					<string>markup.bold.double.asciidoc</string>
 				</dict>
 				<key>double_italic</key>
 				<dict>
@@ -953,7 +953,7 @@
 						<key>inner</key>
 						<dict>
 							<key>name</key>
-							<string>meta.italicinner.asciidoc</string>
+							<string>meta.italicinner.double.asciidoc</string>
 							<key>patterns</key>
 							<array>
 								<dict>
@@ -1010,7 +1010,7 @@
 								(?&lt;delim&gt;__)(?&lt;inner&gt;.*?)(?&lt;closer&gt;\k&lt;delim&gt;) # anything surrounded by double underline
 							</string>
 					<key>name</key>
-					<string>markup.italic.asciidoc</string>
+					<string>markup.italic.double.asciidoc</string>
 				</dict>
 				<key>double_literal</key>
 				<dict>
@@ -1034,7 +1034,7 @@
 						<key>inner</key>
 						<dict>
 							<key>name</key>
-							<string>meta.literalinner.asciidoc</string>
+							<string>meta.literalinner.double.asciidoc</string>
 							<key>patterns</key>
 							<array>
 								<dict>
@@ -1091,7 +1091,7 @@
 								(?&lt;delim&gt;\+\+)(?&lt;inner&gt;.*?)(?&lt;closer&gt;\k&lt;delim&gt;) # anything surrounded by double plus
 							</string>
 					<key>name</key>
-					<string>string.other.literal.asciidoc</string>
+					<string>string.other.literal.double.asciidoc</string>
 				</dict>
 				<key>double_quote</key>
 				<dict>
