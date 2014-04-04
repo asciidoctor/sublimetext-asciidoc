@@ -2333,9 +2333,9 @@
 					<key>comment</key>
 					<string>Alas, all we can do is mark the second line; TextMate cannot do double-line patterns</string>
 					<key>match</key>
-					<string>^(=|-|~|\^|\+){6,}\s*$</string>
+					<string>^(=|-|~|\^|\+){6,}\s*$\n?</string>
 					<key>name</key>
-					<string>constant.heading.setext.n.asciidoc</string>
+					<string>markup.heading.setext.n.asciidoc</string>
 				</dict>
 			</dict>
 		</dict>
