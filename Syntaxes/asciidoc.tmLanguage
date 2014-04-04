@@ -2317,23 +2317,21 @@
 				<dict>
 					<key>captures</key>
 					<dict>
-						<key>1</key>
+						<key>eq</key>
 						<dict>
 							<key>name</key>
 							<string>punctuation.definition.heading.asciidoc</string>
 						</dict>
-						<key>2</key>
+						<key>title</key>
 						<dict>
 							<key>name</key>
 							<string>entity.name.section.asciidoc</string>
 						</dict>
 					</dict>
-					<key>comment</key>
-					<string>could not get level numbering trick to work properly in scope name</string>
 					<key>match</key>
-					<string>^(={1,5}) (\w.*)$\n?</string>
+					<string>^(?&lt;eq&gt;={1,5}) (?&lt;title&gt;\w.*)$\n?</string>
 					<key>name</key>
-					<string>markup.heading.level.n.asciidoc</string>
+					<string>markup.heading.level.${eq/=(?&lt;two&gt;=)?(?&lt;three&gt;=)?(?&lt;four&gt;=)?(?&lt;five&gt;=)?/${five:?4:${four:?3:${three:?2:${two:?1:0}}}}/}.asciidoc</string>
 				</dict>
 				<key>setext_title</key>
 				<dict>
