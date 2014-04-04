@@ -2320,11 +2320,18 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>markup.headingtitle.level.n.asciidoc</string>
+							<string>punctuation.definition.heading.asciidoc</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.section.asciidoc</string>
 						</dict>
 					</dict>
+					<key>comment</key>
+					<string>could not get level numbering trick to work properly in scope name</string>
 					<key>match</key>
-					<string>^={1,5} (\w.*)$</string>
+					<string>^(={1,5}) (\w.*)$\n?</string>
 					<key>name</key>
 					<string>markup.heading.level.n.asciidoc</string>
 				</dict>
