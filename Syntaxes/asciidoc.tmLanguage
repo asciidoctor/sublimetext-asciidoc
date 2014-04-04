@@ -2156,9 +2156,19 @@
 							<key>name</key>
 							<string>constant.numeric.callout.asciidoc</string>
 						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.calloutlistnumber.begin.asciidoc</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.calloutlistnumber.end.asciidoc</string>
+						</dict>
 					</dict>
 					<key>match</key>
-					<string>^(\s*(&lt;\d+?&gt;))\s+(?=\w)</string>
+					<string>^(\s*((&lt;)\d+?(&gt;)))\s+(?=\w)</string>
 					<key>name</key>
 					<string>markup.list.numbered.callout.asciidoc</string>
 				</dict>
@@ -2182,9 +2192,14 @@
 								</dict>
 							</array>
 						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>constant.labeledlist.separator.asciidoc</string>
+						</dict>
 					</dict>
 					<key>match</key>
-					<string>^\s*(.*)(?&lt;!:)(:{2,4})(\s|$)</string>
+					<string>^\s*(.*)(?&lt;!:)(:{2,4})(\s|$\n?)</string>
 					<key>name</key>
 					<string>markup.list.labeled.asciidoc</string>
 				</dict>
@@ -2208,9 +2223,14 @@
 								</dict>
 							</array>
 						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>constant.labeledlist.separator.asciidoc</string>
+						</dict>
 					</dict>
 					<key>match</key>
-					<string>^\s*(.*)(?&lt;!;)(;{2})(\s|$)</string>
+					<string>^\s*(.*)(?&lt;!;)(;{2})(\s|$\n?)</string>
 					<key>name</key>
 					<string>markup.list.labeled.semicolons.asciidoc</string>
 				</dict>
