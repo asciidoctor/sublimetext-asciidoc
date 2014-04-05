@@ -345,7 +345,7 @@ Three square brackets make a bibliography anchor. (I'm getting a false positive 
 A macro is marked by the colon (or, for a block macro, two colons) followed eventually by square brackets. There are other macro notations but I don't cover them in my syntax coloring. For example, I don't mark matt@tidbits.com, and I don't mark http://www.apeth.net (though TextMate already covers the second one). However, if you add the square brackets, as in mailto:matt@tidbits.com[], or http://www.apeth.net[], then it becomes my bailiwick.
 
 A footnote footnote:[An example footnote.]. It is just a form of macro. I don't use them.
-// Note to self: use them. (By the way, this is a comment.)
+// Note to self: use them. (By the way, this is a comment.) I don't like the way this kind of comment soft-wraps with indentation by default, so I've used trickery to turn it off.
 // This is another comment. Next line is an empty comment.
 //
 testing
