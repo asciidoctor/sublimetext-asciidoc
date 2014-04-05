@@ -324,6 +324,10 @@
 						</dict>
 						<dict>
 							<key>include</key>
+							<string>#passthrough_block</string>
+						</dict>
+						<dict>
+							<key>include</key>
 							<string>#lines</string>
 						</dict>
 						<dict>
