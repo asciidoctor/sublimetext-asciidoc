@@ -20,7 +20,6 @@ repository:
 
   blocks:
     patterns:
-    - include: '#literal_block_announced'
     - include: '#literal_block_delimited'
     - include: '#comment_block'
     - include: '#listing_block'
@@ -74,19 +73,6 @@ repository:
     end: ^\1\s*$\n?
     endCaptures:
       '0': {name: constant.delimiter.listing.end.asciidoc}
-    patterns:
-    - include: '#callout'
-
-  literal_block_announced:
-    comment: Section template announced as literal, starts literal block.
-    name: string.literal.block.announced.asciidoc
-    contentName: meta.block.literal.content.asciidoc
-    begin: ^((\[)"?literal\"?,?.*(\]))\s*$\n?
-    beginCaptures:
-      '1': {name: support.variable.attributelist.asciidoc}
-      '2': {name: punctuation.definition.attributelistline.begin.asciidoc}
-      '3': {name: punctuation.definition.attributelistline.end.asciidoc}
-    end: (?=^\s*$)
     patterns:
     - include: '#callout'
 
