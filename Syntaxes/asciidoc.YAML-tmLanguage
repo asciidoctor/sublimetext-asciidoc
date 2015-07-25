@@ -761,15 +761,20 @@ repository:
       '4': {name: punctuation.definition.calloutlistnumber.end.asciidoc}
 
   labeled_list:
+    comment: >
+      Matches a label of the labeled list, not its content.
+      This rule is not strictly correct, because Asciidoctor allows double
+      colon followed by a space inside a label, i.e. it matches the *last*
+      double colon, not the first. I don't know how to do that effectively.
     name: markup.list.labeled.asciidoc
-    match: ^\s*(.*)(?<!:)(:{2,4})(\s|$\n?)
-    captures:
-      '1':
-        name: meta.list.label.asciidoc
-#        patterns:
-#        - include: '#inline'
-#        - include: '#characters'
-      '2': {name: constant.labeledlist.separator.asciidoc}
+    contentName: meta.list.label.asciidoc
+    begin: ^\s*(?=.*:{2,4}(?:\s|$))
+    end: (:{2,4})(?:\s|$\n?)
+    endCaptures:
+      '1': {name: constant.labeledlist.separator.asciidoc}
+    patterns:
+    - include: '#inline'
+    - include: '#characters'
 
   labeled_list_semicolons:
     name: markup.list.labeled.semicolons.asciidoc
