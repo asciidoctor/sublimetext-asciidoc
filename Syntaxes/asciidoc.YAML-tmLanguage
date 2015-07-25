@@ -641,23 +641,22 @@ repository:
 
   attribute_entry:
     name: meta.attributeentry.asciidoc
-    match: |-
+    contentName: meta.attributeentry.value.asciidoc
+    begin: |-
       (?x)
       ^(                            # attribute name
         (:)                         # delimiter
         (?:\w[^.]*?)(?:\.(?:.*?))?
         (:)                         # closer
       )
-      (?:\s+(.*))?                  # attribute value
-      $\n?
-    captures:
+      (?:\s+|(?=$))
+    beginCaptures:
       '1': {name: support.variable.attribute.asciidoc}
       '2': {name: punctuation.definition.attributeentry.attrname.begin.asciidoc}
       '3': {name: punctuation.definition.attributeentry.attrname.end.asciidoc}
-      '4':
-        name: meta.attributeentry.value.asciidoc
-#        patterns:
-#        - include: '#characters'
+    end: $\n?
+    patterns:
+    - include: '#characters'
 
   attribute_list_line:
     comment: >
