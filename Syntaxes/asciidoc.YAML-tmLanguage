@@ -222,11 +222,18 @@ repository:
     comment: there are other macro notations but I match only those that end in
       square brackets
     name: meta.macro.asciidoc
-    match: "(?x)\n(?:\n\t((?:https?|mailto|ftp|file)\t# specify separately so\
-      \ we can mark them as links that TextMate opens\n\t?:{1}\t# inline only\n\
-      \t\\S*)\t# (others such as image are partial URLs and/or TextMate cannot\
-      \ handle them)\n|\n\t(([a-zA-Z0-9][a-zA-Z0-9_]*)\n\t(:{1,2})\n\t(\\S*))\n\
-      )\n(?:(\\[)([^\\]]*)(\\]))"
+    match: |-
+      (?x)
+      (?:
+        ((?:https?|mailto|ftp|file)  # specify separately so we can mark them as links that TextMate opens
+        ?:{1}  # inline only
+        \S*)   # (others such as image are partial URLs and/or TextMate cannot handle them)
+      |
+        (([a-zA-Z0-9][a-zA-Z0-9_]*)
+        (:{1,2})
+        (\S*))
+      )
+      (?:(\[)([^\]]*)(\]))
     captures:
       '1': {name: markup.underline.link.macro.asciidoc}
       '3': {name: keyword.control.name.macro.asciidoc}
@@ -258,11 +265,28 @@ repository:
   replacement:
     comment: replace me, my sweet replaceable you...
     name: constant.character.replacement.asciidoc
-    match: "(?x)\n(?<!\\\\) # unless I am preceded by an escape, that is...\n\
-      (\n\t\\(C\\)\n\t|\n\t\\(TM\\)\n\t|\n\t\\(R\\)\n\t|\n\t((?<!\\-)\\-\\-(?!\\\
-      -)) # exactly two, and even this may not rule out all that I want to\n\t\
-      |\n\t((?<!\\.)\\.\\.\\.(?!\\.)) # exactly three\n\t|\n\t\\->\n\t|\n\t<\\\
-      -\n\t|\n\t=>\n\t|\n\t<=\n)"
+    match: |-
+      (?x)
+      (?<!\\)  # unless I am preceded by an escape, that is...
+      (
+        \(C\)
+        |
+        \(TM\)
+        |
+        \(R\)
+        |
+        ((?<!\-)\-\-(?!\-))  # exactly two, and even this may not rule out all that I want to
+        |
+        ((?<!\.)\.\.\.(?!\.))  # exactly three
+        |
+        \->;
+        |
+        <\-
+        |
+        =>;
+        |
+        <=
+      )
 
   xmlentity:
     comment: amp, lt, gt
