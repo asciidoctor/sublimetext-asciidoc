@@ -803,7 +803,6 @@ repository:
 
   titles:
     patterns:
-    - include: '#title_setext'
     - include: '#title_level_5'
     - include: '#title_level_4'
     - include: '#title_level_3'
@@ -852,10 +851,3 @@ repository:
     captures:
       '1': {name: punctuation.definition.heading.asciidoc}
       '2': {name: entity.name.section.asciidoc}
-
-  title_setext:
-    comment: >
-      Alas, all we can do is mark the second line; TextMate cannot do
-      double-line patterns.
-    name: markup.heading.setext.n.asciidoc
-    match: ^(=|-|~|\^|\+){6,}\s*$\n?
