@@ -732,8 +732,6 @@ repository:
     - include: '#admonition_word'
     - include: '#bulleted_list'
     - include: '#numbered_list_dotted'
-    - include: '#numbered_list_numeric'
-    - include: '#numbered_list_roman'
     - include: '#labeled_list'
     - include: '#callout_list'
 
@@ -781,20 +779,6 @@ repository:
     captures:
       '1': {name: string.unquoted.list.dotted.asciidoc}
       '2': {name: constant.numeric.list.dot.asciidoc}
-
-  numbered_list_numeric:
-    name: markup.list.numbered.numeric.asciidoc
-    match: ^(\s*([1-9a-zA-Z][0-9]*\.))\s+(?=\w)
-    captures:
-      '1': {name: string.unquoted.list.numeric.asciidoc}
-      '2': {name: constant.numeric.list.number.asciidoc}
-
-  numbered_list_roman:
-    name: markup.list.numbered.roman.asciidoc
-    match: ^(\s*([ivxIVX]+\)))\s+(?=\w)
-    captures:
-      '1': {name: string.unquoted.list.roman.asciidoc}
-      '2': {name: constant.numeric.list.romannumeral.asciidoc}
 
 
 #-----------------------------------------------------------------------------#
