@@ -37,7 +37,7 @@ repository:
     begin: ^(/{4,})\s*$\n?
     beginCaptures:
       '0': {name: punctuation.definition.comment.begin.asciidoc}
-    end: ^(/{4,})\s*$\n?
+    end: ^\1\s*$\n?
     endCaptures:
       '0': {name: punctuation.definition.comment.end.asciidoc}
     patterns:
@@ -46,14 +46,13 @@ repository:
   example_block:
     comment: >
       Might need to add more includes, but these are the ones that arise in
-      practice for me; note restriction to 4 or 5 to distinguish from level 0
-      setext.
+      practice for me.
     name: string.unquoted.block.example.asciidoc
     contentName: meta.block.example.content.asciidoc
-    begin: ^(={4,5})\s*$\n?
+    begin: ^(={4,})\s*$\n?
     beginCaptures:
       '0': {name: constant.delimiter.example.begin.asciidoc}
-    end: ^(={4,5})\s*$\n?
+    end: ^\1\s*$\n?
     endCaptures:
       '0': {name: constant.delimiter.example.end.asciidoc}
     patterns:
@@ -69,10 +68,10 @@ repository:
       goodness.
     name: meta.embedded.block.listing.asciidoc
     contentName: source.block.listing.content.asciidoc
-    begin: ^(\-{4,5})\s*$\n?
+    begin: ^(\-{4,})\s*$\n?
     beginCaptures:
       '0': {name: constant.delimiter.listing.begin.asciidoc}
-    end: ^(\-{4,5})\s*$\n?
+    end: ^\1\s*$\n?
     endCaptures:
       '0': {name: constant.delimiter.listing.end.asciidoc}
     patterns:
@@ -98,7 +97,7 @@ repository:
     begin: ^(\.{4,})\s*$\n?
     beginCaptures:
       '0': {name: constant.delimiter.block.literal.begin.asciidoc}
-    end: ^(\.{4,})\s*$\n?
+    end: ^\1\s*$\n?
     endCaptures:
       '0': {name: constant.delimiter.block.literal.end.asciidoc}
     patterns:
@@ -108,10 +107,10 @@ repository:
     comment: Might need to check on these includes.
     name: meta.block.open.asciidoc
     contentName: meta.block.open.content.asciidoc
-    begin: ^(\-\-)\s*$\n?
+    begin: ^\-\-\s*$\n?
     beginCaptures:
       '0': {name: constant.delimiter.block.open.begin.asciidoc}
-    end: ^(\-\-)\s*$\n?
+    end: ^\-\-\s*$\n?
     endCaptures:
       '0': {name: constant.delimiter.block.open.end.asciidoc}
     patterns:
@@ -124,13 +123,12 @@ repository:
     - include: '#characters'
 
   passthrough_block:
-    comment: Must be four or five to distinguish from level 4 setext.
     name: meta.embedded.block.passthrough.asciidoc
     contentName: text.xml.block.passthrough.content.asciidoc
-    begin: ^(\+{4,5})\s*$\n?
+    begin: ^(\+{4,})\s*$\n?
     beginCaptures:
       '0': {name: constant.delimiter.block.passthrough.begin.asciidoc}
-    end: ^(\+{4,5})\s*$\n?
+    end: ^\1\s*$\n?
     endCaptures:
       '0': {name: constant.delimiter.block.passthrough.end.asciidoc}
     patterns:
@@ -145,7 +143,7 @@ repository:
     begin: ^(_{4,})\s*$\n?
     beginCaptures:
       '0': {name: constant.delimiter.block.quote.begin.asciidoc}
-    end: ^(_{4,})\s*$\n?
+    end: ^\1\s*$\n?
     endCaptures:
       '0': {name: constant.delimiter.block.quote.end.asciidoc}
     patterns:
@@ -162,7 +160,7 @@ repository:
     begin: ^(\*{4,})\s*$\n?
     beginCaptures:
       '0': {name: constant.delimiter.block.sidebar.begin.asciidoc}
-    end: ^(\*{4,})\s*$\n?
+    end: ^\1\s*$\n?
     endCaptures:
       '0': {name: constant.delimiter.block.sidebar.end.asciidoc}
     patterns:
