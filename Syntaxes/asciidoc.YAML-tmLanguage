@@ -6,15 +6,10 @@ uuid: 961C6043-B725-4E2D-83E8-114BF3A7389D
 
 patterns:
 - include: '#lists'
-
 - include: '#blocks'
-
 - include: '#titles'
-
 - include: '#lines'
-
 - include: '#inline'
-
 - include: '#characters'
 
 repository:
@@ -29,137 +24,145 @@ repository:
     - include: '#quote_block'
     - include: '#example_block'
     - include: '#open_block'
-    repository:
-      comment_block:
-        comment: comment block; note the big surprise that macros are enabled here
-        name: comment.block.asciidoc
-        contentName: meta.block.comment.content.asciidoc
-        begin: ^(/{4,})\s*$\n?
-        beginCaptures:
-          '0': {name: punctuation.definition.comment.begin.asciidoc}
-        end: ^(/{4,})\s*$\n?
-        endCaptures:
-          '0': {name: punctuation.definition.comment.end.asciidoc}
-        patterns:
-        - include: '#macro'
-      example_block:
-        comment: might need to add more includes but these are the ones that arise
-          in practice for me; note restriction to 4 or 5 to distinguish from level
-          0 setext
-        name: string.unquoted.block.example.asciidoc
-        contentName: meta.block.example.content.asciidoc
-        begin: ^(={4,5})\s*$\n?
-        beginCaptures:
-          '0': {name: constant.delimiter.example.begin.asciidoc}
-        end: ^(={4,5})\s*$\n?
-        endCaptures:
-          '0': {name: constant.delimiter.example.end.asciidoc}
-        patterns:
-        - include: '#lists'
-        - include: '#listing_block'
-        - include: '#lines'
-        - include: '#inline'
-        - include: '#characters'
-      listing_block:
-        comment: declare content as source in order to get any extra yummy source
-          goodness
-        name: meta.embedded.block.listing.asciidoc
-        contentName: source.block.listing.content.asciidoc
-        begin: ^(\-{4,5})\s*$\n?
-        beginCaptures:
-          '0': {name: constant.delimiter.listing.begin.asciidoc}
-        end: ^(\-{4,5})\s*$\n?
-        endCaptures:
-          '0': {name: constant.delimiter.listing.end.asciidoc}
-        patterns:
-        - include: '#callout'
-      literal_block_announced:
-        comment: section template announced as literal, starts literal block
-        name: string.literal.block.announced.asciidoc
-        contentName: meta.block.literal.content.asciidoc
-        begin: ^((\[)"?literal\"?,?.*(\]))\s*$\n?
-        beginCaptures:
-          '1': {name: support.variable.attributelist.asciidoc}
-          '2': {name: punctuation.definition.attributelistline.begin.asciidoc}
-          '3': {name: punctuation.definition.attributelistline.end.asciidoc}
-        end: (?=^\s*$)
-        patterns:
-        - include: '#callout'
-      literal_block_delimited:
-        comment: alternate way to get literal block, delimit with 4 or more periods
-        name: string.literal.block.delimited.asciidoc
-        contentName: meta.block.literal.content.asciidoc
-        begin: ^(\.{4,})\s*$\n?
-        beginCaptures:
-          '0': {name: constant.delimiter.block.literal.begin.asciidoc}
-        end: ^(\.{4,})\s*$\n?
-        endCaptures:
-          '0': {name: constant.delimiter.block.literal.end.asciidoc}
-        patterns:
-        - include: '#callout'
-      open_block:
-        comment: might need to check on these includes
-        name: meta.block.open.asciidoc
-        contentName: meta.block.open.content.asciidoc
-        begin: ^(\-\-)\s*$\n?
-        beginCaptures:
-          '0': {name: constant.delimiter.block.open.begin.asciidoc}
-        end: ^(\-\-)\s*$\n?
-        endCaptures:
-          '0': {name: constant.delimiter.block.open.end.asciidoc}
-        patterns:
-        - include: '#lists'
-        - include: '#comment_block'
-        - include: '#listing_block'
-        - include: '#passthrough_block'
-        - include: '#lines'
-        - include: '#inline'
-        - include: '#characters'
-      passthrough_block:
-        comment: must be four or five to distinguish from level 4 setext
-        name: meta.embedded.block.passthrough.asciidoc
-        contentName: text.xml.block.passthrough.content.asciidoc
-        begin: ^(\+{4,5})\s*$\n?
-        beginCaptures:
-          '0': {name: constant.delimiter.block.passthrough.begin.asciidoc}
-        end: ^(\+{4,5})\s*$\n?
-        endCaptures:
-          '0': {name: constant.delimiter.block.passthrough.end.asciidoc}
-        patterns:
-        - include: text.xml
-      quote_block:
-        comment: might need to add more includes, but these are the ones that arise
-          for me in practice
-        name: markup.quote.block.asciidoc
-        contentName: meta.block.quote.content.asciidoc
-        begin: ^(_{4,})\s*$\n?
-        beginCaptures:
-          '0': {name: constant.delimiter.block.quote.begin.asciidoc}
-        end: ^(_{4,})\s*$\n?
-        endCaptures:
-          '0': {name: constant.delimiter.block.quote.end.asciidoc}
-        patterns:
-        - include: '#lines'
-        - include: '#inline'
-        - include: '#characters'
-      sidebar_block:
-        comment: might need to add more includes but these are the ones that arise
-          in practice for me
-        name: string.quoted.block.sidebar.asciidoc
-        contentName: meta.block.sidebar.content.asciidoc
-        begin: ^(\*{4,})\s*$\n?
-        beginCaptures:
-          '0': {name: constant.delimiter.block.sidebar.begin.asciidoc}
-        end: ^(\*{4,})\s*$\n?
-        endCaptures:
-          '0': {name: constant.delimiter.block.sidebar.end.asciidoc}
-        patterns:
-        - include: '#lists'
-        - include: '#comment_block'
-        - include: '#listing_block'
-        - include: '#lines'
-        - include: '#inline'
-        - include: '#characters'
+
+  comment_block:
+    comment: comment block; note the big surprise that macros are enabled here
+    name: comment.block.asciidoc
+    contentName: meta.block.comment.content.asciidoc
+    begin: ^(/{4,})\s*$\n?
+    beginCaptures:
+      '0': {name: punctuation.definition.comment.begin.asciidoc}
+    end: ^(/{4,})\s*$\n?
+    endCaptures:
+      '0': {name: punctuation.definition.comment.end.asciidoc}
+    patterns:
+    - include: '#macro'
+
+  example_block:
+    comment: might need to add more includes but these are the ones that arise
+      in practice for me; note restriction to 4 or 5 to distinguish from level
+      0 setext
+    name: string.unquoted.block.example.asciidoc
+    contentName: meta.block.example.content.asciidoc
+    begin: ^(={4,5})\s*$\n?
+    beginCaptures:
+      '0': {name: constant.delimiter.example.begin.asciidoc}
+    end: ^(={4,5})\s*$\n?
+    endCaptures:
+      '0': {name: constant.delimiter.example.end.asciidoc}
+    patterns:
+    - include: '#lists'
+    - include: '#listing_block'
+    - include: '#lines'
+    - include: '#inline'
+    - include: '#characters'
+
+  listing_block:
+    comment: declare content as source in order to get any extra yummy source
+      goodness
+    name: meta.embedded.block.listing.asciidoc
+    contentName: source.block.listing.content.asciidoc
+    begin: ^(\-{4,5})\s*$\n?
+    beginCaptures:
+      '0': {name: constant.delimiter.listing.begin.asciidoc}
+    end: ^(\-{4,5})\s*$\n?
+    endCaptures:
+      '0': {name: constant.delimiter.listing.end.asciidoc}
+    patterns:
+    - include: '#callout'
+
+  literal_block_announced:
+    comment: section template announced as literal, starts literal block
+    name: string.literal.block.announced.asciidoc
+    contentName: meta.block.literal.content.asciidoc
+    begin: ^((\[)"?literal\"?,?.*(\]))\s*$\n?
+    beginCaptures:
+      '1': {name: support.variable.attributelist.asciidoc}
+      '2': {name: punctuation.definition.attributelistline.begin.asciidoc}
+      '3': {name: punctuation.definition.attributelistline.end.asciidoc}
+    end: (?=^\s*$)
+    patterns:
+    - include: '#callout'
+
+  literal_block_delimited:
+    comment: alternate way to get literal block, delimit with 4 or more periods
+    name: string.literal.block.delimited.asciidoc
+    contentName: meta.block.literal.content.asciidoc
+    begin: ^(\.{4,})\s*$\n?
+    beginCaptures:
+      '0': {name: constant.delimiter.block.literal.begin.asciidoc}
+    end: ^(\.{4,})\s*$\n?
+    endCaptures:
+      '0': {name: constant.delimiter.block.literal.end.asciidoc}
+    patterns:
+    - include: '#callout'
+
+  open_block:
+    comment: might need to check on these includes
+    name: meta.block.open.asciidoc
+    contentName: meta.block.open.content.asciidoc
+    begin: ^(\-\-)\s*$\n?
+    beginCaptures:
+      '0': {name: constant.delimiter.block.open.begin.asciidoc}
+    end: ^(\-\-)\s*$\n?
+    endCaptures:
+      '0': {name: constant.delimiter.block.open.end.asciidoc}
+    patterns:
+    - include: '#lists'
+    - include: '#comment_block'
+    - include: '#listing_block'
+    - include: '#passthrough_block'
+    - include: '#lines'
+    - include: '#inline'
+    - include: '#characters'
+
+  passthrough_block:
+    comment: must be four or five to distinguish from level 4 setext
+    name: meta.embedded.block.passthrough.asciidoc
+    contentName: text.xml.block.passthrough.content.asciidoc
+    begin: ^(\+{4,5})\s*$\n?
+    beginCaptures:
+      '0': {name: constant.delimiter.block.passthrough.begin.asciidoc}
+    end: ^(\+{4,5})\s*$\n?
+    endCaptures:
+      '0': {name: constant.delimiter.block.passthrough.end.asciidoc}
+    patterns:
+    - include: text.xml
+
+  quote_block:
+    comment: might need to add more includes, but these are the ones that arise
+      for me in practice
+    name: markup.quote.block.asciidoc
+    contentName: meta.block.quote.content.asciidoc
+    begin: ^(_{4,})\s*$\n?
+    beginCaptures:
+      '0': {name: constant.delimiter.block.quote.begin.asciidoc}
+    end: ^(_{4,})\s*$\n?
+    endCaptures:
+      '0': {name: constant.delimiter.block.quote.end.asciidoc}
+    patterns:
+    - include: '#lines'
+    - include: '#inline'
+    - include: '#characters'
+
+  sidebar_block:
+    comment: might need to add more includes but these are the ones that arise
+      in practice for me
+    name: string.quoted.block.sidebar.asciidoc
+    contentName: meta.block.sidebar.content.asciidoc
+    begin: ^(\*{4,})\s*$\n?
+    beginCaptures:
+      '0': {name: constant.delimiter.block.sidebar.begin.asciidoc}
+    end: ^(\*{4,})\s*$\n?
+    endCaptures:
+      '0': {name: constant.delimiter.block.sidebar.end.asciidoc}
+    patterns:
+    - include: '#lists'
+    - include: '#comment_block'
+    - include: '#listing_block'
+    - include: '#lines'
+    - include: '#inline'
+    - include: '#characters'
 
   callout:
     comment: has to be alone in repository (not in a group), as it operates in only
@@ -182,89 +185,98 @@ repository:
     - include: '#biblio_anchor'
     - include: '#index3'
     - include: '#index2'
-    repository:
-      biblio_anchor:
-        name: storage.type.reference.biblioanchor.asciidoc
-        match: (?<!\[)(\[\[\[).*?(\]\]\])(?!\])
-        captures:
-          '1': {name: punctuation.definition.biblioanchor.begin.asciidoc}
-          '2': {name: punctuation.definition.biblioanchor.end.asciidoc}
-      entity:
-        comment: '&#x278a; &#182;'
-        name: constant.character.entity.asciidoc
-        match: (?<!\\)&#(x[0-9a-fA-f]{4}|[0-9]{3});
-      escape:
-        comment: I do not really know if this is a good list, adopted wholesale from
-          original bundle
-        name: constant.character.escape.asciidoc
-        match: \\(?=[-`*_#+.!(){}\[\]\\>:])
-      index2:
-        name: variable.other.indexterm.double.asciidoc
-        match: (?<!\()(\({2})([^\(\s].*?)(\){2})(?!\))
-        captures:
-          '1': {name: constant.character.indexterm.double.begin.asciidoc}
-          '3': {name: constant.character.indexterm.double.end.asciidoc}
-      index3:
-        name: variable.other.indexterm.triple.asciidoc
-        match: (?<!\()(\({3})([^\(].*?)(\){3})(?!\))
-        captures:
-          '1': {name: constant.character.indexterm.triple.begin.asciidoc}
-          '3': {name: constant.character.indexterm.triple.end.asciidoc}
-      macro:
-        comment: there are other macro notations but I match only those that end in
-          square brackets
-        name: meta.macro.asciidoc
-        match: "(?x)\n(?:\n\t((?:https?|mailto|ftp|file)\t# specify separately so\
-          \ we can mark them as links that TextMate opens\n\t?:{1}\t# inline only\n\
-          \t\\S*)\t# (others such as image are partial URLs and/or TextMate cannot\
-          \ handle them)\n|\n\t(([a-zA-Z0-9][a-zA-Z0-9_]*)\n\t(:{1,2})\n\t(\\S*))\n\
-          )\n(?:(\\[)([^\\]]*)(\\]))"
-        captures:
-          '1': {name: markup.underline.link.macro.asciidoc}
-          '3': {name: keyword.control.name.macro.asciidoc}
-          '4': {name: constant.character.separator.macro.asciidoc}
-          '5': {name: markup.underline.target.macro.asciidoc}
-          '6': {name: constant.character.attributes.macro.begin.asciidoc}
-          '7': {name: variable.parameter.attributes.macro.asciidoc}
-          '8': {name: constant.character.attributes.macro.end.asciidoc}
-      passmacro:
-        name: meta.macro.pass.asciidoc
-        match: |-
-          (?x)
-          (pass)
-          (:{1,2})
-          (\S*)
-          (\[)([^\]]*)(\])
-        captures:
-          '1': {name: keyword.control.name.macro.pass.asciidoc}
-          '2': {name: constant.character.separator.macro.asciidoc}
-          '3': {name: markup.underline.target.macro.asciidoc}
-          '4': {name: constant.character.attributes.macro.begin.asciidoc}
-          '5':
-            name: variable.parameter.attributes.macro.pass.asciidoc
-            patterns:
-            - include: text.xml
-          '6': {name: constant.character.attributes.macro.end.asciidoc}
-      replacement:
-        comment: replace me, my sweet replaceable you...
-        name: constant.character.replacement.asciidoc
-        match: "(?x)\n(?<!\\\\) # unless I am preceded by an escape, that is...\n\
-          (\n\t\\(C\\)\n\t|\n\t\\(TM\\)\n\t|\n\t\\(R\\)\n\t|\n\t((?<!\\-)\\-\\-(?!\\\
-          -)) # exactly two, and even this may not rule out all that I want to\n\t\
-          |\n\t((?<!\\.)\\.\\.\\.(?!\\.)) # exactly three\n\t|\n\t\\->\n\t|\n\t<\\\
-          -\n\t|\n\t=>\n\t|\n\t<=\n)"
-      xmlentity:
-        comment: amp, lt, gt
-        name: constant.character.entity.xml.asciidoc
-        match: (?<!\\)&(amp|lt|gt);
-      xref:
-        name: meta.xref.asciidoc
-        match: (?<!<)(<<)([^,]*?)((,\s*)(.*?))?(>>)(?!<)
-        captures:
-          '1': {name: constant.character.xref.begin.asciidoc}
-          '2': {name: markup.underline.term.xref.asciidoc}
-          '5': {name: variable.parameter.xref.asciidoc}
-          '6': {name: constant.character.xref.end.asciidoc}
+
+  biblio_anchor:
+    name: storage.type.reference.biblioanchor.asciidoc
+    match: (?<!\[)(\[\[\[).*?(\]\]\])(?!\])
+    captures:
+      '1': {name: punctuation.definition.biblioanchor.begin.asciidoc}
+      '2': {name: punctuation.definition.biblioanchor.end.asciidoc}
+
+  entity:
+    comment: '&#x278a; &#182;'
+    name: constant.character.entity.asciidoc
+    match: (?<!\\)&#(x[0-9a-fA-f]{4}|[0-9]{3});
+
+  escape:
+    comment: I do not really know if this is a good list, adopted wholesale from
+      original bundle
+    name: constant.character.escape.asciidoc
+    match: \\(?=[-`*_#+.!(){}\[\]\\>:])
+
+  index2:
+    name: variable.other.indexterm.double.asciidoc
+    match: (?<!\()(\({2})([^\(\s].*?)(\){2})(?!\))
+    captures:
+      '1': {name: constant.character.indexterm.double.begin.asciidoc}
+      '3': {name: constant.character.indexterm.double.end.asciidoc}
+
+  index3:
+    name: variable.other.indexterm.triple.asciidoc
+    match: (?<!\()(\({3})([^\(].*?)(\){3})(?!\))
+    captures:
+      '1': {name: constant.character.indexterm.triple.begin.asciidoc}
+      '3': {name: constant.character.indexterm.triple.end.asciidoc}
+
+  macro:
+    comment: there are other macro notations but I match only those that end in
+      square brackets
+    name: meta.macro.asciidoc
+    match: "(?x)\n(?:\n\t((?:https?|mailto|ftp|file)\t# specify separately so\
+      \ we can mark them as links that TextMate opens\n\t?:{1}\t# inline only\n\
+      \t\\S*)\t# (others such as image are partial URLs and/or TextMate cannot\
+      \ handle them)\n|\n\t(([a-zA-Z0-9][a-zA-Z0-9_]*)\n\t(:{1,2})\n\t(\\S*))\n\
+      )\n(?:(\\[)([^\\]]*)(\\]))"
+    captures:
+      '1': {name: markup.underline.link.macro.asciidoc}
+      '3': {name: keyword.control.name.macro.asciidoc}
+      '4': {name: constant.character.separator.macro.asciidoc}
+      '5': {name: markup.underline.target.macro.asciidoc}
+      '6': {name: constant.character.attributes.macro.begin.asciidoc}
+      '7': {name: variable.parameter.attributes.macro.asciidoc}
+      '8': {name: constant.character.attributes.macro.end.asciidoc}
+
+  passmacro:
+    name: meta.macro.pass.asciidoc
+    match: |-
+      (?x)
+      (pass)
+      (:{1,2})
+      (\S*)
+      (\[)([^\]]*)(\])
+    captures:
+      '1': {name: keyword.control.name.macro.pass.asciidoc}
+      '2': {name: constant.character.separator.macro.asciidoc}
+      '3': {name: markup.underline.target.macro.asciidoc}
+      '4': {name: constant.character.attributes.macro.begin.asciidoc}
+      '5':
+        name: variable.parameter.attributes.macro.pass.asciidoc
+        patterns:
+        - include: text.xml
+      '6': {name: constant.character.attributes.macro.end.asciidoc}
+
+  replacement:
+    comment: replace me, my sweet replaceable you...
+    name: constant.character.replacement.asciidoc
+    match: "(?x)\n(?<!\\\\) # unless I am preceded by an escape, that is...\n\
+      (\n\t\\(C\\)\n\t|\n\t\\(TM\\)\n\t|\n\t\\(R\\)\n\t|\n\t((?<!\\-)\\-\\-(?!\\\
+      -)) # exactly two, and even this may not rule out all that I want to\n\t\
+      |\n\t((?<!\\.)\\.\\.\\.(?!\\.)) # exactly three\n\t|\n\t\\->\n\t|\n\t<\\\
+      -\n\t|\n\t=>\n\t|\n\t<=\n)"
+
+  xmlentity:
+    comment: amp, lt, gt
+    name: constant.character.entity.xml.asciidoc
+    match: (?<!\\)&(amp|lt|gt);
+
+  xref:
+    name: meta.xref.asciidoc
+    match: (?<!<)(<<)([^,]*?)((,\s*)(.*?))?(>>)(?!<)
+    captures:
+      '1': {name: constant.character.xref.begin.asciidoc}
+      '2': {name: markup.underline.term.xref.asciidoc}
+      '5': {name: variable.parameter.xref.asciidoc}
+      '6': {name: constant.character.xref.end.asciidoc}
 
   inline:
     patterns:
@@ -281,312 +293,324 @@ repository:
     - include: '#single_unquoted'
     - include: '#superscript'
     - include: '#subscript'
-    repository:
-      double_bold:
-        name: markup.bold.double.asciidoc
-        match: |-
-          (?x)
-          (?<attlist>\[[^\]]*?\])? # might start with an attribute list
-          (?<!\\) # must not be preceded by escape
-          (?<delim>\*\*)(?<inner>.*?)(?<closer>\k<delim>) # anything surrounded by double star
-        captures:
-          attlist: {name: support.variable.attributelist.asciidoc}
-          closer: {name: punctuation.definition.bold.double.end.asciidoc}
-          delim: {name: punctuation.definition.bold.double.begin.asciidoc}
-          inner:
-            name: meta.boldinner.double.asciidoc
-            patterns:
-            - include: '#double_italic'
-            - include: '#double_literal'
-            - include: '#double_unquoted'
-            - include: '#double_quote'
-            - include: '#single_italic'
-            - include: '#single_literal'
-            - include: '#single_literal_nopassthru'
-            - include: '#single_unquoted'
-            - include: '#superscript'
-            - include: '#subscript'
-            - include: '#characters'
-      double_italic:
-        name: markup.italic.double.asciidoc
-        match: |-
-          (?x)
-          (?<attlist>\[[^\]]*?\])? # might start with attribute list
-          (?<!\\) # must not be preceded by escape
-          (?<delim>__)(?<inner>.*?)(?<closer>\k<delim>) # anything surrounded by double underline
-        captures:
-          attlist: {name: support.variable.attributelist.asciidoc}
-          closer: {name: punctuation.definition.italic.double.end.asciidoc}
-          delim: {name: punctuation.definition.italic.double.begin.asciidoc}
-          inner:
-            name: meta.italicinner.double.asciidoc
-            patterns:
-            - include: '#double_bold'
-            - include: '#double_literal'
-            - include: '#double_unquoted'
-            - include: '#double_quote'
-            - include: '#single_bold'
-            - include: '#single_literal'
-            - include: '#single_literal_nopassthru'
-            - include: '#single_unquoted'
-            - include: '#superscript'
-            - include: '#subscript'
-            - include: '#characters'
-      double_literal:
-        name: string.other.literal.double.asciidoc
-        match: |-
-          (?x)
-          (?<attlist>\[[^\]]*?\])? # might start with attribute list
-          (?<!\\) # must not be preceded by escape
-          (?<delim>\+\+)(?<inner>.*?)(?<closer>\k<delim>) # anything surrounded by double plus
-        captures:
-          attlist: {name: support.variable.attributelist.asciidoc}
-          closer: {name: punctuation.definition.literal.double.end.asciidoc}
-          delim: {name: punctuation.definition.literal.double.begin.asciidoc}
-          inner:
-            name: meta.literalinner.double.asciidoc
-            patterns:
-            - include: '#double_bold'
-            - include: '#double_italic'
-            - include: '#double_unquoted'
-            - include: '#double_quote'
-            - include: '#single_bold'
-            - include: '#single_italic'
-            - include: '#single_literal_nopassthru'
-            - include: '#single_unquoted'
-            - include: '#superscript'
-            - include: '#subscript'
-            - include: '#characters'
-      double_quote:
-        name: string.quoted.double.asciidoc
-        match: |-
-          (?x)
-          (?<attlist>\[[^\]]*?\])? # might start with attribute list
-          (?<!\w|\\) # cannot be preceded by word character or escape
-          (?<delim>``)(?<inner>(?!\s).*?(?<!\s))(?<closer>'') # double backtick followed by non-space, anything, double-apostrophe preceded by non-space
-          (?!\w) # cannot be followed by word character either
-        captures:
-          attlist: {name: support.variable.attributelist.asciidoc}
-          closer: {name: punctuation.definition.string.quoted.double.end.asciidoc}
-          delim: {name: punctuation.definition.string.quoted.double.begin.asciidoc}
-          inner:
-            name: meta.doublequotedinner.asciidoc
-            patterns:
-            - include: '#double_bold'
-            - include: '#double_italic'
-            - include: '#double_literal'
-            - include: '#double_unquoted'
-            - include: '#single_bold'
-            - include: '#single_italic'
-            - include: '#single_literal'
-            - include: '#single_literal_nopassthru'
-            - include: '#single_unquoted'
-            - include: '#superscript'
-            - include: '#subscript'
-            - include: '#characters'
-      double_unquoted:
-        name: string.other.unquoted.double.asciidoc
-        match: |-
-          (?x)
-          (?<attlist>\[[^\]]*?\])? # might start with an attribute list (indeed, that is its purpose)
-          (?<!\\) # must not be preceded by escape
-          (?<delim>\#\#)(?<inner>.*?)(?<closer>\k<delim>) # anything surrounded by double hashes
-        captures:
-          attlist: {name: support.variable.attributelist.asciidoc}
-          closer: {name: punctuation.definition.string.unquoted.double.end.asciidoc}
-          delim: {name: punctuation.definition.string.unquoted.double.begin.asciidoc}
-          inner:
-            name: string.unquoted.unquotedinner.double.asciidoc
-            patterns:
-            - include: '#double_bold'
-            - include: '#double_italic'
-            - include: '#double_literal'
-            - include: '#double_quote'
-            - include: '#single_bold'
-            - include: '#single_italic'
-            - include: '#single_literal'
-            - include: '#single_literal_nopassthru'
-            - include: '#superscript'
-            - include: '#subscript'
-            - include: '#characters'
-      passthru:
-        comment: must be dead first among the inlines, so as to take priority
-        name: meta.passthru.inline.asciidoc
-        match: (\+\+\+|\$\$)(.*?)(\1)
-        captures:
-          '1': {name: constant.character.passthru.begin.asciidoc}
-          '2':
-            name: variable.parameter.passthruinner.asciidoc
-            patterns:
-            - include: text.xml
-          '3': {name: constant.character.passthru.end.asciidoc}
-      single_bold:
-        name: markup.bold.single.asciidoc
-        match: |-
-          (?x)
-          (?<attlist>\[[^\]]*?\])? # might start with an attributes list
-          (?<=^|\W)(?<!\\) # must be preceded by a nonword character, and not by an escape
-          (?<delim>\*)(?<inner>(?!\s).*?(?<!\s))(?<closer>\k<delim>) # delimiter *, no space, anything, no space, delimiter...
-          (?!\w) # ... and must be followed by nonword character
-        captures:
-          attlist: {name: support.variable.attributelist.asciidoc}
-          closer: {name: punctuation.definition.bold.single.end.asciidoc}
-          delim: {name: punctuation.definition.bold.single.begin.asciidoc}
-          inner:
-            name: meta.boldinner.single.asciidoc
-            patterns:
-            - include: '#double_italic'
-            - include: '#double_literal'
-            - include: '#double_unquoted'
-            - include: '#double_quote'
-            - include: '#single_italic'
-            - include: '#single_literal'
-            - include: '#single_literal_nopassthru'
-            - include: '#single_unquoted'
-            - include: '#superscript'
-            - include: '#subscript'
-            - include: '#characters'
-      single_italic:
-        name: markup.italic.single.asciidoc
-        match: |-
-          (?x)
-          (?<attlist>\[[^\]]*?\])? # might be preceded by an attributes list
-          (?<=^|\W)(?<!\\) # must be preceded by a nonword character, and not by an escape
-          (?<delim>_)(?<inner>(?!\s).*?(?<!\s))(?<closer>\k<delim>) # delimiter underscore, nonspace, anything, nonspace, delimiter
-          (?!\w) # and must by followed by nonword character
-        captures:
-          attlist: {name: support.variable.attributelist.asciidoc}
-          closer: {name: punctuation.definition.italic.single.end.asciidoc}
-          delim: {name: punctuation.definition.italic.single.begin.asciidoc}
-          inner:
-            name: meta.italicinner.single.asciidoc
-            patterns:
-            - include: '#double_bold'
-            - include: '#double_literal'
-            - include: '#double_unquoted'
-            - include: '#double_quote'
-            - include: '#single_bold'
-            - include: '#single_literal'
-            - include: '#single_literal_nopassthru'
-            - include: '#single_unquoted'
-            - include: '#superscript'
-            - include: '#subscript'
-            - include: '#characters'
-      single_literal:
-        name: string.other.literal.single.asciidoc
-        match: |-
-          (?x)
-          (?<attlist>\[[^\]]*?\])? # might start with attributes list
-          (?<=^|\W)(?<!\\) # must be preceded by a nonword character, and not by escape
-          (?<delim>\+)(?<inner>(?!\s).*?(?<!\s))(?<closer>\k<delim>) # delimiter plus, nonspace, anything, nonspace, delimiter
-          (?!\w) # and must be followed by nonword character
-        captures:
-          attlist: {name: support.variable.attributelist.asciidoc}
-          closer: {name: punctuation.definition.literal.single.end.asciidoc}
-          delim: {name: punctuation.definition.literal.single.begin.asciidoc}
-          inner:
-            name: meta.literalinner.single.asciidoc
-            patterns:
-            - include: '#double_bold'
-            - include: '#double_italic'
-            - include: '#double_unquoted'
-            - include: '#double_quote'
-            - include: '#single_bold'
-            - include: '#single_italic'
-            - include: '#single_literal_nopassthru'
-            - include: '#single_unquoted'
-            - include: '#superscript'
-            - include: '#subscript'
-            - include: '#characters'
-      single_literal_nopassthru:
-        name: string.other.literal.nopassthru.asciidoc
-        match: |-
-          (?x)
-          (?<!\w|\\) # must not be preceded by word character or escape
-          (?<delim>`)(?<inner>(?!\s).*?(?<!\s))(?<closer>\k<delim>) # delimiter backtick, nonspace, anything, nonspace, delimiter
-          (?!\w) # and must be followed by nonword character
-        captures:
-          closer: {name: punctuation.definition.literal.single.nopassthru.end.asciidoc}
-          delim: {name: punctuation.definition.literal.single.nopassthru.begin.asciidoc}
-          inner: {name: meta.literalinner.single.nopassthru.asciidoc}
-      single_unquoted:
-        name: string.other.unquoted.single.asciidoc
-        match: |-
-          (?x)
-          (?<attlist>\[[^\]]*?\])? # might start with attribute list (darned well better or why are we here)
-          (?<=^|\W)(?<!\\) # must be preceded by nonword character, and not by escape
-          (?<delim>\#)(?<inner>(?!\s).*?(?<!\s))(?<closer>\k<delim>) # delimiter hash, nonspace, anything, nonspace, delimiter
-          (?!\w) # and must be followed by nonword character
-        captures:
-          attlist: {name: support.variable.attributelist.asciidoc}
-          closer: {name: punctuation.definition.string.unquoted.single.end.asciidoc}
-          delim: {name: punctuation.definition.string.unquoted.single.begin.asciidoc}
-          inner:
-            name: string.unquoted.unquotedinner.single.asciidoc
-            patterns:
-            - include: '#double_bold'
-            - include: '#double_italic'
-            - include: '#double_literal'
-            - include: '#double_quote'
-            - include: '#single_bold'
-            - include: '#single_italic'
-            - include: '#single_literal'
-            - include: '#single_literal_nopassthru'
-            - include: '#superscript'
-            - include: '#subscript'
-            - include: '#characters'
-      subscript:
-        name: string.other.subscript.asciidoc
-        match: |-
-          (?x)
-          (?<attlist>\[[^\]]*?\])? # might start with attribute list
-          (?<!\\) # must not be preceded by escape
-          (?<delim>~)(?<inner>.*?)(?<closer>\k<delim>) # twiddle anything twiddle
-        captures:
-          attlist: {name: support.variable.attributelist.asciidoc}
-          closer: {name: punctuation.definition.string.subscript.end.asciidoc}
-          delim: {name: punctuation.definition.string.subscript.begin.asciidoc}
-          inner:
-            name: meta.subscriptinner.asciidoc
-            patterns:
-            - include: '#double_bold'
-            - include: '#double_italic'
-            - include: '#double_literal'
-            - include: '#double_unquoted'
-            - include: '#double_quote'
-            - include: '#single_bold'
-            - include: '#single_italic'
-            - include: '#single_literal'
-            - include: '#single_literal_nopassthru'
-            - include: '#single_unquoted'
-            - include: '#superscript'
-            - include: '#characters'
-      superscript:
-        name: string.other.superscript.asciidoc
-        match: |-
-          (?x)
-          (?<attlist>\[[^\]]*?\])? # might start with attribute list
-          (?<!\\) # no preceding escape
-          (?<delim>\^)(?<inner>.*?)(?<closer>\k<delim>) # caret anything caret
-        captures:
-          attlist: {name: support.variable.attributelist.asciidoc}
-          closer: {name: punctuation.definition.string.superscript.end.asciidoc}
-          delim: {name: punctuation.definition.string.superscript.begin.asciidoc}
-          inner:
-            name: meta.superscriptinner.asciidoc
-            patterns:
-            - include: '#double_bold'
-            - include: '#double_italic'
-            - include: '#double_literal'
-            - include: '#double_unquoted'
-            - include: '#double_quote'
-            - include: '#single_bold'
-            - include: '#single_italic'
-            - include: '#single_literal'
-            - include: '#single_literal_nopassthru'
-            - include: '#single_unquoted'
-            - include: '#subscript'
-            - include: '#characters'
+
+  double_bold:
+    name: markup.bold.double.asciidoc
+    match: |-
+      (?x)
+      (?<attlist>\[[^\]]*?\])? # might start with an attribute list
+      (?<!\\) # must not be preceded by escape
+      (?<delim>\*\*)(?<inner>.*?)(?<closer>\k<delim>) # anything surrounded by double star
+    captures:
+      attlist: {name: support.variable.attributelist.asciidoc}
+      closer: {name: punctuation.definition.bold.double.end.asciidoc}
+      delim: {name: punctuation.definition.bold.double.begin.asciidoc}
+      inner:
+        name: meta.boldinner.double.asciidoc
+        patterns:
+        - include: '#double_italic'
+        - include: '#double_literal'
+        - include: '#double_unquoted'
+        - include: '#double_quote'
+        - include: '#single_italic'
+        - include: '#single_literal'
+        - include: '#single_literal_nopassthru'
+        - include: '#single_unquoted'
+        - include: '#superscript'
+        - include: '#subscript'
+        - include: '#characters'
+
+  double_italic:
+    name: markup.italic.double.asciidoc
+    match: |-
+      (?x)
+      (?<attlist>\[[^\]]*?\])? # might start with attribute list
+      (?<!\\) # must not be preceded by escape
+      (?<delim>__)(?<inner>.*?)(?<closer>\k<delim>) # anything surrounded by double underline
+    captures:
+      attlist: {name: support.variable.attributelist.asciidoc}
+      closer: {name: punctuation.definition.italic.double.end.asciidoc}
+      delim: {name: punctuation.definition.italic.double.begin.asciidoc}
+      inner:
+        name: meta.italicinner.double.asciidoc
+        patterns:
+        - include: '#double_bold'
+        - include: '#double_literal'
+        - include: '#double_unquoted'
+        - include: '#double_quote'
+        - include: '#single_bold'
+        - include: '#single_literal'
+        - include: '#single_literal_nopassthru'
+        - include: '#single_unquoted'
+        - include: '#superscript'
+        - include: '#subscript'
+        - include: '#characters'
+
+  double_literal:
+    name: string.other.literal.double.asciidoc
+    match: |-
+      (?x)
+      (?<attlist>\[[^\]]*?\])? # might start with attribute list
+      (?<!\\) # must not be preceded by escape
+      (?<delim>\+\+)(?<inner>.*?)(?<closer>\k<delim>) # anything surrounded by double plus
+    captures:
+      attlist: {name: support.variable.attributelist.asciidoc}
+      closer: {name: punctuation.definition.literal.double.end.asciidoc}
+      delim: {name: punctuation.definition.literal.double.begin.asciidoc}
+      inner:
+        name: meta.literalinner.double.asciidoc
+        patterns:
+        - include: '#double_bold'
+        - include: '#double_italic'
+        - include: '#double_unquoted'
+        - include: '#double_quote'
+        - include: '#single_bold'
+        - include: '#single_italic'
+        - include: '#single_literal_nopassthru'
+        - include: '#single_unquoted'
+        - include: '#superscript'
+        - include: '#subscript'
+        - include: '#characters'
+
+  double_quote:
+    name: string.quoted.double.asciidoc
+    match: |-
+      (?x)
+      (?<attlist>\[[^\]]*?\])? # might start with attribute list
+      (?<!\w|\\) # cannot be preceded by word character or escape
+      (?<delim>``)(?<inner>(?!\s).*?(?<!\s))(?<closer>'') # double backtick followed by non-space, anything, double-apostrophe preceded by non-space
+      (?!\w) # cannot be followed by word character either
+    captures:
+      attlist: {name: support.variable.attributelist.asciidoc}
+      closer: {name: punctuation.definition.string.quoted.double.end.asciidoc}
+      delim: {name: punctuation.definition.string.quoted.double.begin.asciidoc}
+      inner:
+        name: meta.doublequotedinner.asciidoc
+        patterns:
+        - include: '#double_bold'
+        - include: '#double_italic'
+        - include: '#double_literal'
+        - include: '#double_unquoted'
+        - include: '#single_bold'
+        - include: '#single_italic'
+        - include: '#single_literal'
+        - include: '#single_literal_nopassthru'
+        - include: '#single_unquoted'
+        - include: '#superscript'
+        - include: '#subscript'
+        - include: '#characters'
+
+  double_unquoted:
+    name: string.other.unquoted.double.asciidoc
+    match: |-
+      (?x)
+      (?<attlist>\[[^\]]*?\])? # might start with an attribute list (indeed, that is its purpose)
+      (?<!\\) # must not be preceded by escape
+      (?<delim>\#\#)(?<inner>.*?)(?<closer>\k<delim>) # anything surrounded by double hashes
+    captures:
+      attlist: {name: support.variable.attributelist.asciidoc}
+      closer: {name: punctuation.definition.string.unquoted.double.end.asciidoc}
+      delim: {name: punctuation.definition.string.unquoted.double.begin.asciidoc}
+      inner:
+        name: string.unquoted.unquotedinner.double.asciidoc
+        patterns:
+        - include: '#double_bold'
+        - include: '#double_italic'
+        - include: '#double_literal'
+        - include: '#double_quote'
+        - include: '#single_bold'
+        - include: '#single_italic'
+        - include: '#single_literal'
+        - include: '#single_literal_nopassthru'
+        - include: '#superscript'
+        - include: '#subscript'
+        - include: '#characters'
+
+  passthru:
+    comment: must be dead first among the inlines, so as to take priority
+    name: meta.passthru.inline.asciidoc
+    match: (\+\+\+|\$\$)(.*?)(\1)
+    captures:
+      '1': {name: constant.character.passthru.begin.asciidoc}
+      '2':
+        name: variable.parameter.passthruinner.asciidoc
+        patterns:
+        - include: text.xml
+      '3': {name: constant.character.passthru.end.asciidoc}
+
+  single_bold:
+    name: markup.bold.single.asciidoc
+    match: |-
+      (?x)
+      (?<attlist>\[[^\]]*?\])? # might start with an attributes list
+      (?<=^|\W)(?<!\\) # must be preceded by a nonword character, and not by an escape
+      (?<delim>\*)(?<inner>(?!\s).*?(?<!\s))(?<closer>\k<delim>) # delimiter *, no space, anything, no space, delimiter...
+      (?!\w) # ... and must be followed by nonword character
+    captures:
+      attlist: {name: support.variable.attributelist.asciidoc}
+      closer: {name: punctuation.definition.bold.single.end.asciidoc}
+      delim: {name: punctuation.definition.bold.single.begin.asciidoc}
+      inner:
+        name: meta.boldinner.single.asciidoc
+        patterns:
+        - include: '#double_italic'
+        - include: '#double_literal'
+        - include: '#double_unquoted'
+        - include: '#double_quote'
+        - include: '#single_italic'
+        - include: '#single_literal'
+        - include: '#single_literal_nopassthru'
+        - include: '#single_unquoted'
+        - include: '#superscript'
+        - include: '#subscript'
+        - include: '#characters'
+
+  single_italic:
+    name: markup.italic.single.asciidoc
+    match: |-
+      (?x)
+      (?<attlist>\[[^\]]*?\])? # might be preceded by an attributes list
+      (?<=^|\W)(?<!\\) # must be preceded by a nonword character, and not by an escape
+      (?<delim>_)(?<inner>(?!\s).*?(?<!\s))(?<closer>\k<delim>) # delimiter underscore, nonspace, anything, nonspace, delimiter
+      (?!\w) # and must by followed by nonword character
+    captures:
+      attlist: {name: support.variable.attributelist.asciidoc}
+      closer: {name: punctuation.definition.italic.single.end.asciidoc}
+      delim: {name: punctuation.definition.italic.single.begin.asciidoc}
+      inner:
+        name: meta.italicinner.single.asciidoc
+        patterns:
+        - include: '#double_bold'
+        - include: '#double_literal'
+        - include: '#double_unquoted'
+        - include: '#double_quote'
+        - include: '#single_bold'
+        - include: '#single_literal'
+        - include: '#single_literal_nopassthru'
+        - include: '#single_unquoted'
+        - include: '#superscript'
+        - include: '#subscript'
+        - include: '#characters'
+
+  single_literal:
+    name: string.other.literal.single.asciidoc
+    match: |-
+      (?x)
+      (?<attlist>\[[^\]]*?\])? # might start with attributes list
+      (?<=^|\W)(?<!\\) # must be preceded by a nonword character, and not by escape
+      (?<delim>\+)(?<inner>(?!\s).*?(?<!\s))(?<closer>\k<delim>) # delimiter plus, nonspace, anything, nonspace, delimiter
+      (?!\w) # and must be followed by nonword character
+    captures:
+      attlist: {name: support.variable.attributelist.asciidoc}
+      closer: {name: punctuation.definition.literal.single.end.asciidoc}
+      delim: {name: punctuation.definition.literal.single.begin.asciidoc}
+      inner:
+        name: meta.literalinner.single.asciidoc
+        patterns:
+        - include: '#double_bold'
+        - include: '#double_italic'
+        - include: '#double_unquoted'
+        - include: '#double_quote'
+        - include: '#single_bold'
+        - include: '#single_italic'
+        - include: '#single_literal_nopassthru'
+        - include: '#single_unquoted'
+        - include: '#superscript'
+        - include: '#subscript'
+        - include: '#characters'
+
+  single_literal_nopassthru:
+    name: string.other.literal.nopassthru.asciidoc
+    match: |-
+      (?x)
+      (?<!\w|\\) # must not be preceded by word character or escape
+      (?<delim>`)(?<inner>(?!\s).*?(?<!\s))(?<closer>\k<delim>) # delimiter backtick, nonspace, anything, nonspace, delimiter
+      (?!\w) # and must be followed by nonword character
+    captures:
+      closer: {name: punctuation.definition.literal.single.nopassthru.end.asciidoc}
+      delim: {name: punctuation.definition.literal.single.nopassthru.begin.asciidoc}
+      inner: {name: meta.literalinner.single.nopassthru.asciidoc}
+
+  single_unquoted:
+    name: string.other.unquoted.single.asciidoc
+    match: |-
+      (?x)
+      (?<attlist>\[[^\]]*?\])? # might start with attribute list (darned well better or why are we here)
+      (?<=^|\W)(?<!\\) # must be preceded by nonword character, and not by escape
+      (?<delim>\#)(?<inner>(?!\s).*?(?<!\s))(?<closer>\k<delim>) # delimiter hash, nonspace, anything, nonspace, delimiter
+      (?!\w) # and must be followed by nonword character
+    captures:
+      attlist: {name: support.variable.attributelist.asciidoc}
+      closer: {name: punctuation.definition.string.unquoted.single.end.asciidoc}
+      delim: {name: punctuation.definition.string.unquoted.single.begin.asciidoc}
+      inner:
+        name: string.unquoted.unquotedinner.single.asciidoc
+        patterns:
+        - include: '#double_bold'
+        - include: '#double_italic'
+        - include: '#double_literal'
+        - include: '#double_quote'
+        - include: '#single_bold'
+        - include: '#single_italic'
+        - include: '#single_literal'
+        - include: '#single_literal_nopassthru'
+        - include: '#superscript'
+        - include: '#subscript'
+        - include: '#characters'
+
+  subscript:
+    name: string.other.subscript.asciidoc
+    match: |-
+      (?x)
+      (?<attlist>\[[^\]]*?\])? # might start with attribute list
+      (?<!\\) # must not be preceded by escape
+      (?<delim>~)(?<inner>.*?)(?<closer>\k<delim>) # twiddle anything twiddle
+    captures:
+      attlist: {name: support.variable.attributelist.asciidoc}
+      closer: {name: punctuation.definition.string.subscript.end.asciidoc}
+      delim: {name: punctuation.definition.string.subscript.begin.asciidoc}
+      inner:
+        name: meta.subscriptinner.asciidoc
+        patterns:
+        - include: '#double_bold'
+        - include: '#double_italic'
+        - include: '#double_literal'
+        - include: '#double_unquoted'
+        - include: '#double_quote'
+        - include: '#single_bold'
+        - include: '#single_italic'
+        - include: '#single_literal'
+        - include: '#single_literal_nopassthru'
+        - include: '#single_unquoted'
+        - include: '#superscript'
+        - include: '#characters'
+
+  superscript:
+    name: string.other.superscript.asciidoc
+    match: |-
+      (?x)
+      (?<attlist>\[[^\]]*?\])? # might start with attribute list
+      (?<!\\) # no preceding escape
+      (?<delim>\^)(?<inner>.*?)(?<closer>\k<delim>) # caret anything caret
+    captures:
+      attlist: {name: support.variable.attributelist.asciidoc}
+      closer: {name: punctuation.definition.string.superscript.end.asciidoc}
+      delim: {name: punctuation.definition.string.superscript.begin.asciidoc}
+      inner:
+        name: meta.superscriptinner.asciidoc
+        patterns:
+        - include: '#double_bold'
+        - include: '#double_italic'
+        - include: '#double_literal'
+        - include: '#double_unquoted'
+        - include: '#double_quote'
+        - include: '#single_bold'
+        - include: '#single_italic'
+        - include: '#single_literal'
+        - include: '#single_literal_nopassthru'
+        - include: '#single_unquoted'
+        - include: '#subscript'
+        - include: '#characters'
 
   lines:
     patterns:
@@ -600,76 +624,85 @@ repository:
     - include: '#section_template'
     - include: '#attribute_list_line'
     - include: '#attribute_entry'
-    repository:
-      comment:
-        name: comment.line.double-slash.asciidoc
-        match: ^(//)([^/\n].*|)$\n?
-        captures:
-          '1': {name: punctuation.definition.comment.line.asciidoc}
-          '2': {name: meta.line.comment.content.asciidoc}
-      attribute_entry:
-        name: meta.attributeentry.asciidoc
-        match: ^(?<attrname>(?<delim>:)(\w[^.]*?)(\.(.*?))?(?<closer>:))(\s+(?<attrvalue>.*))?$\n?
-        captures:
-          attrname: {name: support.variable.attribute.asciidoc}
-          attrvalue:
-            name: meta.attributeentry.value.asciidoc
-            patterns:
-            - include: '#characters'
-          closer: {name: punctuation.definition.attributeentry.attrname.end.asciidoc}
-          delim: {name: punctuation.definition.attributeentry.attrname.begin.asciidoc}
-      attribute_list_line:
-        comment: 'Attribute list as paragraph: single brackets. No need for special
-          treatment of escape; follows literal block, section template as being a
-          more general regex'
-        name: support.variable.attributelist.asciidoc
-        match: ^(\[)[^\[\]]*(\])\s*$\n?
-        captures:
-          '1': {name: punctuation.definition.attributelistline.begin.asciidoc}
-          '2': {name: punctuation.definition.attributelistline.end.asciidoc}
-      block_heading:
-        comment: A line beginning with a period and no space
-        name: markup.heading.block.asciidoc
-        match: ^(\.)\w.*$\n?
-        captures:
-          '1': {name: punctuation.definition.blockheading.asciidoc}
-      block_id:
-        comment: A line surrounded by double square brackets
-        name: meta.tag.blockid.asciidoc
-        match: ^(\[\[)([^\[].*)(\]\])\s*$\n?
-        captures:
-          '1': {name: punctuation.definition.blockid.begin.asciidoc}
-          '2': {name: markup.underline.blockid.id.asciidoc}
-          '3': {name: punctuation.definition.blockid.end.asciidoc}
-      linebreak:
-        name: constant.linebreak.asciidoc
-        match: (?<=\s)\+$\n?
-      list_continuation:
-        name: constant.listcontinuation.asciidoc
-        match: ^\+\s*$\n?
-      pagebreak:
-        name: meta.separator.pagebreak.asciidoc
-        match: ^<{3,}$\n?
-      ruler:
-        name: meta.separator.ruler.asciidoc
-        match: ^'{3,}$\n?
-      section_template:
-        comment: fixed list of known template names
-        name: variable.parameter.sectiontemplate.asciidoc
-        match: |-
-          (?x)^
-          (\[) # in square brackets
-          (template\s*=\s*)?(")? # might start with template-equals and might have template name in quotes
-          (
-          sect\d|abstract|preface|colophon|dedication|glossary|bibliography|synopsis|appendix|index # fixed list of known templates
-          )
-          (".*(\])|(\])) # either close the quote (and perhaps go on) and close the bracket, or close the bracket immediately
-          \s*$\n?
-        captures:
-          '1': {name: punctuation.definition.sectiontemplate.begin.asciidoc}
-          '4': {name: meta.tag.sectiontemplate.asciidoc}
-          '6': {name: punctuation.definition.sectiontemplate.end.asciidoc}
-          '7': {name: punctuation.definition.sectiontemplate.end.asciidoc}
+
+  comment:
+    name: comment.line.double-slash.asciidoc
+    match: ^(//)([^/\n].*|)$\n?
+    captures:
+      '1': {name: punctuation.definition.comment.line.asciidoc}
+      '2': {name: meta.line.comment.content.asciidoc}
+
+  attribute_entry:
+    name: meta.attributeentry.asciidoc
+    match: ^(?<attrname>(?<delim>:)(\w[^.]*?)(\.(.*?))?(?<closer>:))(\s+(?<attrvalue>.*))?$\n?
+    captures:
+      attrname: {name: support.variable.attribute.asciidoc}
+      attrvalue:
+        name: meta.attributeentry.value.asciidoc
+        patterns:
+        - include: '#characters'
+      closer: {name: punctuation.definition.attributeentry.attrname.end.asciidoc}
+      delim: {name: punctuation.definition.attributeentry.attrname.begin.asciidoc}
+
+  attribute_list_line:
+    comment: 'Attribute list as paragraph: single brackets. No need for special
+      treatment of escape; follows literal block, section template as being a
+      more general regex'
+    name: support.variable.attributelist.asciidoc
+    match: ^(\[)[^\[\]]*(\])\s*$\n?
+    captures:
+      '1': {name: punctuation.definition.attributelistline.begin.asciidoc}
+      '2': {name: punctuation.definition.attributelistline.end.asciidoc}
+
+  block_heading:
+    comment: A line beginning with a period and no space
+    name: markup.heading.block.asciidoc
+    match: ^(\.)\w.*$\n?
+    captures:
+      '1': {name: punctuation.definition.blockheading.asciidoc}
+
+  block_id:
+    comment: A line surrounded by double square brackets
+    name: meta.tag.blockid.asciidoc
+    match: ^(\[\[)([^\[].*)(\]\])\s*$\n?
+    captures:
+      '1': {name: punctuation.definition.blockid.begin.asciidoc}
+      '2': {name: markup.underline.blockid.id.asciidoc}
+      '3': {name: punctuation.definition.blockid.end.asciidoc}
+
+  linebreak:
+    name: constant.linebreak.asciidoc
+    match: (?<=\s)\+$\n?
+
+  list_continuation:
+    name: constant.listcontinuation.asciidoc
+    match: ^\+\s*$\n?
+
+  pagebreak:
+    name: meta.separator.pagebreak.asciidoc
+    match: ^<{3,}$\n?
+
+  ruler:
+    name: meta.separator.ruler.asciidoc
+    match: ^'{3,}$\n?
+
+  section_template:
+    comment: fixed list of known template names
+    name: variable.parameter.sectiontemplate.asciidoc
+    match: |-
+      (?x)^
+      (\[) # in square brackets
+      (template\s*=\s*)?(")? # might start with template-equals and might have template name in quotes
+      (
+      sect\d|abstract|preface|colophon|dedication|glossary|bibliography|synopsis|appendix|index # fixed list of known templates
+      )
+      (".*(\])|(\])) # either close the quote (and perhaps go on) and close the bracket, or close the bracket immediately
+      \s*$\n?
+    captures:
+      '1': {name: punctuation.definition.sectiontemplate.begin.asciidoc}
+      '4': {name: meta.tag.sectiontemplate.asciidoc}
+      '6': {name: punctuation.definition.sectiontemplate.end.asciidoc}
+      '7': {name: punctuation.definition.sectiontemplate.end.asciidoc}
 
   lists:
     comment: My strategy for lists (and similar) is not to try to treat entire paragraphs
@@ -683,79 +716,87 @@ repository:
     - include: '#labeled_list'
     - include: '#labeled_list_semicolons'
     - include: '#callout_list'
-    repository:
-      admonition_word:
-        comment: 'NOTE:, TIP:, IMPORTANT:, WARNING: or CAUTION:'
-        name: support.constant.admonitionword.asciidoc
-        match: ^(NOTE|TIP|IMPORTANT|WARNING|CAUTION):(?=\s+)
-      bulleted_list:
-        name: markup.list.bulleted.asciidoc
-        match: ^(\s*(\-|\*{1,5}))\s+(?=\w)
-        captures:
-          '1': {name: string.unquoted.list.bullet.asciidoc}
-          '2': {name: constant.numeric.list.bullet.asciidoc}
-      callout_list:
-        name: markup.list.numbered.callout.asciidoc
-        match: ^(\s*((<)\d+?(>)))\s+(?=\w)
-        captures:
-          '1': {name: string.unquoted.list.callout.asciidoc}
-          '2': {name: constant.numeric.callout.asciidoc}
-          '3': {name: punctuation.definition.calloutlistnumber.begin.asciidoc}
-          '4': {name: punctuation.definition.calloutlistnumber.end.asciidoc}
-      labeled_list:
-        name: markup.list.labeled.asciidoc
-        match: ^\s*(.*)(?<!:)(:{2,4})(\s|$\n?)
-        captures:
-          '1':
-            name: meta.list.label.asciidoc
-            patterns:
-            - include: '#inline'
-            - include: '#characters'
-          '2': {name: constant.labeledlist.separator.asciidoc}
-      labeled_list_semicolons:
-        name: markup.list.labeled.semicolons.asciidoc
-        match: ^\s*(.*)(?<!;)(;{2})(\s|$\n?)
-        captures:
-          '1':
-            name: meta.list.label.asciidoc
-            patterns:
-            - include: '#inline'
-            - include: '#characters'
-          '2': {name: constant.labeledlist.separator.asciidoc}
-      numbered_list_dotted:
-        comment: The space distinguishes it from a block title
-        name: markup.list.numbered.dotted.asciidoc
-        match: ^(\s*(\.{1,5}))\s+(?=\w)
-        captures:
-          '1': {name: string.unquoted.list.dotted.asciidoc}
-          '2': {name: constant.numeric.list.dot.asciidoc}
-      numbered_list_numeric:
-        name: markup.list.numbered.numeric.asciidoc
-        match: ^(\s*([1-9a-zA-Z][0-9]*\.))\s+(?=\w)
-        captures:
-          '1': {name: string.unquoted.list.numeric.asciidoc}
-          '2': {name: constant.numeric.list.number.asciidoc}
-      numbered_list_roman:
-        name: markup.list.numbered.roman.asciidoc
-        match: ^(\s*([ivxIVX]+\)))\s+(?=\w)
-        captures:
-          '1': {name: string.unquoted.list.roman.asciidoc}
-          '2': {name: constant.numeric.list.romannumeral.asciidoc}
+
+  admonition_word:
+    comment: 'NOTE:, TIP:, IMPORTANT:, WARNING: or CAUTION:'
+    name: support.constant.admonitionword.asciidoc
+    match: ^(NOTE|TIP|IMPORTANT|WARNING|CAUTION):(?=\s+)
+
+  bulleted_list:
+    name: markup.list.bulleted.asciidoc
+    match: ^(\s*(\-|\*{1,5}))\s+(?=\w)
+    captures:
+      '1': {name: string.unquoted.list.bullet.asciidoc}
+      '2': {name: constant.numeric.list.bullet.asciidoc}
+
+  callout_list:
+    name: markup.list.numbered.callout.asciidoc
+    match: ^(\s*((<)\d+?(>)))\s+(?=\w)
+    captures:
+      '1': {name: string.unquoted.list.callout.asciidoc}
+      '2': {name: constant.numeric.callout.asciidoc}
+      '3': {name: punctuation.definition.calloutlistnumber.begin.asciidoc}
+      '4': {name: punctuation.definition.calloutlistnumber.end.asciidoc}
+
+  labeled_list:
+    name: markup.list.labeled.asciidoc
+    match: ^\s*(.*)(?<!:)(:{2,4})(\s|$\n?)
+    captures:
+      '1':
+        name: meta.list.label.asciidoc
+        patterns:
+        - include: '#inline'
+        - include: '#characters'
+      '2': {name: constant.labeledlist.separator.asciidoc}
+
+  labeled_list_semicolons:
+    name: markup.list.labeled.semicolons.asciidoc
+    match: ^\s*(.*)(?<!;)(;{2})(\s|$\n?)
+    captures:
+      '1':
+        name: meta.list.label.asciidoc
+        patterns:
+        - include: '#inline'
+        - include: '#characters'
+      '2': {name: constant.labeledlist.separator.asciidoc}
+
+  numbered_list_dotted:
+    comment: The space distinguishes it from a block title
+    name: markup.list.numbered.dotted.asciidoc
+    match: ^(\s*(\.{1,5}))\s+(?=\w)
+    captures:
+      '1': {name: string.unquoted.list.dotted.asciidoc}
+      '2': {name: constant.numeric.list.dot.asciidoc}
+
+  numbered_list_numeric:
+    name: markup.list.numbered.numeric.asciidoc
+    match: ^(\s*([1-9a-zA-Z][0-9]*\.))\s+(?=\w)
+    captures:
+      '1': {name: string.unquoted.list.numeric.asciidoc}
+      '2': {name: constant.numeric.list.number.asciidoc}
+
+  numbered_list_roman:
+    name: markup.list.numbered.roman.asciidoc
+    match: ^(\s*([ivxIVX]+\)))\s+(?=\w)
+    captures:
+      '1': {name: string.unquoted.list.roman.asciidoc}
+      '2': {name: constant.numeric.list.romannumeral.asciidoc}
 
   titles:
     patterns:
     - include: '#setext_title'
     - include: '#level_title'
-    repository:
-      level_title:
-        name: markup.heading.level.${eq/=(?<two>=)?(?<three>=)?(?<four>=)?(?<five>=)?/${five:?4:${four:?3:${three:?2:${two:?1:0}}}}/}.asciidoc
-        match: ^(?<eq>={1,5}) (?<title>\w.*)$\n?
-        captures:
-          eq: {name: punctuation.definition.heading.asciidoc}
-          title: {name: entity.name.section.asciidoc}
-      setext_title:
-        comment: Alas, all we can do is mark the second line; TextMate cannot do double-line
-          patterns
-        name: markup.heading.setext.n.asciidoc
-        match: ^(=|-|~|\^|\+){6,}\s*$\n?
-keyEquivalent: ^~A
+
+  level_title:
+    name: markup.heading.level.${eq/=(?<two>=)?(?<three>=)?(?<four>=)?(?<five>=)?/${five:?4:${four:?3:${three:?2:${two:?1:0}}}}/}.asciidoc
+    match: ^(?<eq>={1,5}) (?<title>\w.*)$\n?
+    captures:
+      eq: {name: punctuation.definition.heading.asciidoc}
+      title: {name: entity.name.section.asciidoc}
+  setext_title:
+    comment: Alas, all we can do is mark the second line; TextMate cannot do double-line
+      patterns
+    name: markup.heading.setext.n.asciidoc
+    match: ^(=|-|~|\^|\+){6,}\s*$\n?
+
+keyEquivalent: '^~A'
