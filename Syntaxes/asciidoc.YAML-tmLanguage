@@ -736,7 +736,6 @@ repository:
     - include: '#numbered_list_numeric'
     - include: '#numbered_list_roman'
     - include: '#labeled_list'
-    - include: '#labeled_list_semicolons'
     - include: '#callout_list'
 
   admonition_word:
@@ -775,17 +774,6 @@ repository:
     patterns:
     - include: '#inline'
     - include: '#characters'
-
-  labeled_list_semicolons:
-    name: markup.list.labeled.semicolons.asciidoc
-    match: ^\s*(.*)(?<!;)(;{2})(\s|$\n?)
-    captures:
-      '1':
-        name: meta.list.label.asciidoc
-#        patterns:
-#        - include: '#inline'
-#        - include: '#characters'
-      '2': {name: constant.labeledlist.separator.asciidoc}
 
   numbered_list_dotted:
     comment: The space distinguishes it from a block title.
