@@ -331,7 +331,6 @@ repository:
     - include: '#double_italic'
     - include: '#double_literal'
     - include: '#double_unquoted'
-    - include: '#double_quote'
     - include: '#single_bold'
     - include: '#single_italic'
     - include: '#single_literal'
@@ -355,7 +354,6 @@ repository:
 #        - include: '#double_italic'
 #        - include: '#double_literal'
 #        - include: '#double_unquoted'
-#        - include: '#double_quote'
 #        - include: '#single_italic'
 #        - include: '#single_literal'
 #        - include: '#single_unquoted'
@@ -380,7 +378,6 @@ repository:
 #        - include: '#double_bold'
 #        - include: '#double_literal'
 #        - include: '#double_unquoted'
-#        - include: '#double_quote'
 #        - include: '#single_bold'
 #        - include: '#single_literal'
 #        - include: '#single_unquoted'
@@ -405,7 +402,6 @@ repository:
 #        - include: '#double_bold'
 #        - include: '#double_italic'
 #        - include: '#double_unquoted'
-#        - include: '#double_quote'
 #        - include: '#single_bold'
 #        - include: '#single_italic'
 #        - include: '#single_unquoted'
@@ -413,33 +409,6 @@ repository:
 #        - include: '#subscript'
 #        - include: '#characters'
       '4': {name: punctuation.definition.literal.double.end.asciidoc}
-
-  double_quote:
-    name: string.quoted.double.asciidoc
-    match: |-
-      (?x)
-      (\[[^\]]*?\])?              # might start with attribute list
-      (?<!\w|\\)                  # cannot be preceded by word character or escape
-      (``)((?!\s).*?(?<!\s))('')  # double backtick followed by non-space, anything, double-apostrophe preceded by non-space
-      (?!\w)                      # cannot be followed by word character either
-    captures:
-      '1': {name: support.variable.attributelist.asciidoc}
-      '2': {name: punctuation.definition.string.quoted.double.begin.asciidoc}
-      '3':
-        name: meta.doublequotedinner.asciidoc
-#        patterns:
-#        - include: '#double_bold'
-#        - include: '#double_italic'
-#        - include: '#double_literal'
-#        - include: '#double_unquoted'
-#        - include: '#single_bold'
-#        - include: '#single_italic'
-#        - include: '#single_literal'
-#        - include: '#single_unquoted'
-#        - include: '#superscript'
-#        - include: '#subscript'
-#        - include: '#characters'
-      '4': {name: punctuation.definition.string.quoted.double.end.asciidoc}
 
   double_unquoted:
     name: string.other.unquoted.double.asciidoc
@@ -457,7 +426,6 @@ repository:
 #        - include: '#double_bold'
 #        - include: '#double_italic'
 #        - include: '#double_literal'
-#        - include: '#double_quote'
 #        - include: '#single_bold'
 #        - include: '#single_italic'
 #        - include: '#single_literal'
@@ -495,7 +463,6 @@ repository:
 #        - include: '#double_italic'
 #        - include: '#double_literal'
 #        - include: '#double_unquoted'
-#        - include: '#double_quote'
 #        - include: '#single_italic'
 #        - include: '#single_literal'
 #        - include: '#single_unquoted'
@@ -521,7 +488,6 @@ repository:
 #        - include: '#double_bold'
 #        - include: '#double_literal'
 #        - include: '#double_unquoted'
-#        - include: '#double_quote'
 #        - include: '#single_bold'
 #        - include: '#single_literal'
 #        - include: '#single_unquoted'
@@ -547,7 +513,6 @@ repository:
 #        - include: '#double_bold'
 #        - include: '#double_italic'
 #        - include: '#double_unquoted'
-#        - include: '#double_quote'
 #        - include: '#single_bold'
 #        - include: '#single_italic'
 #        - include: '#single_unquoted'
@@ -573,7 +538,6 @@ repository:
 #        - include: '#double_bold'
 #        - include: '#double_italic'
 #        - include: '#double_literal'
-#        - include: '#double_quote'
 #        - include: '#single_bold'
 #        - include: '#single_italic'
 #        - include: '#single_literal'
@@ -599,7 +563,6 @@ repository:
 #        - include: '#double_italic'
 #        - include: '#double_literal'
 #        - include: '#double_unquoted'
-#        - include: '#double_quote'
 #        - include: '#single_bold'
 #        - include: '#single_italic'
 #        - include: '#single_literal'
@@ -625,7 +588,6 @@ repository:
 #        - include: '#double_italic'
 #        - include: '#double_literal'
 #        - include: '#double_unquoted'
-#        - include: '#double_quote'
 #        - include: '#single_bold'
 #        - include: '#single_italic'
 #        - include: '#single_literal'
