@@ -26,7 +26,7 @@ repository:
     - include: '#open_block'
 
   comment_block:
-    comment: comment block; note the big surprise that macros are enabled here
+    comment: Comment block; note the big surprise that macros are enabled here.
     name: comment.block.asciidoc
     contentName: meta.block.comment.content.asciidoc
     begin: ^(/{4,})\s*$\n?
@@ -39,9 +39,10 @@ repository:
     - include: '#macro'
 
   example_block:
-    comment: might need to add more includes but these are the ones that arise
-      in practice for me; note restriction to 4 or 5 to distinguish from level
-      0 setext
+    comment: >
+      Might need to add more includes, but these are the ones that arise in
+      practice for me; note restriction to 4 or 5 to distinguish from level 0
+      setext.
     name: string.unquoted.block.example.asciidoc
     contentName: meta.block.example.content.asciidoc
     begin: ^(={4,5})\s*$\n?
@@ -58,8 +59,9 @@ repository:
     - include: '#characters'
 
   listing_block:
-    comment: declare content as source in order to get any extra yummy source
-      goodness
+    comment: >
+      Declare content as source in order to get any extra yummy source
+      goodness.
     name: meta.embedded.block.listing.asciidoc
     contentName: source.block.listing.content.asciidoc
     begin: ^(\-{4,5})\s*$\n?
@@ -72,7 +74,7 @@ repository:
     - include: '#callout'
 
   literal_block_announced:
-    comment: section template announced as literal, starts literal block
+    comment: Section template announced as literal, starts literal block.
     name: string.literal.block.announced.asciidoc
     contentName: meta.block.literal.content.asciidoc
     begin: ^((\[)"?literal\"?,?.*(\]))\s*$\n?
@@ -85,7 +87,7 @@ repository:
     - include: '#callout'
 
   literal_block_delimited:
-    comment: alternate way to get literal block, delimit with 4 or more periods
+    comment: Alternate way to get literal block, delimit with 4 or more periods.
     name: string.literal.block.delimited.asciidoc
     contentName: meta.block.literal.content.asciidoc
     begin: ^(\.{4,})\s*$\n?
@@ -98,7 +100,7 @@ repository:
     - include: '#callout'
 
   open_block:
-    comment: might need to check on these includes
+    comment: Might need to check on these includes.
     name: meta.block.open.asciidoc
     contentName: meta.block.open.content.asciidoc
     begin: ^(\-\-)\s*$\n?
@@ -117,7 +119,7 @@ repository:
     - include: '#characters'
 
   passthrough_block:
-    comment: must be four or five to distinguish from level 4 setext
+    comment: Must be four or five to distinguish from level 4 setext.
     name: meta.embedded.block.passthrough.asciidoc
     contentName: text.xml.block.passthrough.content.asciidoc
     begin: ^(\+{4,5})\s*$\n?
@@ -130,8 +132,9 @@ repository:
     - include: text.xml
 
   quote_block:
-    comment: might need to add more includes, but these are the ones that arise
-      for me in practice
+    comment: >
+      Might need to add more includes, but these are the ones that arise for me
+      in practice.
     name: markup.quote.block.asciidoc
     contentName: meta.block.quote.content.asciidoc
     begin: ^(_{4,})\s*$\n?
@@ -146,8 +149,9 @@ repository:
     - include: '#characters'
 
   sidebar_block:
-    comment: might need to add more includes but these are the ones that arise
-      in practice for me
+    comment: >
+      Might need to add more includes, but these are the ones that arise for me
+      in practice.
     name: string.quoted.block.sidebar.asciidoc
     contentName: meta.block.sidebar.content.asciidoc
     begin: ^(\*{4,})\s*$\n?
@@ -165,8 +169,9 @@ repository:
     - include: '#characters'
 
   callout:
-    comment: has to be alone in repository (not in a group), as it operates in only
-      a couple of highly specific places
+    comment: >
+      Has to be alone in repository (not in a group), as it operates in only
+      a couple of highly specific places.
     name: constant.other.callout.asciidoc
     match: (?<!\\)(<)\d+(>)
     captures:
@@ -199,8 +204,9 @@ repository:
     match: (?<!\\)&#(x[0-9a-fA-f]{4}|[0-9]{3});
 
   escape:
-    comment: I do not really know if this is a good list, adopted wholesale from
-      original bundle
+    comment: >
+      I do not really know if this is a good list, adopted wholesale from
+      original bundle.
     name: constant.character.escape.asciidoc
     match: \\(?=[-`*_#+.!(){}\[\]\\>:])
 
@@ -219,8 +225,9 @@ repository:
       '3': {name: constant.character.indexterm.triple.end.asciidoc}
 
   macro:
-    comment: there are other macro notations but I match only those that end in
-      square brackets
+    comment: >
+      There are other macro notations, but I match only those that end in
+      square brackets.
     name: meta.macro.asciidoc
     match: |-
       (?x)
@@ -263,7 +270,7 @@ repository:
       '6': {name: constant.character.attributes.macro.end.asciidoc}
 
   replacement:
-    comment: replace me, my sweet replaceable you...
+    comment: Replace me, my sweet replaceable you...
     name: constant.character.replacement.asciidoc
     match: |-
       (?x)
@@ -448,9 +455,10 @@ repository:
         - include: '#superscript'
         - include: '#subscript'
         - include: '#characters'
+      '4': {name: punctuation.definition.string.unquoted.double.end.asciidoc}
 
   passthru:
-    comment: must be dead first among the inlines, so as to take priority
+    comment: Must be dead first among the inlines, so as to take priority.
     name: meta.passthru.inline.asciidoc
     match: (\+\+\+|\$\$)(.*?)(\1)
     captures:
@@ -676,9 +684,10 @@ repository:
         - include: '#characters'
 
   attribute_list_line:
-    comment: 'Attribute list as paragraph: single brackets. No need for special
+    comment: >
+      Attribute list as paragraph: single brackets. No need for special
       treatment of escape; follows literal block, section template as being a
-      more general regex'
+      more general regex.
     name: support.variable.attributelist.asciidoc
     match: ^(\[)[^\[\]]*(\])\s*$\n?
     captures:
@@ -686,7 +695,7 @@ repository:
       '2': {name: punctuation.definition.attributelistline.end.asciidoc}
 
   block_heading:
-    comment: A line beginning with a period and no space
+    comment: A line beginning with a period and no space.
     name: markup.heading.block.asciidoc
     match: ^(\.)\w.*$\n?
     captures:
@@ -722,12 +731,12 @@ repository:
     name: variable.parameter.sectiontemplate.asciidoc
     match: |-
       (?x)^
-      (\[) # in square brackets
-      (template\s*=\s*)?(")? # might start with template-equals and might have template name in quotes
+      (\[)  # in square brackets
+      (template\s*=\s*)?(")?  # might start with template-equals and might have template name in quotes
       (
       sect\d|abstract|preface|colophon|dedication|glossary|bibliography|synopsis|appendix|index # fixed list of known templates
       )
-      (".*(\])|(\])) # either close the quote (and perhaps go on) and close the bracket, or close the bracket immediately
+      (".*(\])|(\]))  # either close the quote (and perhaps go on) and close the bracket, or close the bracket immediately
       \s*$\n?
     captures:
       '1': {name: punctuation.definition.sectiontemplate.begin.asciidoc}
@@ -736,8 +745,9 @@ repository:
       '7': {name: punctuation.definition.sectiontemplate.end.asciidoc}
 
   lists:
-    comment: My strategy for lists (and similar) is not to try to treat entire paragraphs
-      as lists, but only call out the opening
+    comment: >
+      My strategy for lists (and similar) is not to try to treat entire
+      paragraphs as lists, but only call out the opening.
     patterns:
     - include: '#admonition_word'
     - include: '#bulleted_list'
@@ -792,7 +802,7 @@ repository:
       '2': {name: constant.labeledlist.separator.asciidoc}
 
   numbered_list_dotted:
-    comment: The space distinguishes it from a block title
+    comment: The space distinguishes it from a block title.
     name: markup.list.numbered.dotted.asciidoc
     match: ^(\s*(\.{1,5}))\s+(?=\w)
     captures:
