@@ -335,7 +335,6 @@ repository:
     - include: '#single_bold'
     - include: '#single_italic'
     - include: '#single_literal'
-    - include: '#single_literal_nopassthru'
     - include: '#single_unquoted'
     - include: '#superscript'
     - include: '#subscript'
@@ -359,7 +358,6 @@ repository:
 #        - include: '#double_quote'
 #        - include: '#single_italic'
 #        - include: '#single_literal'
-#        - include: '#single_literal_nopassthru'
 #        - include: '#single_unquoted'
 #        - include: '#superscript'
 #        - include: '#subscript'
@@ -385,7 +383,6 @@ repository:
 #        - include: '#double_quote'
 #        - include: '#single_bold'
 #        - include: '#single_literal'
-#        - include: '#single_literal_nopassthru'
 #        - include: '#single_unquoted'
 #        - include: '#superscript'
 #        - include: '#subscript'
@@ -398,7 +395,7 @@ repository:
       (?x)
       (\[[^\]]*?\])?     # might start with attribute list
       (?<!\\)            # must not be preceded by escape
-      (\+\+)(.*?)(\+\+)  # anything surrounded by double plus
+      (``)(.*?)(``)      # anything surrounded by double backtick
     captures:
       '1': {name: support.variable.attributelist.asciidoc}
       '2': {name: punctuation.definition.literal.double.begin.asciidoc}
@@ -411,7 +408,6 @@ repository:
 #        - include: '#double_quote'
 #        - include: '#single_bold'
 #        - include: '#single_italic'
-#        - include: '#single_literal_nopassthru'
 #        - include: '#single_unquoted'
 #        - include: '#superscript'
 #        - include: '#subscript'
@@ -439,7 +435,6 @@ repository:
 #        - include: '#single_bold'
 #        - include: '#single_italic'
 #        - include: '#single_literal'
-#        - include: '#single_literal_nopassthru'
 #        - include: '#single_unquoted'
 #        - include: '#superscript'
 #        - include: '#subscript'
@@ -466,7 +461,6 @@ repository:
 #        - include: '#single_bold'
 #        - include: '#single_italic'
 #        - include: '#single_literal'
-#        - include: '#single_literal_nopassthru'
 #        - include: '#superscript'
 #        - include: '#subscript'
 #        - include: '#characters'
@@ -504,7 +498,6 @@ repository:
 #        - include: '#double_quote'
 #        - include: '#single_italic'
 #        - include: '#single_literal'
-#        - include: '#single_literal_nopassthru'
 #        - include: '#single_unquoted'
 #        - include: '#superscript'
 #        - include: '#subscript'
@@ -531,7 +524,6 @@ repository:
 #        - include: '#double_quote'
 #        - include: '#single_bold'
 #        - include: '#single_literal'
-#        - include: '#single_literal_nopassthru'
 #        - include: '#single_unquoted'
 #        - include: '#superscript'
 #        - include: '#subscript'
@@ -544,7 +536,7 @@ repository:
       (?x)
       (\[[^\]]*?\])?              # might start with attributes list
       (?<=^|\W)(?<!\\)            # must be preceded by a nonword character, and not by escape
-      (\+)((?!\s).*?(?<!\s))(\+)  # delimiter plus, nonspace, anything, nonspace, delimiter
+      (`)((?!\s).*?(?<!\s))(`)    # delimiter backtick, nonspace, anything, nonspace, delimiter
       (?!\w)                      # and must be followed by nonword character
     captures:
       '1': {name: support.variable.attributelist.asciidoc}
@@ -558,24 +550,11 @@ repository:
 #        - include: '#double_quote'
 #        - include: '#single_bold'
 #        - include: '#single_italic'
-#        - include: '#single_literal_nopassthru'
 #        - include: '#single_unquoted'
 #        - include: '#superscript'
 #        - include: '#subscript'
 #        - include: '#characters'
       '4': {name: punctuation.definition.literal.single.end.asciidoc}
-
-  single_literal_nopassthru:
-    name: string.other.literal.nopassthru.asciidoc
-    match: |-
-      (?x)
-      (?<!\w|\\)                # must not be preceded by word character or escape
-      (`)((?!\s).*?(?<!\s))(`)  # delimiter backtick, nonspace, anything, nonspace, delimiter
-      (?!\w)                    # and must be followed by nonword character
-    captures:
-      '1': {name: punctuation.definition.literal.single.nopassthru.begin.asciidoc}
-      '2': {name: meta.literalinner.single.nopassthru.asciidoc}
-      '3': {name: punctuation.definition.literal.single.nopassthru.end.asciidoc}
 
   single_unquoted:
     name: string.other.unquoted.single.asciidoc
@@ -598,7 +577,6 @@ repository:
 #        - include: '#single_bold'
 #        - include: '#single_italic'
 #        - include: '#single_literal'
-#        - include: '#single_literal_nopassthru'
 #        - include: '#superscript'
 #        - include: '#subscript'
 #        - include: '#characters'
@@ -625,7 +603,6 @@ repository:
 #        - include: '#single_bold'
 #        - include: '#single_italic'
 #        - include: '#single_literal'
-#        - include: '#single_literal_nopassthru'
 #        - include: '#single_unquoted'
 #        - include: '#superscript'
 #        - include: '#characters'
@@ -652,7 +629,6 @@ repository:
 #        - include: '#single_bold'
 #        - include: '#single_italic'
 #        - include: '#single_literal'
-#        - include: '#single_literal_nopassthru'
 #        - include: '#single_unquoted'
 #        - include: '#subscript'
 #        - include: '#characters'
