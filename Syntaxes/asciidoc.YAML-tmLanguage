@@ -1,7 +1,7 @@
 # [PackageDev] target_format: plist, ext: tmLanguage
 name: AsciiDoc (new)
 scopeName: text.asciidoc
-fileTypes: [asciidoc]
+fileTypes: [adoc, ad, asciidoc]
 uuid: 961C6043-B725-4E2D-83E8-114BF3A7389D
 
 patterns:
