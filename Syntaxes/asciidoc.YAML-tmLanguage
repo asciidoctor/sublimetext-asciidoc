@@ -243,9 +243,9 @@ repository:
   attribute_reference:
     comment: |
       Examples:
-        {my attribute}
+        {my-attribute}
     name: variable.other
-    match: ({)([-_. A-Za-z0-9]+)(})
+    match: ({)([A-Za-z0-9_][A-Za-z0-9_-]*)(})
     captures:
       '1': {name: constant.character.attributes.reference.begin.asciidoc}
       '2': {name: support.variable.attribute.asciidoc}
@@ -796,23 +796,25 @@ repository:
       An attribute entry.
 
       Examples:
-        :my attribute: value
+        :my-attribute: value
         :sectnums!:
         :!sectnums:
     name: meta.attributeentry.asciidoc
     contentName: meta.attributeentry.value.asciidoc
     begin: |-
       (?x)
-      ^(                            # attribute name
-        (:)                         # delimiter
-        (?:\w[^.]*?)(?:\.(?:.*?))?
-        (:)                         # closer
-      )
+      ^(:)                          # opening delimiter
+      (!)?                          # bang symbol (unset attribute)
+      ([A-Za-z0-9_][A-Za-z0-9_-]*)  # attribute name
+      (!)?                          # bang symbol (unset attribute)
+      (:)                           # closing delimiter
       (?:\s+|(?=$))
     beginCaptures:
-      '1': {name: support.variable.attribute.asciidoc}
-      '2': {name: punctuation.definition.attributeentry.attrname.begin.asciidoc}
-      '3': {name: punctuation.definition.attributeentry.attrname.end.asciidoc}
+      '1': {name: punctuation.definition.attributeentry.attrname.begin.asciidoc}
+      '2': {name: punctuation.definition.attributeentry.unset.asciidoc}
+      '3': {name: support.variable.attribute.asciidoc}
+      '4': {name: punctuation.definition.attributeentry.unset.asciidoc}
+      '5': {name: punctuation.definition.attributeentry.attrname.end.asciidoc}
     end: $\n?
     patterns:
     - include: '#characters'
