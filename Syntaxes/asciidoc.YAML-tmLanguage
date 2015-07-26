@@ -23,6 +23,7 @@ repository:
     - include: '#block_literal'
     - include: '#block_comment'
     - include: '#block_listing'
+    - include: '#block_source_fenced'
     - include: '#block_sidebar'
     - include: '#block_pass'
     - include: '#block_quote'
@@ -80,6 +81,25 @@ repository:
     name: meta.embedded.block.listing.asciidoc
     contentName: source.block.listing.content.asciidoc
     begin: ^(\-{4,})\s*$\n?
+    beginCaptures:
+      '0': {name: constant.delimiter.listing.begin.asciidoc}
+    end: ^\1\s*$\n?
+    endCaptures:
+      '0': {name: constant.delimiter.listing.end.asciidoc}
+    patterns:
+    - include: '#inline_callout'
+
+  block_source_fenced:
+    comment: |
+      Fenced code block (ala Markdown)
+
+      Examples:
+        ```rb
+        puts 'Hello world!'
+        ```
+    name: meta.embedded.block.listing.asciidoc
+    contentName: source.block.listing.content.asciidoc
+    begin: ^(```)(\w+)?\s*$\n?
     beginCaptures:
       '0': {name: constant.delimiter.listing.begin.asciidoc}
     end: ^\1\s*$\n?
