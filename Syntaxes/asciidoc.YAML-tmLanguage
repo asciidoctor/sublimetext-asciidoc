@@ -7,7 +7,7 @@ uuid: 961C6043-B725-4E2D-83E8-114BF3A7389D
 patterns:
 - include: '#lists'
 - include: '#blocks'
-- include: '#titles'
+- include: '#section_titles'
 - include: '#lines'
 - include: '#inline'
 - include: '#characters'
@@ -20,17 +20,22 @@ repository:
 
   blocks:
     patterns:
-    - include: '#literal_block_delimited'
-    - include: '#comment_block'
-    - include: '#listing_block'
-    - include: '#sidebar_block'
-    - include: '#passthrough_block'
-    - include: '#quote_block'
-    - include: '#example_block'
-    - include: '#open_block'
+    - include: '#block_literal'
+    - include: '#block_comment'
+    - include: '#block_listing'
+    - include: '#block_sidebar'
+    - include: '#block_pass'
+    - include: '#block_quote'
+    - include: '#block_example'
+    - include: '#block_open'
 
-  comment_block:
-    comment: Comment block; note the big surprise that macros are enabled here.
+  block_comment:
+    comment: |
+      Examples:
+        ////
+        A multi-line comment.
+        Notice it's a delimited block.
+        ////
     name: comment.block.asciidoc
     contentName: meta.block.comment.content.asciidoc
     begin: ^(/{4,})\s*$\n?
@@ -42,9 +47,14 @@ repository:
     patterns:
     - include: '#macro'
 
-  example_block:
-    comment: >
-      Might need to add more includes, but these are the ones that arise in
+  block_example:
+    comment: |
+      Examples:
+        ====
+        Lorem ipsum.
+        ====
+
+      Note: Might need to add more includes, but these are the ones that arise in
       practice for me.
     name: string.unquoted.block.example.asciidoc
     contentName: meta.block.example.content.asciidoc
@@ -56,15 +66,17 @@ repository:
       '0': {name: constant.delimiter.example.end.asciidoc}
     patterns:
     - include: '#lists'
-    - include: '#listing_block'
+    - include: '#block_listing'
     - include: '#lines'
     - include: '#inline'
     - include: '#characters'
 
-  listing_block:
-    comment: >
-      Declare content as source in order to get any extra yummy source
-      goodness.
+  block_listing:
+    comment: |
+      Examples:
+        ----
+        Lorem ipsum.
+        ----
     name: meta.embedded.block.listing.asciidoc
     contentName: source.block.listing.content.asciidoc
     begin: ^(\-{4,})\s*$\n?
@@ -74,10 +86,14 @@ repository:
     endCaptures:
       '0': {name: constant.delimiter.listing.end.asciidoc}
     patterns:
-    - include: '#callout'
+    - include: '#inline_callout'
 
-  literal_block_delimited:
-    comment: Alternate way to get literal block, delimit with 4 or more periods.
+  block_literal:
+    comment: |
+      Examples:
+        ....
+        Lorem ipsum.
+        ....
     name: string.literal.block.delimited.asciidoc
     contentName: meta.block.literal.content.asciidoc
     begin: ^(\.{4,})\s*$\n?
@@ -87,10 +103,15 @@ repository:
     endCaptures:
       '0': {name: constant.delimiter.block.literal.end.asciidoc}
     patterns:
-    - include: '#callout'
+    - include: '#inline_callout'
 
-  open_block:
-    comment: Might need to check on these includes.
+  block_open:
+    comment: |
+      Examples:
+        --
+        Lorem ipsum
+        --
+      Note: Might need to check on these includes.
     name: meta.block.open.asciidoc
     contentName: meta.block.open.content.asciidoc
     begin: ^\-\-\s*$\n?
@@ -101,14 +122,14 @@ repository:
       '0': {name: constant.delimiter.block.open.end.asciidoc}
     patterns:
     - include: '#lists'
-    - include: '#comment_block'
-    - include: '#listing_block'
-    - include: '#passthrough_block'
+    - include: '#block_comment'
+    - include: '#block_listing'
+    - include: '#block_pass'
     - include: '#lines'
     - include: '#inline'
     - include: '#characters'
 
-  passthrough_block:
+  block_pass:
     name: meta.embedded.block.passthrough.asciidoc
     contentName: text.xml.block.passthrough.content.asciidoc
     begin: ^(\+{4,})\s*$\n?
@@ -120,10 +141,15 @@ repository:
     patterns:
     - include: text.xml
 
-  quote_block:
+  block_quote:
     comment: >
-      Might need to add more includes, but these are the ones that arise for me
-      in practice.
+      Examples:
+        ____
+        Lorem ipsum
+        ____
+
+      Note: Might need to add more includes, but these are the ones that arise
+      for me in practice.
     name: markup.quote.block.asciidoc
     contentName: meta.block.quote.content.asciidoc
     begin: ^(_{4,})\s*$\n?
@@ -137,10 +163,15 @@ repository:
     - include: '#inline'
     - include: '#characters'
 
-  sidebar_block:
-    comment: >
-      Might need to add more includes, but these are the ones that arise for me
-      in practice.
+  block_sidebar:
+    comment: |
+      Examples:
+        ****
+        Lorem ipsum
+        ****
+
+      Note: Might need to add more includes, but these are the ones that arise
+      for me in practice.
     name: string.quoted.block.sidebar.asciidoc
     contentName: meta.block.sidebar.content.asciidoc
     begin: ^(\*{4,})\s*$\n?
@@ -151,16 +182,19 @@ repository:
       '0': {name: constant.delimiter.block.sidebar.end.asciidoc}
     patterns:
     - include: '#lists'
-    - include: '#comment_block'
-    - include: '#listing_block'
+    - include: '#block_comment'
+    - include: '#block_listing'
     - include: '#lines'
     - include: '#inline'
     - include: '#characters'
 
-  callout:
-    comment: >
-      Has to be alone in repository (not in a group), as it operates in only
-      a couple of highly specific places.
+  inline_callout:
+    comment: |
+      Callout label
+
+      Examples:
+        <1>
+        <42>
     name: constant.other.callout.asciidoc
     match: (?<!\\)(<)\d+(>)
     captures:
@@ -178,14 +212,19 @@ repository:
     - include: '#entity_name'
     - include: '#escape'
     - include: '#replacement'
-    - include: '#passmacro'
+    - include: '#macro_pass'
     - include: '#macro'
     - include: '#xref'
     - include: '#biblio_anchor'
-    - include: '#index3'
-    - include: '#index2'
+    - include: '#indexterm_triple'
+    - include: '#indexterm_double'
 
   biblio_anchor:
+    comment: |
+      Bibliography anchor
+
+      Examples:
+        [[[Lorem ipsum]]]
     name: storage.type.reference.biblioanchor.asciidoc
     match: (?<!\[)(\[\[\[).*?(\]\]\])(?!\])
     captures:
@@ -193,25 +232,42 @@ repository:
       '2': {name: punctuation.definition.biblioanchor.end.asciidoc}
 
   entity_number:
-    comment: '&#x278a; &#182;'
+    comment: |
+      Numeric character reference
+
+      Examples:
+        &#x278a;
+        &#182;
     name: constant.character.entity.asciidoc
     match: (?<!\\)&#(x?[0-9a-fA-f]{2,4});
 
   escape:
-    comment: >
-      I do not really know if this is a good list, adopted wholesale from
+    comment: |
+      List of special characters that may be escaped.
+
+      Note: I do not really know if this is a good list, adopted wholesale from
       original bundle.
     name: constant.character.escape.asciidoc
     match: \\(?=[-`*_#+.!(){}\[\]\\>:])
 
-  index2:
+  indexterm_double:
+    comment: |
+      Double parenthesis indexterm.
+
+      Examples:
+        ((Arthur))
     name: variable.other.indexterm.double.asciidoc
     match: (?<!\()(\({2})([^\(\s].*?)(\){2})(?!\))
     captures:
       '1': {name: constant.character.indexterm.double.begin.asciidoc}
       '3': {name: constant.character.indexterm.double.end.asciidoc}
 
-  index3:
+  indexterm_triple:
+    comment: |
+      Triple parenthesis indexterm.
+
+      Examples:
+        (((Sword, Broadsword, Excalibur)))
     name: variable.other.indexterm.triple.asciidoc
     match: (?<!\()(\({3})([^\(].*?)(\){3})(?!\))
     captures:
@@ -219,8 +275,8 @@ repository:
       '3': {name: constant.character.indexterm.triple.end.asciidoc}
 
   macro:
-    comment: >
-      There are other macro notations, but I match only those that end in
+    comment: |
+      Note: There are other macro notations, but I match only those that end in
       square brackets.
     name: meta.macro.asciidoc
     match: |-
@@ -244,7 +300,13 @@ repository:
       '7': {name: variable.parameter.attributes.macro.asciidoc}
       '8': {name: constant.character.attributes.macro.end.asciidoc}
 
-  passmacro:
+  macro_pass:
+    comment: |
+      Passthrough macro
+
+      Examples:
+        pass:[Lorem ipsum]
+        pass::[Lorem ipsum]
     name: meta.macro.pass.asciidoc
     contentName: variable.parameter.attributes.macro.pass.asciidoc
     begin: |-
@@ -265,36 +327,39 @@ repository:
     - include: text.xml
 
   replacement:
-    comment: Replace me, my sweet replaceable you...
     name: constant.character.replacement.asciidoc
     match: |-
       (?x)
-      (?<!\\)  # unless I am preceded by an escape, that is...
+      (?<!\\)  # must not be escaped
       (
         \(C\)
-        |
-        \(TM\)
-        |
-        \(R\)
-        |
-        ((?<!\-)\-\-(?!\-))  # exactly two, and even this may not rule out all that I want to
-        |
-        ((?<!\.)\.\.\.(?!\.))  # exactly three
-        |
-        \->;
-        |
-        <\-
-        |
-        =>;
-        |
-        <=
+        | \(TM\)
+        | \(R\)
+        | ((?<!\-)\-\-(?!\-))    # exactly two, and even this may not rule out all that I want to
+        | ((?<!\.)\.\.\.(?!\.))  # exactly three
+        | \->
+        | <\-
+        | =>
+        | <=
       )
 
   entity_name:
+    comment: |
+      Character entity reference
+
+      Examples:
+        &nbsp;
+        &sup2;
     name: constant.character.entity.xml.asciidoc
     match: (?<!\\)&([a-zA-Z][a-zA-Z0-9]*);
 
   xref:
+    comment: |
+      Internal cross-reference
+
+      Examples:
+        <<lorem>>
+        <<lorem, see here>>
     name: meta.xref.asciidoc
     match: (?<!<)(<<)([^,]*?)((,\s*)(.*?))?(>>)(?!<)
     captures:
@@ -310,19 +375,25 @@ repository:
 
   inline:
     patterns:
-    - include: '#passthru'
-    - include: '#double_bold'
-    - include: '#double_italic'
-    - include: '#double_literal'
-    - include: '#double_unquoted'
-    - include: '#single_bold'
-    - include: '#single_italic'
-    - include: '#single_literal'
-    - include: '#single_unquoted'
+    - include: '#passthrough'
+    - include: '#strong_double'
+    - include: '#emphasis_double'
+    - include: '#monospaced_double'
+    - include: '#mark_double'
+    - include: '#strong'
+    - include: '#emphasis'
+    - include: '#monospaced'
+    - include: '#mark'
     - include: '#superscript'
     - include: '#subscript'
 
-  double_bold:
+  strong_double:
+    comment: |
+      Strong (bold) text (unconstrained variant).
+
+      Examples:
+        Lo**re**m **ipsum dolor**.
+        Lo[red]**re**m
     name: markup.bold.double.asciidoc
     contentName: meta.boldinner.double.asciidoc
     begin: |-
@@ -337,17 +408,23 @@ repository:
     endCaptures:
       '0': {name: punctuation.definition.bold.double.end.asciidoc}
     patterns:
-    - include: '#double_italic'
-    - include: '#double_literal'
-    - include: '#double_unquoted'
-    - include: '#single_italic'
-    - include: '#single_literal'
-    - include: '#single_unquoted'
+    - include: '#emphasis_double'
+    - include: '#monospaced_double'
+    - include: '#mark_double'
+    - include: '#emphasis'
+    - include: '#monospaced'
+    - include: '#mark'
     - include: '#superscript'
     - include: '#subscript'
     - include: '#characters'
 
-  double_italic:
+  emphasis_double:
+    comment: |
+      Emphasized (italic) text (unconstrained variant).
+
+      Examples:
+        Lo__re__m __ipsum dolor__.
+        Lo[red]__re__m
     name: markup.italic.double.asciidoc
     contentName: meta.italicinner.double.asciidoc
     begin: |-
@@ -362,17 +439,23 @@ repository:
     endCaptures:
       '0': {name: punctuation.definition.italic.double.end.asciidoc}
     patterns:
-    - include: '#double_bold'
-    - include: '#double_literal'
-    - include: '#double_unquoted'
-    - include: '#single_bold'
-    - include: '#single_literal'
-    - include: '#single_unquoted'
+    - include: '#strong_double'
+    - include: '#monospaced_double'
+    - include: '#mark_double'
+    - include: '#strong'
+    - include: '#monospaced'
+    - include: '#mark'
     - include: '#superscript'
     - include: '#subscript'
     - include: '#characters'
 
-  double_literal:
+  monospaced_double:
+    comment: |
+      Monospaced text (unconstrained variant).
+
+      Examples:
+        Lo``re``m ``ipsum dolor``.
+        Lo[red]``re``m
     name: string.other.literal.double.asciidoc
     contentName: meta.literalinner.double.asciidoc
     begin: |-
@@ -387,17 +470,23 @@ repository:
     endCaptures:
       '0': {name: punctuation.definition.literal.double.end.asciidoc}
     patterns:
-    - include: '#double_bold'
-    - include: '#double_italic'
-    - include: '#double_unquoted'
-    - include: '#single_bold'
-    - include: '#single_italic'
-    - include: '#single_unquoted'
+    - include: '#strong_double'
+    - include: '#emphasis_double'
+    - include: '#mark_double'
+    - include: '#strong'
+    - include: '#emphasis'
+    - include: '#mark'
     - include: '#superscript'
     - include: '#subscript'
     - include: '#characters'
 
-  double_unquoted:
+  mark_double:
+    comment: |
+      Marked text (unconstrained variant).
+
+      Examples:
+        Lo##re##m ##ipsum dolor##.
+        Lo[red]##re##m
     name: string.other.unquoted.double.asciidoc
     contentName: string.unquoted.unquotedinner.double.asciidoc
     begin: |-
@@ -412,18 +501,25 @@ repository:
     endCaptures:
       '0': {name: punctuation.definition.string.unquoted.double.end.asciidoc}
     patterns:
-    - include: '#double_bold'
-    - include: '#double_italic'
-    - include: '#double_literal'
-    - include: '#single_bold'
-    - include: '#single_italic'
-    - include: '#single_literal'
+    - include: '#strong_double'
+    - include: '#emphasis_double'
+    - include: '#monospaced_double'
+    - include: '#strong'
+    - include: '#emphasis'
+    - include: '#monospaced'
     - include: '#superscript'
     - include: '#subscript'
     - include: '#characters'
 
-  passthru:
-    comment: Must be dead first among the inlines, so as to take priority.
+  passthrough:
+    comment: |
+      Inline triple-plus and double dolar passthrough.
+
+      Examples:
+        Lo+++re++++m +++ipsum dolor+++.
+        Lo$$re$$m $$ipsum dolor$$.
+
+      Note: Must be dead first among the inlines, so as to take priority.
     name: meta.passthru.inline.asciidoc
     contentName: variable.parameter.passthruinner.asciidoc
     begin: (\+\+\+|\$\$)
@@ -433,7 +529,13 @@ repository:
     endCaptures:
       '0': {name: constant.character.passthru.end.asciidoc}
 
-  single_bold:
+  strong:
+    comment: |
+      Strong (bold) text (constrained variant).
+
+      Examples:
+        *Lorem ipsum* dolor
+        [red]*Lorem ipsum* dolor
     name: markup.bold.single.asciidoc
     contentName: meta.boldinner.single.asciidoc
     begin: |-
@@ -451,17 +553,23 @@ repository:
     endCaptures:
       '1': {name: punctuation.definition.bold.single.end.asciidoc}
     patterns:
-    - include: '#double_italic'
-    - include: '#double_literal'
-    - include: '#double_unquoted'
-    - include: '#single_italic'
-    - include: '#single_literal'
-    - include: '#single_unquoted'
+    - include: '#emphasis_double'
+    - include: '#monospaced_double'
+    - include: '#mark_double'
+    - include: '#emphasis'
+    - include: '#monospaced'
+    - include: '#mark'
     - include: '#superscript'
     - include: '#subscript'
     - include: '#characters'
 
-  single_italic:
+  emphasis:
+    comment: |
+      Emphasized (italic) text (constrained variant).
+
+      Examples:
+        _Lorem ipsum_ dolor
+        [red]_Lorem ipsum_ dolor
     name: markup.italic.single.asciidoc
     contentName: meta.italicinner.single.asciidoc
     begin: |-
@@ -479,17 +587,23 @@ repository:
     endCaptures:
       '1': {name: punctuation.definition.italic.single.end.asciidoc}
     patterns:
-    - include: '#double_bold'
-    - include: '#double_literal'
-    - include: '#double_unquoted'
-    - include: '#single_bold'
-    - include: '#single_literal'
-    - include: '#single_unquoted'
+    - include: '#strong_double'
+    - include: '#monospaced_double'
+    - include: '#mark_double'
+    - include: '#strong'
+    - include: '#monospaced'
+    - include: '#mark'
     - include: '#superscript'
     - include: '#subscript'
     - include: '#characters'
 
-  single_literal:
+  monospaced:
+    comment: |
+      Monospaced text (constrained variant).
+
+      Examples:
+        `Lorem ipsum` dolor
+        [red]`Lorem ipsum` dolor
     name: string.other.literal.single.asciidoc
     contentName: meta.literalinner.single.asciidoc
     begin: |-
@@ -507,17 +621,23 @@ repository:
     endCaptures:
       '1': {name: punctuation.definition.literal.single.end.asciidoc}
     patterns:
-    - include: '#double_bold'
-    - include: '#double_italic'
-    - include: '#double_unquoted'
-    - include: '#single_bold'
-    - include: '#single_italic'
-    - include: '#single_unquoted'
+    - include: '#strong_double'
+    - include: '#emphasis_double'
+    - include: '#mark_double'
+    - include: '#strong'
+    - include: '#emphasis'
+    - include: '#mark'
     - include: '#superscript'
     - include: '#subscript'
     - include: '#characters'
 
-  single_unquoted:
+  mark:
+    comment: |
+      Marked text (constrained variant).
+
+      Examples:
+        #Lorem ipsum# dolor
+        [red]#Lorem ipsum# dolor
     name: string.other.unquoted.single.asciidoc
     contentName: string.unquoted.unquotedinner.single.asciidoc
     begin: |-
@@ -535,17 +655,23 @@ repository:
     endCaptures:
       '1': {name: punctuation.definition.string.unquoted.single.end.asciidoc}
     patterns:
-    - include: '#double_bold'
-    - include: '#double_italic'
-    - include: '#double_literal'
-    - include: '#single_bold'
-    - include: '#single_italic'
-    - include: '#single_literal'
+    - include: '#strong_double'
+    - include: '#emphasis_double'
+    - include: '#monospaced_double'
+    - include: '#strong'
+    - include: '#emphasis'
+    - include: '#monospaced'
     - include: '#superscript'
     - include: '#subscript'
     - include: '#characters'
 
   subscript:
+    comment: |
+      Subscript text.
+
+      Examples:
+        E=mc^2^
+        E=mc[red]^2^
     name: string.other.subscript.asciidoc
     contentName: meta.subscriptinner.asciidoc
     begin: |-
@@ -560,18 +686,24 @@ repository:
     endCaptures:
       '0': {name: punctuation.definition.string.subscript.end.asciidoc}
     patterns:
-    - include: '#double_bold'
-    - include: '#double_italic'
-    - include: '#double_literal'
-    - include: '#double_unquoted'
-    - include: '#single_bold'
-    - include: '#single_italic'
-    - include: '#single_literal'
-    - include: '#single_unquoted'
+    - include: '#strong_double'
+    - include: '#emphasis_double'
+    - include: '#monospaced_double'
+    - include: '#mark_double'
+    - include: '#strong'
+    - include: '#emphasis'
+    - include: '#monospaced'
+    - include: '#mark'
     - include: '#superscript'
     - include: '#characters'
 
   superscript:
+    comment: |
+      Superscript text.
+
+      Examples:
+        H~2~O
+        H[red]~2~O
     name: string.other.superscript.asciidoc
     contentName: meta.superscriptinner.asciidoc
     begin: |-
@@ -586,14 +718,14 @@ repository:
     endCaptures:
       '0': {name: punctuation.definition.string.superscript.end.asciidoc}
     patterns:
-    - include: '#double_bold'
-    - include: '#double_italic'
-    - include: '#double_literal'
-    - include: '#double_unquoted'
-    - include: '#single_bold'
-    - include: '#single_italic'
-    - include: '#single_literal'
-    - include: '#single_unquoted'
+    - include: '#strong_double'
+    - include: '#emphasis_double'
+    - include: '#monospaced_double'
+    - include: '#mark_double'
+    - include: '#strong'
+    - include: '#emphasis'
+    - include: '#monospaced'
+    - include: '#mark'
     - include: '#subscript'
     - include: '#characters'
 
@@ -604,18 +736,23 @@ repository:
 
   lines:
     patterns:
-    - include: '#comment'
+    - include: '#inline_comment'
     - include: '#list_continuation'
-    - include: '#linebreak'
-    - include: '#pagebreak'
-    - include: '#ruler'
-    - include: '#block_heading'
+    - include: '#inline_break'
+    - include: '#block_page_break'
+    - include: '#block_thematic_break'
+    - include: '#block_title'
     - include: '#block_id'
     - include: '#section_template'
     - include: '#attribute_list_line'
     - include: '#attribute_entry'
 
-  comment:
+  inline_comment:
+    comment: |
+      Inline comment.
+
+      Examples:
+        // This is just a comment!
     name: comment.line.double-slash.asciidoc
     match: ^(//)([^/\n].*|)$\n?
     captures:
@@ -623,6 +760,13 @@ repository:
       '2': {name: meta.line.comment.content.asciidoc}
 
   attribute_entry:
+    comment: |
+      An attribute entry.
+
+      Examples:
+        :my attribute: value
+        :sectnums!:
+        :!sectnums:
     name: meta.attributeentry.asciidoc
     contentName: meta.attributeentry.value.asciidoc
     begin: |-
@@ -652,15 +796,25 @@ repository:
       '1': {name: punctuation.definition.attributelistline.begin.asciidoc}
       '2': {name: punctuation.definition.attributelistline.end.asciidoc}
 
-  block_heading:
-    comment: A line beginning with a period and no space.
+  block_title:
+    comment: |
+      Title of a block.
+
+      Examples:
+        .My title
+        Lorem ipsum dolor.
     name: markup.heading.block.asciidoc
     match: ^(\.)\w.*$\n?
     captures:
       '1': {name: punctuation.definition.blockheading.asciidoc}
 
   block_id:
-    comment: A line surrounded by double square brackets
+    comment: |
+      A block id (i.e. anchor).
+
+      Examples:
+        [[myid]]
+        Lorem ipsum dolor.
     name: meta.tag.blockid.asciidoc
     match: ^(\[\[)([^\[].*)(\]\])\s*$\n?
     captures:
@@ -668,7 +822,13 @@ repository:
       '2': {name: markup.underline.blockid.id.asciidoc}
       '3': {name: punctuation.definition.blockid.end.asciidoc}
 
-  linebreak:
+  inline_break:
+    comment: |
+      Line hard break with a plus sign (+).
+
+      Examples:
+        Rubies are red, +
+        Topazes are blue.
     name: constant.linebreak.asciidoc
     match: (?<=\s)\+$\n?
 
@@ -676,11 +836,23 @@ repository:
     name: constant.listcontinuation.asciidoc
     match: ^\+\s*$\n?
 
-  pagebreak:
+  block_page_break:
+    comment: |
+      A page break.
+
+      Examples:
+        <<<
+        <<<<<
     name: meta.separator.pagebreak.asciidoc
     match: ^<{3,}$\n?
 
-  ruler:
+  block_thematic_break:
+    comment: |
+      A thematic break (aka horizontal rule).
+
+      Examples:
+        '''
+        ''''''
     name: meta.separator.ruler.asciidoc
     match: ^'{3,}$\n?
 
@@ -712,25 +884,50 @@ repository:
       My strategy for lists (and similar) is not to try to treat entire
       paragraphs as lists, but only call out the opening.
     patterns:
-    - include: '#admonition_word'
-    - include: '#bulleted_list'
-    - include: '#numbered_list_dotted'
-    - include: '#labeled_list'
-    - include: '#callout_list'
+    - include: '#block_admonition_label'
+    - include: '#ulist_item_marker'
+    - include: '#olist_item_marker'
+    - include: '#dlist_item_label'
+    - include: '#colist_item_marker'
 
-  admonition_word:
-    comment: 'NOTE:, TIP:, IMPORTANT:, WARNING: or CAUTION:'
+  block_admonition_label:
+    comment: |
+      Label of an admonition block.
+
+      Examples:
+        NOTE: This is a admonition block.
+        WARNING:  Be aware of them!
     name: support.constant.admonitionword.asciidoc
     match: ^(NOTE|TIP|IMPORTANT|WARNING|CAUTION):(?=\s+)
 
-  bulleted_list:
+  ulist_item_marker:
+    comment: |
+      Marker of an unordered (bullet) list item.
+
+      Examples:
+        * level 1
+        ** level 2
+        *** level 3
+        **** level 4
+        ***** level 5
+        - level 1
+        -- level 2
+        --- level 3
+        ---- level 4
+        ----- level 5
     name: markup.list.bulleted.asciidoc
     match: ^(\s*(\-|\*{1,5}))\s+(?=\w)
     captures:
       '1': {name: string.unquoted.list.bullet.asciidoc}
       '2': {name: constant.numeric.list.bullet.asciidoc}
 
-  callout_list:
+  colist_item_marker:
+    comment: |
+      Marker of a callout list item.
+
+      Examples:
+        <1> a callout
+        <42> another callout
     name: markup.list.numbered.callout.asciidoc
     match: ^(\s*((<)\d+?(>)))\s+(?=\w)
     captures:
@@ -739,12 +936,23 @@ repository:
       '3': {name: punctuation.definition.calloutlistnumber.begin.asciidoc}
       '4': {name: punctuation.definition.calloutlistnumber.end.asciidoc}
 
-  labeled_list:
-    comment: >
-      Matches a label of the labeled list, not its content.
-      This rule is not strictly correct, because Asciidoctor allows double
-      colon followed by a space inside a label, i.e. it matches the *last*
-      double colon, not the first. I don't know how to do that effectively.
+  dlist_item_label:
+    comment: |
+      Label of a definition (labeled) list item.
+
+      Examples:
+        Label level 1:: lorem ipsum
+        Label level 2::: dolor sit amet
+        Label level 3:::: consectetur
+        Label level 1::
+          lorem ipsum
+        Another label :: lorem ipsum
+        Last::label:: dolor sit amet
+
+      Note: This rule is not strictly correct, because Asciidoctor allows
+      double colon followed by a space inside a label, i.e. it matches the
+      *last* double colon, not the first. I don't know how to do that
+      *effectively.
     name: markup.list.labeled.asciidoc
     contentName: meta.list.label.asciidoc
     begin: ^\s*(?=.*:{2,4}(?:\s|$))
@@ -755,8 +963,18 @@ repository:
     - include: '#inline'
     - include: '#characters'
 
-  numbered_list_dotted:
-    comment: The space distinguishes it from a block title.
+  olist_item_marker:
+    comment: |
+      Marker of an ordered (numbered) list item.
+
+      Examples:
+        . level 1
+        .. level 2
+        ... level 3
+        .... level 4
+        ..... level 5
+
+      Note: The space distinguishes it from a block title.
     name: markup.list.numbered.dotted.asciidoc
     match: ^(\s*(\.{1,5}))\s+(?=\w)
     captures:
@@ -768,7 +986,15 @@ repository:
 #                                 T I T L E S                                 #
 #-----------------------------------------------------------------------------#
 
-  titles:
+  section_titles:
+    comment: |
+      Examples:
+
+        = Document Title (Level 0)
+
+        == Level 1 Section
+
+        === Level 2 Section
     patterns:
     - include: '#title_level_5'
     - include: '#title_level_4'
