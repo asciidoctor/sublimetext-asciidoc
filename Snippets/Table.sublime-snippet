@@ -1,0 +1,14 @@
+<snippet>
+   <description>Table</description>
+   <content><![CDATA[
+
+.${1:Table Caption}
+[cols="$2",opts="${3:autowidth}"]
+|===
+| $4
+|===
+
+]]></content>
+   <tabTrigger>|=</tabTrigger>
+   <scope>text.asciidoc</scope>
+</snippet>

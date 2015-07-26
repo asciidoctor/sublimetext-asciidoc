@@ -1,0 +1,13 @@
+<snippet>
+   <description>Listing Block</description>
+   <content><![CDATA[
+
+[source, ${1:ruby}]
+-------------------------------------------------------------------------------
+$2
+-------------------------------------------------------------------------------
+
+$0]]></content>
+   <tabTrigger>--</tabTrigger>
+   <scope>text.asciidoc</scope>
+</snippet>

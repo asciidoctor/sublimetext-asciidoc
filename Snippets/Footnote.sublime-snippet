@@ -1,0 +1,6 @@
+<snippet>
+   <description>Footnote</description>
+   <content><![CDATA[footnote:[${1:$SELECTION}]]]></content>
+   <tabTrigger>fn</tabTrigger>
+   <scope>text.asciidoc</scope>
+</snippet>

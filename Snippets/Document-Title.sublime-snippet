@@ -1,0 +1,9 @@
+<snippet>
+   <description>Document Title</description>
+   <content><![CDATA[= $1
+${2:$TM_FULLNAME} <${3:mail@address.org}>
+
+$0]]></content>
+   <tabTrigger>h0</tabTrigger>
+   <scope>text.asciidoc</scope>
+</snippet>

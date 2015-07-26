@@ -1,0 +1,12 @@
+<snippet>
+   <description>Example Block</description>
+   <content><![CDATA[
+
+.${1:Example Title (optional)}
+===============================================================================
+$2
+===============================================================================
+
+$0]]></content>
+   <scope>text.asciidoc</scope>
+</snippet>

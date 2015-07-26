@@ -1,0 +1,11 @@
+<snippet>
+   <description>Image (block)</description>
+   <content><![CDATA[
+
+.${1:Image Title (optional)}
+image::${2:/path/to/file}[${3:alt text}, ${4:width}, ${5:height}]
+
+$0]]></content>
+   <tabTrigger>img</tabTrigger>
+   <scope>text.asciidoc</scope>
+</snippet>

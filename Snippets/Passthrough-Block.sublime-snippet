@@ -1,0 +1,11 @@
+<snippet>
+   <description>Passthrough Block</description>
+   <content><![CDATA[
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$1
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+$0]]></content>
+   <scope>text.asciidoc</scope>
+</snippet>
