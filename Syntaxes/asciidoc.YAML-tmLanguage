@@ -798,5 +798,3 @@ repository:
       patterns
     name: markup.heading.setext.n.asciidoc
     match: ^(=|-|~|\^|\+){6,}\s*$\n?
-
-keyEquivalent: '^~A'
