@@ -948,7 +948,7 @@ repository:
         ---- level 4
         ----- level 5
     name: markup.list.bulleted.asciidoc
-    match: ^(\s*(\-|\*{1,5}))\s+(?=\w)
+    match: ^(\s*(\-|\*{1,5}))\s+(?=\S)
     captures:
       '1': {name: string.unquoted.list.bullet.asciidoc}
       '2': {name: constant.numeric.list.bullet.asciidoc}
@@ -961,7 +961,7 @@ repository:
         <1> a callout
         <42> another callout
     name: markup.list.numbered.callout.asciidoc
-    match: ^(\s*((<)\d+?(>)))\s+(?=\w)
+    match: ^(\s*((<)\d+?(>)))\s+(?=\S)
     captures:
       '1': {name: string.unquoted.list.callout.asciidoc}
       '2': {name: constant.numeric.callout.asciidoc}
@@ -1008,7 +1008,7 @@ repository:
 
       Note: The space distinguishes it from a block title.
     name: markup.list.numbered.dotted.asciidoc
-    match: ^(\s*(\.{1,5}))\s+(?=\w)
+    match: ^(\s*(\.{1,5}))\s+(?=\S)
     captures:
       '1': {name: string.unquoted.list.dotted.asciidoc}
       '2': {name: constant.numeric.list.dot.asciidoc}
