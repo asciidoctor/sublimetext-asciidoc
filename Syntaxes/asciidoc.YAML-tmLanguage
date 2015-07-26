@@ -174,8 +174,8 @@ repository:
 
   characters:
     patterns:
-    - include: '#entity'
-    - include: '#xmlentity'
+    - include: '#entity_number'
+    - include: '#entity_name'
     - include: '#escape'
     - include: '#replacement'
     - include: '#passmacro'
@@ -192,10 +192,10 @@ repository:
       '1': {name: punctuation.definition.biblioanchor.begin.asciidoc}
       '2': {name: punctuation.definition.biblioanchor.end.asciidoc}
 
-  entity:
+  entity_number:
     comment: '&#x278a; &#182;'
     name: constant.character.entity.asciidoc
-    match: (?<!\\)&#(x[0-9a-fA-f]{4}|[0-9]{3});
+    match: (?<!\\)&#(x?[0-9a-fA-f]{2,4});
 
   escape:
     comment: >
@@ -290,10 +290,9 @@ repository:
         <=
       )
 
-  xmlentity:
-    comment: amp, lt, gt
+  entity_name:
     name: constant.character.entity.xml.asciidoc
-    match: (?<!\\)&(amp|lt|gt);
+    match: (?<!\\)&([a-zA-Z][a-zA-Z0-9]*);
 
   xref:
     name: meta.xref.asciidoc
