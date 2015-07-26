@@ -1,8 +1,8 @@
 # [PackageDev] target_format: plist, ext: tmLanguage
-name: AsciiDoc (new)
+name: AsciiDoc (Asciidoctor)
 scopeName: text.asciidoc
 fileTypes: [adoc, ad, asciidoc]
-uuid: 961C6043-B725-4E2D-83E8-114BF3A7389D
+uuid: A2AE6D21-3F08-4978-ADF3-55B5AD580921
 
 patterns:
 - include: '#lists'
