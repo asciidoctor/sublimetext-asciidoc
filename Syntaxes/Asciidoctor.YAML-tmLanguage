@@ -572,9 +572,9 @@ repository:
     contentName: meta.boldinner.single.asciidoc
     begin: |-
       (?x)
-      (\[[^\]]*?\])?    # might start with an attributes list
-      (?<=^|\W)(?<!\\)  # must be preceded by a nonword character, and not by an escape
-      (\*)(?=\S)        # delimiter star that must be followed by a nonspace character
+      (\[[^\]]*?\])?      # might start with an attributes list
+      (?<=^|\W)(?<!\\|})  # must be preceded by nonword character, and not by escape or } (attribute)
+      (\*)(?=\S)          # delimiter star that must be followed by a nonspace character
     beginCaptures:
       '1': {name: support.variable.attributelist.asciidoc}
       '2': {name: punctuation.definition.bold.single.begin.asciidoc}
@@ -606,9 +606,9 @@ repository:
     contentName: meta.italicinner.single.asciidoc
     begin: |-
       (?x)
-      (\[[^\]]*?\])?    # might be preceded by an attributes list
-      (?<=^|\W)(?<!\\)  # must be preceded by a nonword character, and not by an escape
-      (_)(?=\S)         # delimiter underscore that must be followed by a nonspace character
+      (\[[^\]]*?\])?      # might be preceded by an attributes list
+      (?<=^|\W)(?<!\\|})  # must be preceded by nonword character, and not by escape or } (attribute)
+      (_)(?=\S)           # delimiter underscore that must be followed by a nonspace character
     beginCaptures:
       '1': {name: support.variable.attributelist.asciidoc}
       '2': {name: punctuation.definition.italic.single.begin.asciidoc}
@@ -640,9 +640,9 @@ repository:
     contentName: meta.literalinner.single.asciidoc
     begin: |-
       (?x)
-      (\[[^\]]*?\])?    # might start with attributes list
-      (?<=^|\W)(?<!\\)  # must be preceded by a nonword character, and not by escape
-      (`)(?=\S)         # delimiter backtick that must be followed by a nonspace character
+      (\[[^\]]*?\])?      # might start with attributes list
+      (?<=^|\W)(?<!\\|})  # must be preceded by nonword character, and not by escape or } (attribute)
+      (`)(?=\S)           # delimiter backtick that must be followed by a nonspace character
     beginCaptures:
       '1': {name: support.variable.attributelist.asciidoc}
       '2': {name: punctuation.definition.literal.single.begin.asciidoc}
@@ -674,9 +674,9 @@ repository:
     contentName: string.unquoted.unquotedinner.single.asciidoc
     begin: |-
       (?x)
-      (\[[^\]]*?\])?    # might start with attribute list (darned well better or why are we here)
-      (?<=^|\W)(?<!\\)  # must be preceded by nonword character, and not by escape
-      (\#)(?=\S)        # delimiter hash that must be followed by a nonspace character
+      (\[[^\]]*?\])?      # might start with attribute list (darned well better or why are we here)
+      (?<=^|\W)(?<!\\|})  # must be preceded by nonword character, and not by escape or } (attribute)
+      (\#)(?=\S)          # delimiter hash that must be followed by a nonspace character
     beginCaptures:
       '1': {name: support.variable.attributelist.asciidoc}
       '2': {name: punctuation.definition.string.unquoted.single.begin.asciidoc}
