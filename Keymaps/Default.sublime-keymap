@@ -3,7 +3,7 @@
   //                               Strong text                               //
   //-------------------------------------------------------------------------//
 
-  // Auto-pair stars
+  // Auto-pair stars.
   {
     "keys": ["*"],
     "command": "insert_snippet", "args": { "contents": "*$0*" },
@@ -11,14 +11,14 @@
       { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
       { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
       { "key": "following_text", "operator": "regex_contains", "operand": "^(?:$|\\s|\\)|]|\\}|_|`)", "match_all": true },
-      { "key": "preceding_text", "operator": "regex_contains", "operand": "(?:\\s|\\(|[|]|_|`)$", "match_all": true },
+      { "key": "preceding_text", "operator": "regex_contains", "operand": "(?:^|\\s|\\(|[|]|_|`)$", "match_all": true },
       { "key": "eol_selector", "operator": "not_equal", "operand": "string.quoted.single", "match_all": true },
       { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
       { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true }
-   ]
+    ]
   },
 
-  // Wrap selection with stars
+  // Wrap selection with stars.
   {
     "keys": ["*"],
     "command": "insert_snippet", "args": { "contents": "*${0:$SELECTION}*" },
@@ -30,11 +30,67 @@
     ]
   },
 
+  // Skip following star.
+  {
+    "keys": ["*"],
+    "command": "move", "args": { "by": "characters", "forward": true },
+    "context": [
+      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "following_text", "operator": "regex_contains", "operand": "^\\*", "match_all": true },
+      { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
+      { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true }
+    ]
+  },
+
+  // When cursor is between two stars and backspace is pressed, remove both stars.
+  {
+    "keys": ["backspace"],
+    "command": "run_macro_file", "args": { "file": "res://Packages/Default/Delete Left Right.sublime-macro" },
+    "context": [
+      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "preceding_text", "operator": "regex_contains", "operand": "\\*$", "match_all": true },
+      { "key": "following_text", "operator": "regex_contains", "operand": "^\\*", "match_all": true },
+      { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
+      { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true }
+    ]
+  },
+
+  // Remove undesirable paired star when creating a list instead of strong text.
+  //
+  // When line contains just two stars, possibly preceded by whitespaces, cursor is between them
+  // and space or tab is pressed, replace the following star with space, or tab.
+  {
+    "keys": [" "],
+    "command": "replace_following_character", "args": { "replacement": " "},
+    "context": [
+      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "preceding_text", "operator": "regex_contains", "operand": "^\\s*\\*$", "match_all": true },
+      { "key": "following_text", "operator": "regex_contains", "operand": "^\\*$", "match_all": true },
+      { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
+      { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true }
+    ]
+  },
+  {
+    "keys": ["tab"],
+    "command": "replace_following_character", "args": { "replacement": "\t"},
+    "context": [
+      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "preceding_text", "operator": "regex_contains", "operand": "^\\s*\\*$", "match_all": true },
+      { "key": "following_text", "operator": "regex_contains", "operand": "^\\*$", "match_all": true },
+      { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
+      { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true }
+    ]
+  },
+
   //-------------------------------------------------------------------------//
   //                             Emphasized text                             //
   //-------------------------------------------------------------------------//
 
-  // Auto-pair underscores
+  // Auto-pair underscores.
   {
     "keys": ["_"],
     "command": "insert_snippet", "args": { "contents": "_$0_" },
@@ -42,14 +98,14 @@
       { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
       { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
       { "key": "following_text", "operator": "regex_contains", "operand": "^(?:$|\\s|\\)|]|\\}|\\*|`)", "match_all": true },
-      { "key": "preceding_text", "operator": "regex_contains", "operand": "(?:\\s|\\(|[|]|\\*|`)$", "match_all": true },
+      { "key": "preceding_text", "operator": "regex_contains", "operand": "(?:^|\\s|\\(|[|]|\\*|`)$", "match_all": true },
       { "key": "eol_selector", "operator": "not_equal", "operand": "string.quoted.single", "match_all": true },
       { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
       { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true }
     ]
   },
 
-  // Wrap selection with underscores
+  // Wrap selection with underscores.
   {
     "keys": ["_"],
     "command": "insert_snippet", "args": { "contents": "_${0:$SELECTION}_" },
@@ -61,11 +117,38 @@
     ]
   },
 
+  // Skip following underscore.
+  {
+    "keys": ["_"],
+    "command": "move", "args": { "by": "characters", "forward": true },
+    "context": [
+      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "following_text", "operator": "regex_contains", "operand": "^_", "match_all": true },
+      { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
+      { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true }
+    ]
+  },
+
+  // When cursor is between underscores and backspace is pressed, remove both underscores.
+  {
+    "keys": ["backspace"],
+    "command": "run_macro_file", "args": { "file": "res://Packages/Default/Delete Left Right.sublime-macro" },
+    "context": [
+      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "preceding_text", "operator": "regex_contains", "operand": "_$", "match_all": true },
+      { "key": "following_text", "operator": "regex_contains", "operand": "^_", "match_all": true },
+      { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
+      { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true }
+    ]
+  },
+
   //-------------------------------------------------------------------------//
   //                             Monospaced text                             //
   //-------------------------------------------------------------------------//
 
-  // Auto-pair backticks
+  // Auto-pair backticks.
   {
     "keys": ["`"],
     "command": "insert_snippet",
@@ -73,13 +156,13 @@
       { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
       { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
       { "key": "following_text", "operator": "regex_contains", "operand": "^(?:$|\\s|\\)|]|\\}|\\*|_)", "match_all": true },
-      { "key": "preceding_text", "operator": "regex_contains", "operand": "(?:\\s|\\(|[|]|\\*|_)$", "match_all": true },
+      { "key": "preceding_text", "operator": "regex_contains", "operand": "(?:^|\\s|\\(|[|]|\\*|_)$", "match_all": true },
       { "key": "eol_selector", "operator": "not_equal", "operand": "string.quoted.single", "match_all": true },
       { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true }
     ]
   },
 
-  // Wrap selection with backticks
+  // Wrap selection with backticks.
   {
     "keys": ["`"],
     "command": "insert_snippet", "args": { "contents": "`${0:$SELECTION}`" },
@@ -87,6 +170,33 @@
       { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
       { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true },
       { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true }
+    ]
+  },
+
+  // Skip following backtick.
+  {
+    "keys": ["`"],
+    "command": "move", "args": { "by": "characters", "forward": true },
+    "context": [
+      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "following_text", "operator": "regex_contains", "operand": "^`", "match_all": true },
+      { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
+      { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true }
+    ]
+  },
+
+  // When cursor is between backticks and backspace is pressed, remove both backticks.
+  {
+    "keys": ["backspace"],
+    "command": "run_macro_file", "args": { "file": "res://Packages/Default/Delete Left Right.sublime-macro" },
+    "context": [
+      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "preceding_text", "operator": "regex_contains", "operand": "`$", "match_all": true },
+      { "key": "following_text", "operator": "regex_contains", "operand": "^`", "match_all": true },
+      { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
+      { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true }
     ]
   }
 ]
