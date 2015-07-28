@@ -198,5 +198,80 @@
       { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
       { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true }
     ]
+  },
+
+  //-------------------------------------------------------------------------//
+  //                                  Lists                                  //
+  //-------------------------------------------------------------------------//
+
+  // Extend (un)ordered list (i.e. add next item on the same level).
+  {
+    "keys": ["enter"],
+    "command": "insert_snippet", "args": { "contents": "${TM_CURRENT_LINE/^(\\s*([*.\\-]+)(\\s+)).*/\n$2$3/}" },
+    "context": [
+      { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
+      { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true },
+      { "key": "preceding_text", "operator": "regex_contains", "operand": "^\\s*([*.-]+)\\s+\\S", "match_all": true },
+      { "key": "auto_complete_visible", "operator": "equal", "operand": false }
+    ]
+  },
+
+  // Remove an empty item of (un)ordered list.
+  {
+    "keys": ["enter"],
+    "command": "run_macro_file", "args": { "file": "res://Packages/Asciidoctor/Macros/Purge Line.sublime-macro" },
+    "context": [
+      { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
+      { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true },
+      { "key": "preceding_text", "operator": "regex_match", "operand": "^\\s*[*.-]+\\s+$", "match_all": true },
+      { "key": "following_text", "operator": "regex_match", "operand": "^\\s*$", "match_all": true },
+      { "key": "auto_complete_visible", "operator": "equal", "operand": false }
+    ]
+  },
+
+  // Indent (un)ordered list item(s).
+  {
+    "keys": ["tab"],
+    "command": "asciidoc_indent_list_item",
+    "context": [
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "preceding_text", "operator": "regex_match", "operand": "^\\s*[*.-]+\\s+$", "match_all": true },
+      { "key": "following_text", "operator": "regex_match", "operand": "^$", "match_all": true },
+      { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
+      { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true }
+    ]
+  },
+  {
+    "keys": ["tab"],
+    "command": "asciidoc_indent_list_item",
+    "context": [
+      { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true },
+      { "key": "text", "operator": "regex_contains", "operand": "^\\s*[*.-]+\\s+", "match_all": true },
+      { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
+      { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true }
+    ]
+  },
+
+  // Unindent (un)ordered list item(s).
+  {
+    "keys": ["shift+tab"],
+    "command": "asciidoc_indent_list_item", "args": { "reverse": true },
+    "context": [
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "preceding_text", "operator": "regex_match", "operand": "^\\s*[*.-]+\\s+$", "match_all": true },
+      { "key": "following_text", "operator": "regex_match", "operand": "^$", "match_all": true },
+      { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
+      { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true }
+    ]
+  },
+  {
+    "keys": ["shift+tab"],
+    "command": "asciidoc_indent_list_item", "args": { "reverse": true },
+    "context": [
+      { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true },
+      { "key": "text", "operator": "regex_contains", "operand": "^\\s*[*.-]+\\s+", "match_all": true },
+      { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
+      { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true }
+    ]
   }
 ]

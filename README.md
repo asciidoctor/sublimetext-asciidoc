@@ -8,6 +8,8 @@ TODO
 
 The syntax definition is based on [AsciiDoc-TextMate-2.tmbundle](https://github.com/mattneub/AsciiDoc-TextMate-2.tmbundle) by [Matt Neuburg](https://github.com/mattneub).
 
+Most of the commands and keymaps are based on (or inspired by) [MarkdownEditing](https://github.com/SublimeText-Markdown/MarkdownEditing) package.
+
 ## Contributing
 
 1. Fork it
