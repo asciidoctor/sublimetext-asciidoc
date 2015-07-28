@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Exit if any statement returns a non-true return value.
+set -e
+
+# Go to the project's root directory.
+cd "$(dirname "$0")/.."
+
+script/bootstrap
+
+echo "==> Running linter... "
+pep8
+
+echo "==> Checking if Asciidoctor.tmLanguage is up-to-date..."
+mkdir -p .tmp
+script/yaml-to-plist Syntaxes/Asciidoctor.YAML-tmLanguage .tmp/Asciidoctor.tmLanguage
+
+if ! diff -u Syntaxes/Asciidoctor.tmLanguage .tmp/Asciidoctor.tmLanguage; then
+    echo -e "\nERROR: run script/build to rebuild Asciidoctor.tmLanguage"
+fi
