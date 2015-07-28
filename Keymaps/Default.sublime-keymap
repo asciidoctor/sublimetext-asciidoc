@@ -216,14 +216,27 @@
     ]
   },
 
-  // Remove an empty item of (un)ordered list.
+  // Extend callouts list (i.e. add next item with incremented number).
+  {
+    "keys": ["enter"],
+    "command": "asciidoc_extend_callouts_list",
+    "context": [
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
+      { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true },
+      { "key": "preceding_text", "operator": "regex_contains", "operand": "^\\s*<\\d+>\\s+\\S", "match_all": true },
+      { "key": "auto_complete_visible", "operator": "equal", "operand": false }
+    ]
+  },
+
+  // Remove an empty item of (un)ordered list or callouts list.
   {
     "keys": ["enter"],
     "command": "run_macro_file", "args": { "file": "res://Packages/Asciidoctor/Macros/Purge Line.sublime-macro" },
     "context": [
       { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
       { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true },
-      { "key": "preceding_text", "operator": "regex_match", "operand": "^\\s*[*.-]+\\s+$", "match_all": true },
+      { "key": "preceding_text", "operator": "regex_match", "operand": "^\\s*(?:[*.-]+|<\\d+>)\\s+$", "match_all": true },
       { "key": "following_text", "operator": "regex_match", "operand": "^\\s*$", "match_all": true },
       { "key": "auto_complete_visible", "operator": "equal", "operand": false }
     ]

@@ -45,3 +45,16 @@ class AsciidocIndentListItemCommand(TextCommand):
             return setting('tab_size', 2) * ' '
         else:
             return '\t'
+
+
+class AsciidocExtendCalloutsListCommand(TextCommand):
+
+    def run(self, edit):
+        view = self.view
+
+        for selection in view.sel():
+            line = view.substr(view.line(selection))
+            indent, num = re.findall(r'^(\s*)<(\d+)>', line)[0]
+            new_line = "\n%s<%d> " % (indent, int(num) + 1)
+
+            view.insert(edit, selection.begin(), new_line)
