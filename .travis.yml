@@ -1,0 +1,5 @@
+language: python
+sudo: false
+python: 3.3
+install: pip install -r requirements-dev.txt
+script: pep8 -v
