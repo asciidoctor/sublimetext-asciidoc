@@ -1,6 +1,6 @@
 <snippet>
    <description>Keyboard Shortcut</description>
    <content><![CDATA[kbd:[${1:$SELECTION}]]]></content>
-   <tabTrigger>btn</tabTrigger>
+   <tabTrigger>kbd</tabTrigger>
    <scope>text.asciidoc</scope>
 </snippet>
