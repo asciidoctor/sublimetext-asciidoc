@@ -1,0 +1,7 @@
+# Settings for github/linguist
+*.sublime-keymap linguist-language=JSON
+*.sublime-macro linguist-language=JSON
+*.sublime-menu linguist-language=JSON
+*.sublime-settings linguist-language=JSON
+*.YAML-tmLanguage linguist-language=YAML
+*.tmLanguage linguist-vendored=true

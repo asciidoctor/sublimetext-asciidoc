@@ -1,4 +1,6 @@
 # [PackageDev] target_format: plist, ext: tmLanguage
+# -*- mode: YAML -*-
+
 name: AsciiDoc (Asciidoctor)
 scopeName: text.asciidoc
 fileTypes: [adoc, ad, asciidoc]
