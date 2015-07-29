@@ -18,6 +18,9 @@ TODO
   - You can disable indentation of list items in your settings file.
 * At the end of a callouts list item, pressing <kbd>Enter</kbd> will automatically insert the new list item with incremented number.
   - Pressing <kbd>Enter</kbd> on the blank list item will remove it.
+* Displays document and section titles in the local symbol list (<kbd>Ctrl</kbd> <kbd>R</kbd> / <kbd>Cmd</kbd> <kbd>R</kbd>) and the global symbol list (<kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>R</kbd> / <kbd>Cmd</kbd> <kbd>Shift</kbd> <kbd>R</kbd>).
+  - In the local symbol list, titles are nicely indented.
+  - In the global symbol list, titles will start with `=`, so you will know they belong to AsciiDoc files at a glance. Also they will be on top of the list because of the presedence of `=`.
 
 ### Snippets
 
