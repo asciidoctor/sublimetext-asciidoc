@@ -1,12 +1,12 @@
 <snippet>
-   <description>Comment Block</description>
-   <content><![CDATA[
+  <description>Comment Block</description>
+  <content><![CDATA[
 
 ////////////////////////////////////////////////////////////////////////////////
 $SELECTION
 ////////////////////////////////////////////////////////////////////////////////
 
 $0]]></content>
-   <tabTrigger>//</tabTrigger>
-   <scope>text.asciidoc</scope>
+  <tabTrigger>//</tabTrigger>
+  <scope>text.asciidoc</scope>
 </snippet>

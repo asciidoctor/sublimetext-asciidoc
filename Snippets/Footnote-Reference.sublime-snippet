@@ -1,6 +1,6 @@
 <snippet>
-   <description>Footnote Reference</description>
-   <content><![CDATA[footnoteref:[${1:ID}, ${2:$SELECTION}]]]></content>
-   <tabTrigger>fnr</tabTrigger>
-   <scope>text.asciidoc</scope>
+  <description>Footnote Reference</description>
+  <content><![CDATA[footnoteref:[${1:ID}, ${2:$SELECTION}]]]></content>
+  <tabTrigger>fnr</tabTrigger>
+  <scope>text.asciidoc</scope>
 </snippet>

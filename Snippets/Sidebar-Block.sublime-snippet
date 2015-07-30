@@ -1,6 +1,6 @@
 <snippet>
-   <description>Sidebar Block</description>
-   <content><![CDATA[
+  <description>Sidebar Block</description>
+  <content><![CDATA[
 
 .${1:Sidebar Title (optional)}
 *******************************************************************************
@@ -8,5 +8,5 @@ $2
 *******************************************************************************
 
 $0]]></content>
-   <scope>text.asciidoc</scope>
+  <scope>text.asciidoc</scope>
 </snippet>
