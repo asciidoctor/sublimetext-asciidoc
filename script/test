@@ -8,13 +8,30 @@ cd "$(dirname "$0")/.."
 
 script/bootstrap
 
-echo "==> Running linter... "
-pep8
+echo '==> Checking PEP8 rules'
+pep8 && echo -e 'PASSED\n'
 
-echo "==> Checking if Asciidoctor.tmLanguage is up-to-date..."
+echo '==> Checking editorconfig rules'
+if hash eclint &>/dev/null; then
+    # Workaround for https://github.com/jedmao/eclint/issues/29
+    errors=$(eclint check $(git ls-files) 2>&1)
+    if test -n "$errors"; then
+        echo -e "$errors"; exit 1
+    else
+        echo -e 'PASSED\n'
+    fi
+else
+    echo -e 'WARNING: eclint is not available, editorconfig rules will NOT be checked!'
+    echo -e 'You must make sure that you adhere to editorconfig rules yourself.\n'
+fi
+
+echo '==> Checking if Asciidoctor.tmLanguage is up-to-date'
+
 mkdir -p .tmp
 script/yaml-to-plist Syntaxes/Asciidoctor.YAML-tmLanguage .tmp/Asciidoctor.tmLanguage
 
-if ! diff -u Syntaxes/Asciidoctor.tmLanguage .tmp/Asciidoctor.tmLanguage; then
-    echo -e "\nERROR: run script/build to rebuild Asciidoctor.tmLanguage"
+if diff -u Syntaxes/Asciidoctor.tmLanguage .tmp/Asciidoctor.tmLanguage; then
+    echo -e 'PASSED\n'
+else
+    echo -e 'ERROR: run script/build to rebuild Asciidoctor.tmLanguage\n'
 fi

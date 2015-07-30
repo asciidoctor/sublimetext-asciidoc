@@ -8,7 +8,9 @@ cd "$(dirname "$0")/.."
 
 script/bootstrap
 
-echo "==> Converting YAML-tmLanguage files to tmLanguage..."
+echo '==> Converting YAML-tmLanguage files to tmLanguage'
 for yamlfile in Syntaxes/*.YAML-tmLanguage; do
     script/yaml-to-plist "$yamlfile" "${yamlfile/%YAML-tmLanguage/tmLanguage}"
 done
+
+echo -e 'OK\n'

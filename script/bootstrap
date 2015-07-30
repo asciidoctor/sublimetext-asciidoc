@@ -6,7 +6,18 @@ set -e
 # Go to the project's root directory.
 cd "$(dirname "$0")/.."
 
-echo '==> Installing development dependencies...'
-pip install -r requirements-dev.txt | sed -n '/Requirement already satisfied/!p'
+echo '==> Installing development dependencies'
 
-exit ${PIPESTATUS[0]}  # exit status of pip install
+# Install eclint if not installed yet and npm is available.
+if ! hash eclint &>/dev/null && hash npm &>/dev/null; then
+    npm install -g eclint
+fi
+
+pip install -r requirements-dev.txt | sed -n '/Requirement already satisfied/!p'
+status=${PIPESTATUS[0]}  # exit status of pip install
+
+if [[ "$status" != 0 ]]; then
+    exit $status
+else
+    echo -e 'OK\n'
+fi
