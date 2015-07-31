@@ -1,3 +1,25 @@
 {
-  "indent_lists": true
+  "indent_lists": true,
+
+  // List of built-in attributes to display in completions.
+  "built_in_attributes": [
+    // Data attributes
+    "asciidoctor-version", "backend", "docdate", "docdatetime",
+    "docdir", "docfile", "doctime", "doctitle", "doctype", "localdate",
+    "localdatetime", "localtime",
+
+    // Header attributes
+    "author", "authorinitials", "doctitle", "email", "firstname", "lastname",
+    "middlename", "no-header-footer", "noheader", "notitle", "revdate",
+    "revnumber", "revremark", "showtitle",
+
+    // Section attributes
+    "sectid", "idprefix", "sectanchors", "sectlinks", "sectnums",
+
+    // Image attributes
+    "imagesdir",
+
+    // Table of contents attributes (HTML only)
+    "toc", "toclevels", "toc-placement", "toc-position", "toc-title"
+  ]
 }
