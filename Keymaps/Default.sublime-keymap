@@ -63,7 +63,7 @@
   // and space or tab is pressed, replace the following star with space, or tab.
   {
     "keys": [" "],
-    "command": "replace_following_character", "args": { "replacement": " "},
+    "command": "replace_following_character", "args": { "replacement": " " },
     "context": [
       { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
       { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
@@ -75,7 +75,7 @@
   },
   {
     "keys": ["tab"],
-    "command": "replace_following_character", "args": { "replacement": "\t"},
+    "command": "replace_following_character", "args": { "replacement": "\t" },
     "context": [
       { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
       { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
@@ -151,8 +151,8 @@
   // Auto-pair backticks.
   {
     "keys": ["`"],
-    "command": "insert_snippet",
-    "args": { "contents": "`$0`" }, "context": [
+    "command": "insert_snippet", "args": { "contents": "`$0`" },
+    "context": [
       { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
       { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
       { "key": "following_text", "operator": "regex_contains", "operand": "^(?:$|\\s|\\)|]|\\}|\\*|_)", "match_all": true },
