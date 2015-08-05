@@ -1,6 +1,6 @@
-# AsciiDoc Package for SublimeText
+# AsciiDoc Package for SublimeText 3
 
-This package provides more complete and up-to-date syntax highlighting and snippets for [SublimeText 3](http://www.sublimetext.com/3).
+This package provides more complete and up-to-date syntax highlighting, snippets and other goodies for AsciiDoc editing in [SublimeText 3](http://www.sublimetext.com/3).
 
 TODO
 
