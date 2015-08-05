@@ -30,6 +30,33 @@ TODO
     - In the global symbol list, titles will start with `=`, so you will know they belong to AsciiDoc files at a glance. Also they will be on top of the list because of the presedence of `=`.
 * Defines [comment markers](http://docs.sublimetext.info/en/latest/reference/comments.html), so you can use [default commands](http://docs.sublimetext.info/en/latest/reference/comments.html#related-keyboard-shortcuts) to comment and uncomment lines of text.
 
+
+## Installation
+
+Note: If you have installed the [AsciiDoc](https://packagecontrol.io/packages/AsciiDoc) package, then you should remove it, or manually assign `.adoc` extension to the Asciidoctor plugin.
+
+### Package Control
+
+The easiest way to install this plugin is to use the [Package Control](https://packagecontrol.io/installation) plugin.
+
+1. [Install Package Control](https://packagecontrol.io/installation), if you don’t have it already.
+2. Open the Command Palette (<kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>P</kbd>, or <kbd>Cmd</kbd> <kbd>Shift</kbd> <kbd>P</kbd>), type “Install package” and hit Enter.
+3. Search for “Asciidoctor” and hit Enter.
+
+### Manually
+
+You can also install this plugin manually from GitHub if you want, although Package Control automates just that.
+
+1. Go to your Packages subdirectory under the ST3’s data directory:
+    * OS X: `~/Library/Application\ Support/Sublime\ Text\ 3/Packages/`
+    * Linux: `~/.config/sublime-text-3/Packages/`
+    * Windows: `%APPDATA%\Sublime Text 3\Packages\`
+2. Clone this repository here into subdirectory Asciidoctor:
+
+        git clone https://github.com/asciidoctor/sublimetext-asciidoc.git Asciidoctor
+3. Restart SublimeText.
+
+
 ## Acknowledgement
 
 The syntax definition is based on [AsciiDoc-TextMate-2.tmbundle](https://github.com/mattneub/AsciiDoc-TextMate-2.tmbundle) by [Matt Neuburg](https://github.com/mattneub).
