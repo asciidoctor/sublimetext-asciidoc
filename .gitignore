@@ -1,2 +1,4 @@
 /.tmp
+*.cache
 *.pyc
+*.sublime-workspace
