@@ -12,3 +12,8 @@ echo "==> Converting YAML-tmLanguage files to tmLanguage..."
 for yamlfile in Syntaxes/*.YAML-tmLanguage; do
     script/yaml-to-plist "$yamlfile" "${yamlfile/%YAML-tmLanguage/tmLanguage}"
 done
+
+echo "==> Generating Keymaps..."
+for pyfile in Keymaps/*.py; do
+    exec "$pyfile" > "${pyfile%.py}"
+done
