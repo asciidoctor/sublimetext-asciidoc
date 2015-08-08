@@ -158,7 +158,8 @@
       { "key": "following_text", "operator": "regex_contains", "operand": "^(?:$|\\s|\\)|]|\\}|\\*|_|`)", "match_all": true },
       { "key": "preceding_text", "operator": "regex_contains", "operand": "(?:^|\\s|\\(|[|]|\\*|_|`)$", "match_all": true },
       { "key": "eol_selector", "operator": "not_equal", "operand": "string.quoted.single", "match_all": true },
-      { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true }
+      { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
+      { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true }
     ]
   },
 
@@ -169,7 +170,8 @@
     "context": [
       { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
       { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true },
-      { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true }
+      { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true },
+      { "key": "selector", "operator": "not_equal", "operand": "markup.raw", "match_all": true }
     ]
   },
 
