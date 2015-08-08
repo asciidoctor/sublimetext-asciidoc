@@ -8,7 +8,7 @@ TODO
 
 ### Keymaps
 
-* Asterisks (strong), underscores (emphasis) and backticks (monospaced) are autopaired and will wrap selected text.
+* Asterisks (strong), underscores (emphasis), backticks (monospaced), English quotation marks, and Czech quotation marks are autopaired and will wrap selected text.
     - If you start an empty pair and hit backspace, both elements are deleted.
     - If you start an empty asterisks pair and hit <kbd>Space</kbd> or <kbd>Tab</kbd>, the right element is deleted (because you probably wanted to start a list, not a strong text).
 * At the end of a (un)ordered list item, pressing <kbd>Enter</kbd> will automatically insert the new list item “bullet.”

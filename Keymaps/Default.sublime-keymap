@@ -533,6 +533,714 @@
   },
   {
     "keys": [
+      "\u2018"
+    ],
+    "command": "insert_snippet",
+    "args": {
+      "contents": "\u2018$0\u2019"
+    },
+    "context": [
+      {
+        "key": "selection_empty",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "following_text",
+        "operator": "regex_contains",
+        "operand": "^(?:$|\\s|\\)|]|\\}|\\*|_|`)",
+        "match_all": true
+      },
+      {
+        "key": "preceding_text",
+        "operator": "regex_contains",
+        "operand": "(?:^|\\s|\\(|[|]|\\*|_|`)$",
+        "match_all": true
+      },
+      {
+        "key": "eol_selector",
+        "operator": "not_equal",
+        "operand": "string.quoted.single",
+        "match_all": true
+      },
+      {
+        "key": "setting.auto_match_enabled",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "text.asciidoc",
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "not_equal",
+        "operand": "markup.raw",
+        "match_all": true
+      }
+    ]
+  },
+  {
+    "keys": [
+      "\u2018"
+    ],
+    "command": "insert_snippet",
+    "args": {
+      "contents": "\u2018${0:$SELECTION}\u2019"
+    },
+    "context": [
+      {
+        "key": "selection_empty",
+        "operator": "equal",
+        "operand": false,
+        "match_all": true
+      },
+      {
+        "key": "setting.auto_match_enabled",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "text.asciidoc",
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "not_equal",
+        "operand": "markup.raw",
+        "match_all": true
+      }
+    ]
+  },
+  {
+    "keys": [
+      "\u2019"
+    ],
+    "command": "move",
+    "args": {
+      "forward": true,
+      "by": "characters"
+    },
+    "context": [
+      {
+        "key": "selection_empty",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "following_text",
+        "operator": "regex_contains",
+        "operand": "^\u2019",
+        "match_all": true
+      },
+      {
+        "key": "setting.auto_match_enabled",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "text.asciidoc",
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "not_equal",
+        "operand": "markup.raw",
+        "match_all": true
+      }
+    ]
+  },
+  {
+    "keys": [
+      "backspace"
+    ],
+    "command": "run_macro_file",
+    "args": {
+      "file": "res://Packages/Default/Delete Left Right.sublime-macro"
+    },
+    "context": [
+      {
+        "key": "selection_empty",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "preceding_text",
+        "operator": "regex_contains",
+        "operand": "\u2018$",
+        "match_all": true
+      },
+      {
+        "key": "following_text",
+        "operator": "regex_contains",
+        "operand": "^\u2019",
+        "match_all": true
+      },
+      {
+        "key": "setting.auto_match_enabled",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "text.asciidoc",
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "not_equal",
+        "operand": "markup.raw",
+        "match_all": true
+      }
+    ]
+  },
+  {
+    "keys": [
+      "\u201c"
+    ],
+    "command": "insert_snippet",
+    "args": {
+      "contents": "\u201c$0\u201d"
+    },
+    "context": [
+      {
+        "key": "selection_empty",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "following_text",
+        "operator": "regex_contains",
+        "operand": "^(?:$|\\s|\\)|]|\\}|\\*|_|`)",
+        "match_all": true
+      },
+      {
+        "key": "preceding_text",
+        "operator": "regex_contains",
+        "operand": "(?:^|\\s|\\(|[|]|\\*|_|`)$",
+        "match_all": true
+      },
+      {
+        "key": "eol_selector",
+        "operator": "not_equal",
+        "operand": "string.quoted.single",
+        "match_all": true
+      },
+      {
+        "key": "setting.auto_match_enabled",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "text.asciidoc",
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "not_equal",
+        "operand": "markup.raw",
+        "match_all": true
+      }
+    ]
+  },
+  {
+    "keys": [
+      "\u201c"
+    ],
+    "command": "insert_snippet",
+    "args": {
+      "contents": "\u201c${0:$SELECTION}\u201d"
+    },
+    "context": [
+      {
+        "key": "selection_empty",
+        "operator": "equal",
+        "operand": false,
+        "match_all": true
+      },
+      {
+        "key": "setting.auto_match_enabled",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "text.asciidoc",
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "not_equal",
+        "operand": "markup.raw",
+        "match_all": true
+      }
+    ]
+  },
+  {
+    "keys": [
+      "\u201d"
+    ],
+    "command": "move",
+    "args": {
+      "forward": true,
+      "by": "characters"
+    },
+    "context": [
+      {
+        "key": "selection_empty",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "following_text",
+        "operator": "regex_contains",
+        "operand": "^\u201d",
+        "match_all": true
+      },
+      {
+        "key": "setting.auto_match_enabled",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "text.asciidoc",
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "not_equal",
+        "operand": "markup.raw",
+        "match_all": true
+      }
+    ]
+  },
+  {
+    "keys": [
+      "backspace"
+    ],
+    "command": "run_macro_file",
+    "args": {
+      "file": "res://Packages/Default/Delete Left Right.sublime-macro"
+    },
+    "context": [
+      {
+        "key": "selection_empty",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "preceding_text",
+        "operator": "regex_contains",
+        "operand": "\u201c$",
+        "match_all": true
+      },
+      {
+        "key": "following_text",
+        "operator": "regex_contains",
+        "operand": "^\u201d",
+        "match_all": true
+      },
+      {
+        "key": "setting.auto_match_enabled",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "text.asciidoc",
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "not_equal",
+        "operand": "markup.raw",
+        "match_all": true
+      }
+    ]
+  },
+  {
+    "keys": [
+      "\u201e"
+    ],
+    "command": "insert_snippet",
+    "args": {
+      "contents": "\u201e$0\u201c"
+    },
+    "context": [
+      {
+        "key": "selection_empty",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "following_text",
+        "operator": "regex_contains",
+        "operand": "^(?:$|\\s|\\)|]|\\}|\\*|_|`)",
+        "match_all": true
+      },
+      {
+        "key": "preceding_text",
+        "operator": "regex_contains",
+        "operand": "(?:^|\\s|\\(|[|]|\\*|_|`)$",
+        "match_all": true
+      },
+      {
+        "key": "eol_selector",
+        "operator": "not_equal",
+        "operand": "string.quoted.single",
+        "match_all": true
+      },
+      {
+        "key": "setting.auto_match_enabled",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "text.asciidoc",
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "not_equal",
+        "operand": "markup.raw",
+        "match_all": true
+      }
+    ]
+  },
+  {
+    "keys": [
+      "\u201e"
+    ],
+    "command": "insert_snippet",
+    "args": {
+      "contents": "\u201e${0:$SELECTION}\u201c"
+    },
+    "context": [
+      {
+        "key": "selection_empty",
+        "operator": "equal",
+        "operand": false,
+        "match_all": true
+      },
+      {
+        "key": "setting.auto_match_enabled",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "text.asciidoc",
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "not_equal",
+        "operand": "markup.raw",
+        "match_all": true
+      }
+    ]
+  },
+  {
+    "keys": [
+      "\u201c"
+    ],
+    "command": "move",
+    "args": {
+      "forward": true,
+      "by": "characters"
+    },
+    "context": [
+      {
+        "key": "selection_empty",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "following_text",
+        "operator": "regex_contains",
+        "operand": "^\u201c",
+        "match_all": true
+      },
+      {
+        "key": "setting.auto_match_enabled",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "text.asciidoc",
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "not_equal",
+        "operand": "markup.raw",
+        "match_all": true
+      }
+    ]
+  },
+  {
+    "keys": [
+      "backspace"
+    ],
+    "command": "run_macro_file",
+    "args": {
+      "file": "res://Packages/Default/Delete Left Right.sublime-macro"
+    },
+    "context": [
+      {
+        "key": "selection_empty",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "preceding_text",
+        "operator": "regex_contains",
+        "operand": "\u201e$",
+        "match_all": true
+      },
+      {
+        "key": "following_text",
+        "operator": "regex_contains",
+        "operand": "^\u201c",
+        "match_all": true
+      },
+      {
+        "key": "setting.auto_match_enabled",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "text.asciidoc",
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "not_equal",
+        "operand": "markup.raw",
+        "match_all": true
+      }
+    ]
+  },
+  {
+    "keys": [
+      "\u201a"
+    ],
+    "command": "insert_snippet",
+    "args": {
+      "contents": "\u201a$0\u2018"
+    },
+    "context": [
+      {
+        "key": "selection_empty",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "following_text",
+        "operator": "regex_contains",
+        "operand": "^(?:$|\\s|\\)|]|\\}|\\*|_|`)",
+        "match_all": true
+      },
+      {
+        "key": "preceding_text",
+        "operator": "regex_contains",
+        "operand": "(?:^|\\s|\\(|[|]|\\*|_|`)$",
+        "match_all": true
+      },
+      {
+        "key": "eol_selector",
+        "operator": "not_equal",
+        "operand": "string.quoted.single",
+        "match_all": true
+      },
+      {
+        "key": "setting.auto_match_enabled",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "text.asciidoc",
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "not_equal",
+        "operand": "markup.raw",
+        "match_all": true
+      }
+    ]
+  },
+  {
+    "keys": [
+      "\u201a"
+    ],
+    "command": "insert_snippet",
+    "args": {
+      "contents": "\u201a${0:$SELECTION}\u2018"
+    },
+    "context": [
+      {
+        "key": "selection_empty",
+        "operator": "equal",
+        "operand": false,
+        "match_all": true
+      },
+      {
+        "key": "setting.auto_match_enabled",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "text.asciidoc",
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "not_equal",
+        "operand": "markup.raw",
+        "match_all": true
+      }
+    ]
+  },
+  {
+    "keys": [
+      "\u2018"
+    ],
+    "command": "move",
+    "args": {
+      "forward": true,
+      "by": "characters"
+    },
+    "context": [
+      {
+        "key": "selection_empty",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "following_text",
+        "operator": "regex_contains",
+        "operand": "^\u2018",
+        "match_all": true
+      },
+      {
+        "key": "setting.auto_match_enabled",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "text.asciidoc",
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "not_equal",
+        "operand": "markup.raw",
+        "match_all": true
+      }
+    ]
+  },
+  {
+    "keys": [
+      "backspace"
+    ],
+    "command": "run_macro_file",
+    "args": {
+      "file": "res://Packages/Default/Delete Left Right.sublime-macro"
+    },
+    "context": [
+      {
+        "key": "selection_empty",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "preceding_text",
+        "operator": "regex_contains",
+        "operand": "\u201a$",
+        "match_all": true
+      },
+      {
+        "key": "following_text",
+        "operator": "regex_contains",
+        "operand": "^\u2018",
+        "match_all": true
+      },
+      {
+        "key": "setting.auto_match_enabled",
+        "operator": "equal",
+        "operand": true,
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "text.asciidoc",
+        "match_all": true
+      },
+      {
+        "key": "selector",
+        "operator": "not_equal",
+        "operand": "markup.raw",
+        "match_all": true
+      }
+    ]
+  },
+  {
+    "keys": [
       " "
     ],
     "command": "replace_following_character",

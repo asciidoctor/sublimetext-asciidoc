@@ -31,6 +31,7 @@ repository:
     - include: '#block_quote'
     - include: '#block_example'
     - include: '#block_open'
+    #- include: '#block_paragraph'
 
   block_comment:
     comment: |
@@ -209,6 +210,14 @@ repository:
     - include: '#lines'
     - include: '#inline'
     - include: '#characters'
+
+  #block_paragraph:
+  #  comment: |
+  #    TODO
+  #  name: meta.paragraph.asciidoc
+  #  contentName: constant.character
+  #  begin: ^(?=\S)(?![\/|=\-_\.*`]{2,}(?=\s*$))(?!\.\S+)
+  #  end: ^(?:\s*$|(?=[ ]{,3}>.))|(?=[ \t]*\n)(?<=^===|^====|=====|^---|^----|-----)[\t]*\n
 
   inline_callout:
     comment: |

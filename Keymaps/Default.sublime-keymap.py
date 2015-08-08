@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- encoding: utf-8 -*-
 import re
 from sublimedsl.keymap import *
 
@@ -98,6 +99,14 @@ Keymap(
     paired_chars('*', '*'),
     paired_chars('_', '_'),
     paired_chars('`', '`'),
+
+    # English single and double quotes.
+    paired_chars('‘', '’'),
+    paired_chars('“', '”'),
+
+    # Czech single and double quotes.
+    paired_chars('„', '“'),
+    paired_chars('‚', '‘'),
 
     replace_following_asterisk(' ', ' '),
     replace_following_asterisk('tab', '\t'),
