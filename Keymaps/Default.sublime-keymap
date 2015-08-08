@@ -18,13 +18,13 @@
       {
         "key": "following_text",
         "operator": "regex_contains",
-        "operand": "^(?:$|\\s|\\)|]|\\}|\\*|_|`)",
+        "operand": "^(?:$|\\s|\\)|\\]|\\}|\\*|_|\\`)",
         "match_all": true
       },
       {
         "key": "preceding_text",
         "operator": "regex_contains",
-        "operand": "(?:^|\\s|\\(|[|]|\\*|_|`)$",
+        "operand": "(?:^|\\s|\\(|\\[|\\]|\\*|_|\\`)$",
         "match_all": true
       },
       {
@@ -94,8 +94,8 @@
     ],
     "command": "move",
     "args": {
-      "forward": true,
-      "by": "characters"
+      "by": "characters",
+      "forward": true
     },
     "context": [
       {
@@ -195,13 +195,13 @@
       {
         "key": "following_text",
         "operator": "regex_contains",
-        "operand": "^(?:$|\\s|\\)|]|\\}|\\*|_|`)",
+        "operand": "^(?:$|\\s|\\)|\\]|\\}|\\*|_|\\`)",
         "match_all": true
       },
       {
         "key": "preceding_text",
         "operator": "regex_contains",
-        "operand": "(?:^|\\s|\\(|[|]|\\*|_|`)$",
+        "operand": "(?:^|\\s|\\(|\\[|\\]|\\*|_|\\`)$",
         "match_all": true
       },
       {
@@ -271,8 +271,8 @@
     ],
     "command": "move",
     "args": {
-      "forward": true,
-      "by": "characters"
+      "by": "characters",
+      "forward": true
     },
     "context": [
       {
@@ -372,13 +372,13 @@
       {
         "key": "following_text",
         "operator": "regex_contains",
-        "operand": "^(?:$|\\s|\\)|]|\\}|\\*|_|`)",
+        "operand": "^(?:$|\\s|\\)|\\]|\\}|\\*|_|\\`)",
         "match_all": true
       },
       {
         "key": "preceding_text",
         "operator": "regex_contains",
-        "operand": "(?:^|\\s|\\(|[|]|\\*|_|`)$",
+        "operand": "(?:^|\\s|\\(|\\[|\\]|\\*|_|\\`)$",
         "match_all": true
       },
       {
@@ -448,8 +448,8 @@
     ],
     "command": "move",
     "args": {
-      "forward": true,
-      "by": "characters"
+      "by": "characters",
+      "forward": true
     },
     "context": [
       {
@@ -549,13 +549,13 @@
       {
         "key": "following_text",
         "operator": "regex_contains",
-        "operand": "^(?:$|\\s|\\)|]|\\}|\\*|_|`)",
+        "operand": "^(?:$|\\s|\\)|\\]|\\}|\\*|_|\\`)",
         "match_all": true
       },
       {
         "key": "preceding_text",
         "operator": "regex_contains",
-        "operand": "(?:^|\\s|\\(|[|]|\\*|_|`)$",
+        "operand": "(?:^|\\s|\\(|\\[|\\]|\\*|_|\\`)$",
         "match_all": true
       },
       {
@@ -625,8 +625,8 @@
     ],
     "command": "move",
     "args": {
-      "forward": true,
-      "by": "characters"
+      "by": "characters",
+      "forward": true
     },
     "context": [
       {
@@ -726,13 +726,13 @@
       {
         "key": "following_text",
         "operator": "regex_contains",
-        "operand": "^(?:$|\\s|\\)|]|\\}|\\*|_|`)",
+        "operand": "^(?:$|\\s|\\)|\\]|\\}|\\*|_|\\`)",
         "match_all": true
       },
       {
         "key": "preceding_text",
         "operator": "regex_contains",
-        "operand": "(?:^|\\s|\\(|[|]|\\*|_|`)$",
+        "operand": "(?:^|\\s|\\(|\\[|\\]|\\*|_|\\`)$",
         "match_all": true
       },
       {
@@ -802,8 +802,8 @@
     ],
     "command": "move",
     "args": {
-      "forward": true,
-      "by": "characters"
+      "by": "characters",
+      "forward": true
     },
     "context": [
       {
@@ -903,13 +903,13 @@
       {
         "key": "following_text",
         "operator": "regex_contains",
-        "operand": "^(?:$|\\s|\\)|]|\\}|\\*|_|`)",
+        "operand": "^(?:$|\\s|\\)|\\]|\\}|\\*|_|\\`)",
         "match_all": true
       },
       {
         "key": "preceding_text",
         "operator": "regex_contains",
-        "operand": "(?:^|\\s|\\(|[|]|\\*|_|`)$",
+        "operand": "(?:^|\\s|\\(|\\[|\\]|\\*|_|\\`)$",
         "match_all": true
       },
       {
@@ -979,8 +979,8 @@
     ],
     "command": "move",
     "args": {
-      "forward": true,
-      "by": "characters"
+      "by": "characters",
+      "forward": true
     },
     "context": [
       {
@@ -1080,13 +1080,13 @@
       {
         "key": "following_text",
         "operator": "regex_contains",
-        "operand": "^(?:$|\\s|\\)|]|\\}|\\*|_|`)",
+        "operand": "^(?:$|\\s|\\)|\\]|\\}|\\*|_|\\`)",
         "match_all": true
       },
       {
         "key": "preceding_text",
         "operator": "regex_contains",
-        "operand": "(?:^|\\s|\\(|[|]|\\*|_|`)$",
+        "operand": "(?:^|\\s|\\(|\\[|\\]|\\*|_|\\`)$",
         "match_all": true
       },
       {
@@ -1156,8 +1156,8 @@
     ],
     "command": "move",
     "args": {
-      "forward": true,
-      "by": "characters"
+      "by": "characters",
+      "forward": true
     },
     "context": [
       {

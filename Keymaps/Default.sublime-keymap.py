@@ -25,8 +25,8 @@ def paired_chars(left, right):
         bind(left)
             .to('insert_snippet', contents="%s$0%s" % (left, right))
             .when('selection_empty').true()
-            .also('following_text').regex_contains('^(?:$|\\s|\\)|]|\\}|\\*|_|`)')
-            .also('preceding_text').regex_contains('(?:^|\\s|\\(|[|]|\\*|_|`)$')
+            .also('following_text').regex_contains('^(?:$|\\s|\\)|\\]|\\}|\\*|_|\\`)')
+            .also('preceding_text').regex_contains('(?:^|\\s|\\(|\\[|\\]|\\*|_|\\`)$')
             .also('eol_selector').not_equal('string.quoted.single'),
 
         # When you select some text and type the left char, then the selection
