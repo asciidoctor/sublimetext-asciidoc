@@ -1,4 +1,6 @@
+from itertools import chain
 import sublime
+from sublime import Region
 from sublime_plugin import EventListener
 
 # String that must be found in the syntax setting of the current view
@@ -11,6 +13,10 @@ ADOC_SCOPE = 'text.asciidoc - source'
 # Selector that specifies the scope in which attribute completions may
 # be activated.
 ATTR_SCOPE = 'variable.other'
+
+# Selector that specifies the scope in which cross reference completions may
+# be activated.
+XREF_SCOPE = 'meta.xref.asciidoc'
 
 # Name of the plugin's settings file.
 SETTINGS_NAME = 'Asciidoctor.sublime-settings'
@@ -63,6 +69,29 @@ class AsciidocAttributeCompletions(EventListener):
                 for region in reversed(regions)}.items())
 
 
+class AsciidocCrossReferenceCompletions(EventListener):
+
+    def on_query_completions(self, view, prefix, locations):
+
+        if SYNTAX not in view.settings().get('syntax'):
+            return None
+        if not all(self.should_trigger(view, loc) for loc in locations):
+            return None
+
+        completions = (
+            completions_list(search(find_by_scope(view, scope), prefix), hint)
+            for scope, hint in (
+                ('markup.underline.blockid.id.asciidoc', 'anchor'),
+                ('entity.name.section.asciidoc', 'title')))
+
+        return sorted(chain(*completions), key=lambda t: t[0].lower())
+
+    def should_trigger(self, view, point):
+        """ Return True if completions should be triggered at the given point. """
+        return (view.match_selector(point, XREF_SCOPE) or
+                view.match_selector(point, ADOC_SCOPE) and lsubstr(view, point, 2) == '<<')
+
+
 def completions_list(entries, hint):
     return [("%s\t%s" % (entry, hint), entry) for entry in entries]
 
@@ -72,10 +101,16 @@ def cursors_line_num(view):
     return [view.rowcol(region.b)[0] for region in view.sel()]
 
 
-def lsubstr(view, point):
-    """ Return the character to the left of the point. """
-    row, col = view.rowcol(point)
-    return view.substr(point - 1) if col != 0 else ''
+def find_by_scope(view, selector):
+    """ Find all substrings in the file matching the given scope selector. """
+    return map(view.substr, view.find_by_selector(selector))
+
+
+def lsubstr(view, point, length=1):
+    """ Return the character(s) to the left of the point on the same line. """
+    col = view.rowcol(point)[1]
+    region = Region(point - min(length, col), point)
+    return view.substr(region)
 
 
 def search(collection, substring):
