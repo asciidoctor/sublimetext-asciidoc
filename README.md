@@ -29,6 +29,7 @@ TODO
     - In the local symbol list, titles are nicely indented.
     - In the global symbol list, titles will start with `=`, so you will know they belong to AsciiDoc files at a glance. Also they will be on top of the list because of the presedence of `=`.
 * Defines [comment markers](http://docs.sublimetext.info/en/latest/reference/comments.html), so you can use [default commands](http://docs.sublimetext.info/en/latest/reference/comments.html#related-keyboard-shortcuts) to comment and uncomment lines of text.
+* Provides completions for attributes (built-in and locally defined) and cross references (local anchors and titles).
 
 
 ## Installation
