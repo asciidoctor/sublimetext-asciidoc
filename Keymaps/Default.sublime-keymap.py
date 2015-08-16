@@ -137,6 +137,28 @@ Keymap(
         .also('preceding_text').regex_contains('\\{$')
         .also('following_text').regex_contains('^\\}'),
 
+    # When you type "<<", then ">>" is automatically inserted after the cursor
+    # and auto complete list is opened.
+    bind('<')
+        .to('asciidoc_run_commands', commands=[
+            ['insert_snippet', {'contents': '<$0>>'}],
+            ['auto_complete']])
+        .when('setting.auto_match_enabled').true()
+        .also('setting.auto_complete').true()
+        .also('selection_empty').true()
+        .also('preceding_text').regex_contains('<$'),
+
+    # When the cursor is between "<" and ">" and you hit backspace, then both
+    # chars are deleted and auto complete list closed.
+    bind('backspace')
+        .to('asciidoc_run_commands', commands=[
+            ['run_macro_file', {'file': builtin_macro('Delete Left Right')}],
+            ['hide_auto_complete']])
+        .when('setting.auto_match_enabled').true()
+        .also('selection_empty').true()
+        .also('preceding_text').regex_contains('<$')
+        .also('following_text').regex_contains('^>'),
+
     # When the cursor is at EOL with an (un)ordered list item and you hit
     # Enter, then the next item is added (with the same nesting level).
     bind('enter')
