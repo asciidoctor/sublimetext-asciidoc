@@ -21,5 +21,9 @@
 
     // Table of contents attributes (HTML only)
     "toc", "toclevels", "toc-placement", "toc-position", "toc-title"
-  ]
+  ],
+
+  // Disable automatic indentation.
+  // It's not much helpful in AsciiDoc; interferes with attribute completions.
+  "auto_indent": false
 }
