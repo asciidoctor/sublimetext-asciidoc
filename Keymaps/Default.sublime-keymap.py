@@ -14,7 +14,7 @@ def builtin_macro(name):
 
 def escape(string):
     """ Escape regex special characters (``re.escape`` escapes all non-ASCII). """
-    return re.sub(r'([\.\\\+\*\?\[\^\]\$\(\)\{\}\!\<\>\|\:\-])', r'\\\1', string)
+    return re.sub(r'([\.\\\+\*\?\[\^\]\$\(\)\{\}\!\|\:\-])', r'\\\1', string)
 
 
 def paired_chars(left, right):
@@ -54,6 +54,23 @@ def paired_chars(left, right):
             context('setting.auto_match_enabled').true()
         ]
     )  # nopep8
+
+
+def delete_paired_chars(left, right):
+    """
+    When the cursor is between the left and the right char and you hit
+    backspace, then both chars are deleted and auto complete list closed.
+    """
+    return [
+        bind('backspace')
+            .to('asciidoc_run_commands', commands=[
+                ['run_macro_file', {'file': builtin_macro('Delete Left Right')}],
+                ['hide_auto_complete']])
+            .when('setting.auto_match_enabled').true()
+            .also('selection_empty').true()
+            .also('preceding_text').regex_contains("%s$" % escape(left))
+            .also('following_text').regex_contains("^%s" % escape(right))
+    ]  # nopep8
 
 
 def replace_following_asterisk(key, replacement):
@@ -108,12 +125,6 @@ Keymap(
     paired_chars('„', '“'),
     paired_chars('‚', '‘'),
 
-    replace_following_asterisk(' ', ' '),
-    replace_following_asterisk('tab', '\t'),
-
-    indent_list_items('tab'),
-    indent_list_items('shift+tab', reverse=True),
-
     # When you type "{", then "}" is automatically inserted after the cursor
     # and auto complete list is opened.
     # This is workaround to get both auto-pairing and auto-completion working.
@@ -125,17 +136,7 @@ Keymap(
         .also('setting.auto_complete').true()
         .also('selection_empty').true(),
 
-    # When the cursor is between "{" and "}" and you hit backspace, then both
-    # chars are deleted and the auto complete list closed.
-    # This overrides the default keymap to add hiding of the auto complete list.
-    bind('backspace')
-        .to('asciidoc_run_commands', commands=[
-            ['run_macro_file', {'file': builtin_macro('Delete Left Right')}],
-            ['hide_auto_complete']])
-        .when('setting.auto_match_enabled').true()
-        .also('selection_empty').true()
-        .also('preceding_text').regex_contains('\\{$')
-        .also('following_text').regex_contains('^\\}'),
+    delete_paired_chars('{', '}'),
 
     # When you type "<<", then ">>" is automatically inserted after the cursor
     # and auto complete list is opened.
@@ -148,16 +149,13 @@ Keymap(
         .also('selection_empty').true()
         .also('preceding_text').regex_contains('<$'),
 
-    # When the cursor is between "<" and ">" and you hit backspace, then both
-    # chars are deleted and auto complete list closed.
-    bind('backspace')
-        .to('asciidoc_run_commands', commands=[
-            ['run_macro_file', {'file': builtin_macro('Delete Left Right')}],
-            ['hide_auto_complete']])
-        .when('setting.auto_match_enabled').true()
-        .also('selection_empty').true()
-        .also('preceding_text').regex_contains('<$')
-        .also('following_text').regex_contains('^>'),
+    delete_paired_chars('<', '>'),
+
+    replace_following_asterisk(' ', ' '),
+    replace_following_asterisk('tab', '\t'),
+
+    indent_list_items('tab'),
+    indent_list_items('shift+tab', reverse=True),
 
     # When the cursor is at EOL with an (un)ordered list item and you hit
     # Enter, then the next item is added (with the same nesting level).
