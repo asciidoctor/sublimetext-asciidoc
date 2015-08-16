@@ -1784,9 +1784,29 @@
     "keys": [
       "enter"
     ],
-    "command": "run_macro_file",
+    "command": "asciidoc_run_commands",
     "args": {
-      "file": "res://Packages/Asciidoctor/Macros/Purge Line.sublime-macro"
+      "commands": [
+        [
+          "run_macro_file",
+          {
+            "file": "res://Packages/Default/Delete Line.sublime-macro"
+          }
+        ],
+        [
+          "insert",
+          {
+            "characters": "\n"
+          }
+        ],
+        [
+          "move",
+          {
+            "by": "characters",
+            "forward": false
+          }
+        ]
+      ]
     },
     "context": [
       {

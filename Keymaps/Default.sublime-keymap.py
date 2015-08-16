@@ -175,7 +175,10 @@ Keymap(
     # When the cursor is at EOL with an empty list item (ordered, unordered or
     # callout) and you hit Enter, then the list item is removed.
     bind('enter')
-        .to('run_macro_file', file=asciidoc_macro('Purge Line'))
+        .to('asciidoc_run_commands', commands=[
+            ['run_macro_file', {'file': builtin_macro('Delete Line')}],
+            ['insert', {'characters': '\n'}],
+            ['move', {'by': 'characters', 'forward': False}]])
         .when('auto_complete_visible').false()
         .also('preceding_text').regex_match('^\\s*(?:[*.-]+|<\\d+>)\\s+$')
         .also('following_text').regex_match('^\\s*$'),
