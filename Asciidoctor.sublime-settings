@@ -23,6 +23,16 @@
     "toc", "toclevels", "toc-placement", "toc-position", "toc-title"
   ],
 
+  // Additional situations to trigger auto complete.
+  "auto_complete_triggers": [
+
+    // This has the effect only when "auto_match_enabled" is false, otherwise
+    // it's overrided by the auto-pair keymap. Thus there's another keymap that
+    // triggers auto completion when both "auto_match_enabled" and
+    // "auto_complete" is enabled.
+    { "selector": "text.asciidoc - source - markup.raw", "characters": "{" }
+  ],
+
   // Disable automatic indentation.
   // It's not much helpful in AsciiDoc; interferes with attribute completions.
   "auto_indent": false,

@@ -58,3 +58,14 @@ class AsciidocExtendCalloutsListCommand(TextCommand):
             new_line = "\n%s<%d> " % (indent, int(num) + 1)
 
             view.insert(edit, selection.begin(), new_line)
+
+
+class AsciidocRunCommandsCommand(TextCommand):
+    """ Run multiple commands in chain. """
+
+    def run(self, edit, commands):
+        for command in commands:
+            if isinstance(command, str):
+                self.view.run_command(command)
+            else:
+                self.view.run_command(command[0], *command[1:])
