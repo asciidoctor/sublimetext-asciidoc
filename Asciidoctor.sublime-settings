@@ -27,6 +27,13 @@
   // It's not much helpful in AsciiDoc; interferes with attribute completions.
   "auto_indent": false,
 
-  // Characters that are considered to separate words.
+  // Set to true to ensure the last line of the file ends in a newline
+  // character when saving.
+  "ensure_newline_at_eof_on_save": true,
+
+  // Set to true to removing trailing white space on save.
+  "trim_trailing_white_space_on_save": true,
+
+  // Characters that are considered to separate words
   "word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`?…\u00A0„“”"
 }
