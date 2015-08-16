@@ -25,5 +25,8 @@
 
   // Disable automatic indentation.
   // It's not much helpful in AsciiDoc; interferes with attribute completions.
-  "auto_indent": false
+  "auto_indent": false,
+
+  // Characters that are considered to separate words.
+  "word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`?…\u00A0„“”"
 }
