@@ -21,7 +21,22 @@ TODO
 
 ### Snippets
 
-TODO
+| Name               | Trigger       |
+| ------------------ | ------------- |
+| Button             | btn⇥         |
+| Comment Block      | //⇥          |
+| Document Title     | h0⇥          |
+| Example Block      |               |
+| Footnote Reference | fnr⇥         |
+| Footnote           | fn⇥          |
+| Image              | img⇥         |
+| Keyboard Shortcut  | kbd⇥         |
+| Listing Block      | --⇥          |
+| Passthrough Block  |               |
+| Quote Block        | __⇥          |
+| Section Title 1–5  | h1⇥, …, h5⇥ |
+| Sidebar block      |               |
+| Table              | |=⇥          |
 
 ### Others
 
